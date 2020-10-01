@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ProyectoFinal2020v2.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="~/css/StyleCliente.css" />
+<h1><i class="far fa-list-alt"></i>Clientes</h1>
+
+
+<table id="table" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido1)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Apellido2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaNac)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Sexo)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Casillero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTarifa)
+            </th>
+            <th>
+                <a class="btn btn-success" asp-action="Create">
+                    Crear Nuevo
+                    <i class="fas fa-plus-square"></i>
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido1)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Apellido2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaNac)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Sexo)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Casillero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdTarifa)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdCliente" class="btn btn-primary btn-sm"><i class="fas fa-marker"></i>Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.IdCliente" class="btn btn-secondary btn-sm"><i class="fas fa-stream"></i>Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdCliente" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+ $(document).ready(function () {
+ $('#table').DataTable();
+ });
+    </script>
+}
