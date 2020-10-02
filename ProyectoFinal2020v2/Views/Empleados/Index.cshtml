@@ -6,11 +6,11 @@
 
 <h1>Index</h1>
 
-<p>
+@*<p>
     <a class="btn btn-success float-right " asp-action="Create">Create New <i class="fas fa-plus-square"></i></a><br />
-</p>
+</p>*@
 <div class="container-fluid">
-    <table class="table">
+    <table id="table" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>
@@ -37,7 +37,14 @@
                 <th>
                     @Html.DisplayNameFor(model => model.TipoDeEmp)
                 </th>
-                <th></th>
+                <th>
+                
+                    <a class="btn btn-success" asp-action="Create">
+                        Crear Nuevo
+                        <i class="fas fa-plus-square"></i>
+                    </a>
+                
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -84,3 +91,10 @@
         </tbody>
     </table>
 </div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+        </script> 
+}

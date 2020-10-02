@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.Operations;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal2020v2.Models;
 
@@ -58,7 +59,7 @@ namespace ProyectoFinal2020v2.Controllers
             if (ModelState.IsValid)
             {
                 var validacionDNI = _context.Empleado.Any(e => e.Identificacion.Equals(empleado.Identificacion));
-                
+
                 if (validacionDNI)
                 {
                     ModelState.AddModelError("Identificacion", "Este empleado ya esta registrado");
@@ -156,5 +157,19 @@ namespace ProyectoFinal2020v2.Controllers
         {
             return _context.Empleado.Any(e => e.IdEmpleado == id);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateConAjax(Empleado empleado)
+        {
+            string mensaje = "Error al crea el registro";
+            if (ModelState.IsValid)
+            {
+                _context.Empleado.Add(empleado);
+                _context.SaveChanges();
+                mensaje = "Registro creado";
+            }
+            return Json(new { result = false, mensaje = mensaje });
+        }
     }
 }
+

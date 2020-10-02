@@ -9,9 +9,9 @@
 @*text-center" style="color:gray;background-color:powderblue;*@
 <hr />
 <div class="container-fluid">
-    <form asp-action="Create">
+    <form asp-action="Create" asp-controller="Empleados" method="post" id="formulario">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="IdEmpleado" />
+        @*<input type="hidden" asp-for="IdEmpleado" />*@
         <div class="column">
             <div class="form-group">
                 <label asp-for="Identificacion" class="control-label"></label>
@@ -109,11 +109,22 @@
         </div>
         <div class="form-group">
             <input type="submit" value="Crear" class="btn btn-success" />
+            @*<input type="button" value="Crear Ajax" class="btn btn-success" id="saveAjax" />*@
             <a class="btn btn-secondary" asp-action="Index">Atrás</a>
         </div>
     </form>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+@*<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script>
+    $(document).ready(function () {
+        $("#saveAjax").click(function (event) {
+            var form = $("#formulario"); $.ajax({
+                url: "/Empleados/CreateConAjax", data: form.serialize(), method: "POST", success: function (resultado) {
+                    if (resultado.result) {
+                        alert(resultado.mensaje);
+                    } else { alert(resultado.mensaje); }
+                }
+            });
+        });
+    });</script>*@
