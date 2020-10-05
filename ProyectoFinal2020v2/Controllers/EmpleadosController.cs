@@ -59,10 +59,18 @@ namespace ProyectoFinal2020v2.Controllers
             if (ModelState.IsValid)
             {
                 var validacionDNI = _context.Empleado.Any(e => e.Identificacion.Equals(empleado.Identificacion));
+                var validacionGmail = _context.Empleado.Any(e => e.Email.Equals(empleado.Email));
 
-                if (validacionDNI)
+                if (validacionDNI || validacionGmail)
                 {
-                    ModelState.AddModelError("Identificacion", "Este empleado ya esta registrado");
+                    if (validacionGmail)
+                    {
+                        ModelState.AddModelError("Email", "Este correo ya esta registrado, intente con otro.");
+                    }
+                    if (validacionDNI)
+                    {
+                        ModelState.AddModelError("Identificacion", "Este empleado ya esta registrado");
+                    }
                     return View("Create");
 
                 }

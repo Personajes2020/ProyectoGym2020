@@ -31,6 +31,8 @@ namespace ProyectoFinal2020v2.Models
         [Required(ErrorMessage = "Es obligatorio la dirrecion.")]
         public string Direccion { get; set; }
         [Required(ErrorMessage = "Es necesario el Email")]
+        [RegularExpression("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]+))",
+            ErrorMessage = ("Email Invalido, debe tener una escructura como: ejemplo@ejemplo.com"))]
         public string Email { get; set; }
 
         public string Sexo { get; set; }
