@@ -1,0 +1,144 @@
+﻿@model ProyectoFinal2020v2.Models.Actividad
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i> Eliminar Actividad</h4>
+
+
+
+<div>
+    <h4>Actividad</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Duracion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Duracion)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" asp-controller="Actividades" method="post" id="formulario">
+        <input type="hidden" asp-for="IdActividad" />
+        <input type="button" value="Eliminar" class="btn btn-danger" id="deleteAjax" />
+        <a asp-action="Index" class="btn btn-secondary">Atrás</a>
+    </form>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#deleteAjax").click(function (event) {
+        var form = $("#formulario");
+        Swal.fire({   //Al hacer click en el btn mande la alerta
+            title: '¿Está seguro(a) de eliminar?',
+            text: "¡No podrá recuperar la actividad!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!'
+        }).then((result) => {
+            if (result.isConfirmed) {//Si confirmo eliminarla, que llame a traves de ajax el metodo eliminar
+
+                $.ajax({//Llama al metodo eliminar con ajax
+                    url: "/Actividades/DeleteConAjax",
+                    data: form.serialize(),
+                    method: "POST",
+                });
+                Swal.fire({    //Mande una alerta de que se eliminó
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Actividad eliminada correctamente.',
+                    showConfirmButton: false,
+                    timer: 2000,
+
+                })
+                setTimeout(function () { //Funcion que redirecciona al index con una espera de 2 segundos
+
+                    window.location.href = '@Url.Action("Index", "Actividades")'
+
+                }, 2000);
+
+            }
+        })
+
+
+        });
+    });
+</script>
+ @*Swal.fire({
+                            title: 'Está seguro?',
+                            text: "No podrá recuperarlo!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Sí, eliminar!'
+                        }).then((resultado) => {
+                            if (result.isConfirmed) {
+                                Swal.fire(
+
+                                    'Eliminada!',
+                                    'Actividad eliminada correctamente.',
+                                    'success'
+                                    
+                                )
+                            }
+                        })*@
+
+
+@*Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  }
+})
+
+ $.ajax({
+                url: "/Actividades/DeleteConSweet",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                   if (resultado.result) {
+                    Swal.fire({
+                        type: 'success',
+                        title: '<strong>Actividad eliminada!!!</strong>',
+                        text: resultado.mensaje,
+                        confirmButtonText: 'Ok'
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = '@Url.Action("Index", "Actividades")'
+                                }
+                                });
+                                } else {
+                                Swal.fire({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: resultado.mensaje
+                                })
+                                }*@

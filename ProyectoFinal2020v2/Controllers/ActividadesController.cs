@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,11 +10,11 @@ using ProyectoFinal2020v2.Models;
 
 namespace ProyectoFinal2020v2.Controllers
 {
-    public class ActividadsController : Controller
+    public class ActividadesController : Controller
     {
         private readonly GymContext _context;
 
-        public ActividadsController(GymContext context)
+        public ActividadesController(GymContext context)
         {
             _context = context;
         }
@@ -59,6 +60,7 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 _context.Add(actividad);
                 await _context.SaveChangesAsync();
+                Thread.Sleep(1000); //Espera 1 segundos y redirecciona al index Actividades porque sino no muestra bien la SweetAlert
                 return RedirectToAction(nameof(Index));
             }
             return View(actividad);
@@ -110,6 +112,7 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             return View(actividad);
@@ -147,6 +150,47 @@ namespace ProyectoFinal2020v2.Controllers
         private bool ActividadExists(int id)
         {
             return _context.Actividad.Any(e => e.IdActividad == id);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConAjax(Actividad actividad)
+        {
+            //string mensaje = "Error al eliminar actividad";
+            Actividad actividadFind = _context.Actividad.Find(actividad.IdActividad);
+            _context.Actividad.Remove(actividadFind);
+            _context.SaveChanges();
+            //mensaje = "Actividad elminada!";
+            return Json(new { result = true,  });
+        }
+       
+       
+
+        // POST: Actividads/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateConAjax([Bind("IdActividad,Nombre,Descripcion,Duracion")] Actividad actividad)
+        {//ESTE METODO LO QUE HACE ES RETORNAR UN RESULT PARA UTILIZARLO EN LA VISTA CREATE JUNTO LA SWEET ALERT
+            if (ModelState.IsValid)
+            {
+                //_context.Add(actividad);
+                //await _context.SaveChangesAsync();
+                return Json(new { result = true }); //Si guarda result true
+            }
+            return Json(new { result = false }); //Si no guarda result = false
+        }
+        public ActionResult EditConAjax(Actividad actividad)
+        {
+            //string mensaje = "Error al editar el registro";
+            if (ModelState.IsValid)
+            {
+               // _context.Entry(actividad).State = EntityState.Modified;
+                _context.SaveChanges();
+                return Json(new { result = true });
+                //mensaje = "Registro editado";
+            }
+            return Json(new { result = false });
         }
     }
 }
