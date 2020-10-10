@@ -517,11 +517,6 @@ C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\ProyectoFinal2020v2.TagHelpers.input.cache
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\ProyectoFinal2020v2.TagHelpers.output.cache
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\ProyectoFinal2020v2.RazorCoreGenerate.cache
-C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividads\Create.cshtml.g.cs
-C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividads\Delete.cshtml.g.cs
-C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividads\Details.cshtml.g.cs
-C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividads\Edit.cshtml.g.cs
-C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividads\Index.cshtml.g.cs
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Clientes\Create.cshtml.g.cs
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Clientes\Delete.cshtml.g.cs
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Clientes\Details.cshtml.g.cs
@@ -733,3 +728,8 @@ C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividades\Details.cshtml.g.cs
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividades\Edit.cshtml.g.cs
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividades\Index.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividades\Create.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividades\Delete.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividades\Details.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividades\Edit.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Actividades\Index.cshtml.g.cs

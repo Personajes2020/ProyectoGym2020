@@ -8,8 +8,8 @@
 <h4 class="container p-3 my-3 bg-primary text-white text-center rounded-l"><i class="fas fa-pen"></i> Editar Empleado</h4>
 
 <hr />
-<div class="container-fluid">
-    <form asp-action="Edit">
+<div class="container">
+    <form asp-action="Edit" asp-controller="Empleados" method="post" id="formulario">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="IdEmpleado" />
         <div class="column">
@@ -108,14 +108,45 @@
             </div>
         </div>
         <div class="form-group">
-            <input id="btnguar" type="submit" @*onclick="confirmarGuardar()"*@ value="Guardar" class="btn btn-primary" /> |
-            <button type="submit" class="btn btn-secondary" asp-action="Index">Atrás</button>
+            <input type="submit" @*onclick="confirmarGuardar()"*@ value="Guardar" class="btn btn-primary" id="editAjax" /> |
+            <a asp-action="Index" class="btn btn-secondary">Atrás</a>
         </div>
     </form>
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
 
+<script>
+    $(document).ready(function () {
+        $("#editAjax").click(function (event) {
+            var form = $("#formulario");
+            $.ajax({
+                url: "/Empleados/EditConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Se editó empleado correctamente.',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
 
+                    } else {//Si result = false, osea no editó porque el modelo no es valido, mande sweetAlert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo editar el empleado',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
 
+                    }
+                }
+            });
+        });
+    });
+</script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -8821,19 +8821,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\elder\\.nuget\\packages\\": {}
+    "C:\\Users\\Daniel Jesús\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elder\\Desktop\\ProyectoGym\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+      "projectUniqueName": "C:\\Users\\Daniel Jesús\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
       "projectName": "ProyectoFinal2020v2",
-      "projectPath": "C:\\Users\\elder\\Desktop\\ProyectoGym\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
-      "packagesPath": "C:\\Users\\elder\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elder\\Desktop\\ProyectoGym\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
+      "projectPath": "C:\\Users\\Daniel Jesús\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+      "packagesPath": "C:\\Users\\Daniel Jesús\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Daniel Jesús\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\elder\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Daniel Jesús\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

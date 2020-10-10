@@ -169,15 +169,34 @@ namespace ProyectoFinal2020v2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateConAjax(Empleado empleado)
         {
-            string mensaje = "Error al crea el registro";
             if (ModelState.IsValid)
             {
-                _context.Empleado.Add(empleado);
-                _context.SaveChanges();
-                mensaje = "Registro creado";
+                //_context.Empleado.Add(empleado);
+                //_context.SaveChanges();
+                return Json(new { result = true });
             }
-            return Json(new { result = false, mensaje = mensaje });
+            return Json(new { result = false });
         }
+        public ActionResult EditConAjax(Empleado empleado)
+        {
+            if (ModelState.IsValid)
+            { 
+                _context.SaveChanges();
+                return Json(new { result = true });
+                
+            }
+            return Json(new { result = false });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConAjax(Empleado empleado)
+        {
+            Empleado empleadoFind = _context.Empleado.Find(empleado.IdEmpleado);
+            _context.Empleado.Remove(empleadoFind);
+            _context.SaveChanges();
+            return Json(new { result = true, });
+        }
+
     }
 }
 
