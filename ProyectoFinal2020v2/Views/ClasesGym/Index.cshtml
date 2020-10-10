@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProyectoFinal2020v2.Models.ClaseGym>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdActividad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cupo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSala)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleado)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdActividadNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cupo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSalaNavigation.NombreSala)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Nombre) 
+                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido1)
+            </td>
+            @*new {
+            item.IdEmpleadoNavigation.Nombre,
+            item.IdEmpleadoNavigation.Apellido1*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdClaseGym">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdClaseGym">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdClaseGym">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

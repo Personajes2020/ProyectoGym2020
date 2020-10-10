@@ -55,5 +55,6 @@ namespace ProyectoFinal2020v2.Models
 
         public string Estado { get; set; }
         public virtual ICollection<ClaseGuarderiaEmpleado> ClaseGuarderiaEmpleado { get; set; }
+        public virtual ICollection<ClaseGym> ClaseGym { get; set; }
     }
 }

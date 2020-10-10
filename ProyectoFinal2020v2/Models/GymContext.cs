@@ -147,17 +147,23 @@ namespace ProyectoFinal2020v2.Models
                     .HasName("Fk_ClaseGym")
                     .IsUnique();
 
-                entity.Property(e => e.IdClaseGym).ValueGeneratedNever();
+                //entity.Property(e => e.IdClaseGym).ValueGeneratedNever();
 
                 entity.Property(e => e.Fecha).HasColumnType("date");
 
-                entity.Property(e => e.IdSala).ValueGeneratedOnAdd();
+                //entity.Property(e => e.IdSala).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.IdActividadNavigation)
                     .WithMany(p => p.ClaseGym)
                     .HasForeignKey(d => d.IdActividad)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ClaseGym_Actividad1");
+
+                entity.HasOne(d => d.IdEmpleadoNavigation)
+                   .WithMany(p => p.ClaseGym)
+                   .HasForeignKey(d => d.IdEmpleado)
+                   .OnDelete(DeleteBehavior.ClientSetNull)
+                   .HasConstraintName("FK_ClaseGym_Empleado");
 
                 entity.HasOne(d => d.IdSalaNavigation)
                     .WithMany(p => p.ClaseGym)
