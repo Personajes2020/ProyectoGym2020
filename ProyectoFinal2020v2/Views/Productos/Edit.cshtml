@@ -1,0 +1,95 @@
+﻿@model ProyectoFinal2020v2.Models.Producto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4 class="container p-3 my-3 bg-primary text-white text-center rounded-l"><i class="fas fa-pen"></i> Editar Producto</h4>
+<hr />
+<div class="row">
+    <div class="container">
+        <form asp-action="Edit" asp-controller="Productos" method="post" id="formulario">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdProducto" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label"></label>
+                <select asp-for="IdProveedor" class="form-control" asp-items="ViewBag.IdProveedor"></select>
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Existencia" class="control-label"></label>
+                <input asp-for="Existencia" class="form-control" />
+                <span asp-validation-for="Existencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCadu" class="control-label"></label>
+                <input asp-for="FechaCadu" class="form-control" />
+                <span asp-validation-for="FechaCadu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCategoria" class="control-label"></label>
+                <select asp-for="IdCategoria" class="form-control" asp-items="ViewBag.IdCategoria"></select>
+                <span asp-validation-for="IdCategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecioUnidad" class="control-label"></label>
+                <input asp-for="PrecioUnidad" class="form-control" />
+                <span asp-validation-for="PrecioUnidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" />
+                <a asp-action="Index" class="btn btn-secondary">Atrás</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/sweetalert2.all.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#editAjax").click(function (event) {
+            var form = $("#formulario");
+            $.ajax({
+                url: "/Productos/EditConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Se editó empleado correctamente.',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    } else {//Si result = false, osea no editó porque el modelo no es valido, mande sweetAlert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo editar el empleado',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
+
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

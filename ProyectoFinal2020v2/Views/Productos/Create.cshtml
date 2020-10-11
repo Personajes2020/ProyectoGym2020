@@ -1,0 +1,95 @@
+﻿@model ProyectoFinal2020v2.Models.Producto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4><i class="fas fa-plus-square"></i> Agregar Producto</h4>
+<hr />
+<div class="row">
+    <div class="container">
+        <form asp-action="Create" asp-controller="Productos" method="post" id="formulario">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdProducto" class="control-label"></label>
+                <input asp-for="IdProducto" class="form-control" />
+                <span asp-validation-for="IdProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label"></label>
+                <select asp-for="IdProveedor" class="form-control" asp-items="ViewBag.IdProveedor"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Existencia" class="control-label"></label>
+                <input asp-for="Existencia" class="form-control" />
+                <span asp-validation-for="Existencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCadu" class="control-label"></label>
+                <input asp-for="FechaCadu" class="form-control" />
+                <span asp-validation-for="FechaCadu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCategoria" class="control-label"></label>
+                <select asp-for="IdCategoria" class="form-control" asp-items="ViewBag.IdCategoria"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecioUnidad" class="control-label"></label>
+                <input asp-for="PrecioUnidad" class="form-control" />
+                <span asp-validation-for="PrecioUnidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" id="Crear" />
+                <a class="btn btn-secondary" asp-action="Index">Atrás</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#Crear").click(function (event) {
+            var form = $("#formulario"); $.ajax({
+                url: "/Productos/CreateConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Se creó el Producto correctamente.',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    } else {//Si result = false, osea no creó porque el modelo no es valido, mande sweetAlert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo crear el Producto',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
+
+                    }
+                }
+            });
+        });
+    });</script>

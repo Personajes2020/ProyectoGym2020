@@ -1138,3 +1138,8 @@ E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\
 E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Categorias\Details.cshtml.g.cs
 E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Categorias\Edit.cshtml.g.cs
 E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Categorias\Index.cshtml.g.cs
+E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Productos\Create.cshtml.g.cs
+E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Productos\Delete.cshtml.g.cs
+E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Productos\Details.cshtml.g.cs
+E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Productos\Edit.cshtml.g.cs
+E:\Universidad Nacional\UNA 2020\Semestre II\Programacion III\ProyectoFinal2020\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Productos\Index.cshtml.g.cs
