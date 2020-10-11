@@ -1,0 +1,114 @@
+﻿@model IEnumerable<ProyectoFinal2020v2.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3 class="container p-3 my-3 text-white text-center rounded-l"
+    style="background-color: rgb(0, 70, 0)">
+    <i class="fas fa-plus-square"></i> Categorias
+</h3>
+
+
+<table id="table" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+
+            <th>
+
+                <a class="btn btn-success" asp-action="Create">
+                    Crear Nuevo
+                    <i class="fas fa-plus-square"></i>
+                </a>
+
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="edit" id="@item.Nombre" data-propertyName="Nombre">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td class="edit" id="@item.Descripcion" data-propertyName="Descripcion">
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    <div class="btn-group" style='font-size: 5px'>
+                        <a asp-action="Edit" asp-route-id="@item.IdCategoria" class="btn btn-primary btn-sm">Editar<i class="fas fa-pen"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.IdCategoria" class="btn btn-secondary btn-sm">Detalle<i class="fas fa-align-justify "></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.IdCategoria" class="btn btn-danger btn-sm">Eliminar<i class="fas fa-trash"></i></a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+    </script>
+}
+
+section scripts{
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable();
+        $(".edit").editable("/Categorias/EditField", {
+            submitdata: function () {
+                return {
+                    id: $(this).data("id"),
+                    field: $(this).data("propertyname"),
+                    value: $(this).value
+                }
+            },
+            //Función para poder recibir el nuevo valor y mostrarlo
+            callback: function (value, settings) {
+                var jsonData = $.parseJSON(value);
+                if (jsonData.status) {
+                    $(this).text(jsonData.value);
+                }
+                else {
+                    $(this).text(jsonData.mensaje);
+                }
+            }
+        });
+        $(".edit-cat").editable("/Empleados/EditField", {
+            loadurl: "/Empleados/Ids_CategoriasJSON",
+            type: "select",
+            submit: "Ok",
+            cssclass: "form-control",
+            submitcssclass: 'btn btn-success',
+            submitdata: function () {
+                return {
+                    id: $(this).data("id"),
+                    field: $(this).data("propertyname"),
+                    value: $(this).value
+                }
+            },
+            //Función para poder recibir el nuevo valor y mostrarlo
+            callback: function (value, settings) {
+                var jsonData = $.parseJSON(value);
+                if (jsonData.status) {
+                    $(this).text(jsonData.value);
+                }
+                else {
+                    $(this).text(jsonData.mensaje);
+                }
+            }
+        });
+    });
+</script>
+}
+

@@ -1,0 +1,73 @@
+﻿@model ProyectoFinal2020v2.Models.Categoria
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4 class="container p-3 my-3 bg-primary text-white text-center rounded-l"><i class="fas fa-pen"></i> Editar Categorias</h4>
+
+<h4>Categoria</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-controller="Categorias" method="post" id="formulario">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdCategoria" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" id="editAjax" />
+                <a asp-action="Index" class="btn btn-secondary">Atras</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script>
+    $(document).ready(function () {
+        $("#editAjax").click(function (event) {
+            var form = $("#formulario");
+            $.ajax({
+                url: "/Categorias/EditConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Se editó categoria correctamente.',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    } else {//Si result = false, osea no editó porque el modelo no es valido, mande sweetAlert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo editar el categoria',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
+
+                    }
+                }
+            });
+        });
+    });
+</script>

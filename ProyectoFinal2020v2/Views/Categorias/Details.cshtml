@@ -1,0 +1,30 @@
+﻿@model ProyectoFinal2020v2.Models.Categoria
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4 class="container p-3 my-3 bg-secondary text-white text-center rounded-l"><i class="fas fa-align-justify "></i> Detalle Categorias</h4>
+
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdCategoria">Edit</a> |
+    <a asp-action="Index" class="btn btn-secondary">Atras</a>
+</div>

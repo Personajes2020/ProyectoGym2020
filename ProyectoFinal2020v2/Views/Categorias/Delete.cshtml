@@ -1,0 +1,68 @@
+﻿@model ProyectoFinal2020v2.Models.Categoria
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h4 class="container p-3 my-3 bg-primary text-white text-center rounded-l"><i class="fas fa-pen"></i> Elimninar Categoria</h4>
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" asp-controller="Categorias" method="post" id="formulario">
+        <input type="hidden" asp-for="IdCategoria" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" id="deleteAjax" />
+        <a asp-action="Index" class="btn btn-secondary">Atras</a>
+    </form>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $("#deleteAjax").click(function (event) {
+        var form = $("#formulario");
+        Swal.fire({   //Al hacer click en el btn mande la alerta
+            title: '¿Está seguro(a) de eliminar?',
+            text: "¡No podrá recuperar esta categoria !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({//Llama al metodo eliminar con ajax
+                    url: "/Categorias/DeleteConAjax",
+                    data: form.serialize(),
+                    method: "POST",
+                });
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Categoria eliminada correctamente.',
+                    showConfirmButton: false,
+                    timer: 3000,
+                })
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "Categorias")'
+                }, 2000);
+            }
+        })
+        });
+    });
+</script>
