@@ -5,13 +5,13 @@
 }
 
 <link rel="stylesheet" href="~/css/StyleCliente.css" />
-<h1>Editar<i class="fas fa-marker"></i></h1>
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#3d2149"><i class="fas fa-marker"></i>Editar</h1>
 
 <h4>Cliente<i class="fas fa-user-alt"></i></h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" asp-controller="Clientes" method="post" id="formulario">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdCliente" />
             <div class="form-group">
@@ -75,13 +75,46 @@
                 <span asp-validation-for="IdTarifa" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" />
                 <a asp-action="Index" class="btn btn-secondary ">Atrás</a>
             </div>
         </form>
     </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
 
+<script>
+    $(document).ready(function () {
+        $("#editAjax").click(function (event) {
+            var form = $("#formulario");
+            $.ajax({
+                url: "/Clientes/EditConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) { //Si en ActividadesController la variable result = true, osea que editó y es validó el modelo, mande la sweetAlert
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Se editó la actividad correctamente.',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+
+                    } else {//Si result = false, osea no editó porque el modelo no es valido, mande sweetAlert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo editar la actividad',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
+
+                    }
+                }
+            });
+        });
+    });
+</script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -59,6 +60,7 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             return View(cliente);
@@ -110,6 +112,7 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             return View(cliente);
@@ -147,6 +150,35 @@ namespace ProyectoFinal2020v2.Controllers
         private bool ClienteExists(int id)
         {
             return _context.Cliente.Any(e => e.IdCliente == id);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateConAjax(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConAjax(Cliente cliente)
+        {
+          
+            Cliente clienteFind = _context.Cliente.Find(cliente.IdCliente);
+            _context.Cliente.Remove(clienteFind);
+            _context.SaveChanges();
+            return Json(new { result = true, });
+        }
+        public ActionResult EditConAjax(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.SaveChanges();
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
         }
     }
 }
