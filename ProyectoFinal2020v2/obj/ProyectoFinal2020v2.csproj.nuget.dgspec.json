@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\ProyectoFinal2020\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {}
+    "C:\\Users\\Daniel Jesús\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {}
   },
   "projects": {
-    "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\ProyectoFinal2020\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {
+    "C:\\Users\\Daniel Jesús\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\ProyectoFinal2020\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+        "projectUniqueName": "C:\\Users\\Daniel Jesús\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
         "projectName": "ProyectoFinal2020v2",
-        "projectPath": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\ProyectoFinal2020\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
-        "packagesPath": "C:\\Users\\reymo\\.nuget\\packages\\",
-        "outputPath": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\ProyectoFinal2020\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
+        "projectPath": "C:\\Users\\Daniel Jesús\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+        "packagesPath": "C:\\Users\\Daniel Jesús\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Daniel Jesús\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\reymo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Daniel Jesús\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

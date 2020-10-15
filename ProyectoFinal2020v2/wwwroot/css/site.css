@@ -121,7 +121,7 @@ input[type=text] {
     }
 
         /* When you mouse over the navigation links, change their color */
-        .sidebar a:hover, .dropdown-btn {
+        .sidebar a:hover, .dropdown-btn:hover {
             color: white;
         }
 

@@ -25,6 +25,7 @@ namespace ProyectoFinal2020v2.Models
         public string Apellido2 { get; set; }
         [DisplayName("Fecha Nacimiento")]
         [Required(ErrorMessage = "Es nesecario la fecha de nacimiento.")]
+        [DataType(DataType.Date)]
         public DateTime FechaNac { get; set; }
         [Required(ErrorMessage = "Es obligatorio el numero de telefono.")]
         public string Telefono { get; set; }
@@ -49,6 +50,7 @@ namespace ProyectoFinal2020v2.Models
         [DisplayName("Retencion CCSS")]
         public string Ccss { get; set; }
         public string Profesion { get; set; }
+        [DataType(DataType.Date)]
         [DisplayName("Fecha Contratacion")]
         [Required(ErrorMessage = "Es obligatorio la fecha de contratacion.")]
         public DateTime FechaContrato { get; set; }

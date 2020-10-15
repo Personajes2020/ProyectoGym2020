@@ -197,5 +197,35 @@ namespace ProyectoFinal2020v2.Controllers
         {
             return _context.ClaseGym.Any(e => e.IdClaseGym == id);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateConAjax(ClaseGym claseGym)
+        {
+            if (ModelState.IsValid)
+            {
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditConAjax(ClaseGym claseGym)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.SaveChanges();
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConAjax(ClaseGym claseGym)
+        {
+            ClaseGym claseGymFind = _context.ClaseGym.Find(claseGym.IdClaseGym);
+            _context.ClaseGym.Remove(claseGymFind);
+            _context.SaveChanges();
+            return Json(new { result = true, });
+        }
     }
 }

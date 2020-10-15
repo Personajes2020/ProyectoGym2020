@@ -4,36 +4,73 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<h4 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i> Eliminar Sala</h4>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Sala</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.NombreSala)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NombreSala)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Estado)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Estado)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
+    <form asp-action="Delete" asp-controller="Salas" method="post" id="formulario">
         <input type="hidden" asp-for="IdSala" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="button" value="Eliminar" class="btn btn-danger" id="deleteAjax" /> |
+        <a asp-action="Index" class="btn btn-secondary">Atras</a>
     </form>
+
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#deleteAjax").click(function (event) {
+        var form = $("#formulario");
+        Swal.fire({   
+            title: '¿Está seguro(a) de eliminar?',
+            text: "¡No podrá recuperar esta sala!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url: "/Salas/DeleteConAjax",
+                    data: form.serialize(),
+                    method: "POST",
+                });
+                Swal.fire({    
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Sala eliminada correctamente.',
+                    showConfirmButton: false,
+                    timer: 3000,
+                })
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "Salas")'
+                }, 2000);
+            }
+        })
+        });
+    });
+</script>

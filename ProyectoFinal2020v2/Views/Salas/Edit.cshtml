@@ -4,13 +4,14 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<header class="container p-3 my-3 bg-primary text-white text-center rounded-l">
+    <h4><i class="fas fa-pen"></i> Editar Sala</h4>
+</header>
 
-<h4>Sala</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" asp-controller="Salas" method="post" id="formulario">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdSala" />
             <div class="form-group">
@@ -24,20 +25,54 @@
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" />
+                <label asp-for="Estado" class="control-label"></label><br />
+                <input asp-for="Estado" type="radio" name="Estado" value="Activo">
+                <label asp-for="Estado">Activo</label><br>
+                <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
+                <label asp-for="Estado">Inactivo</label><br>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" /> |
+                <a asp-action="Index" class="btn btn-secondary">Atrás</a>
             </div>
         </form>
     </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<script>
+    $(document).ready(function () {
+        $("#editAjax").click(function (event) {
+            var form = $("#formulario");
+            $.ajax({
+                url: "/Salas/EditConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Se editó sala correctamente.',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo editar la sala',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
+
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -147,6 +148,36 @@ namespace ProyectoFinal2020v2.Controllers
         private bool SalaExists(int id)
         {
             return _context.Sala.Any(e => e.IdSala == id);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateConAjax(Sala sala )
+        {
+            if (ModelState.IsValid)
+            {
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditConAjax(Sala sala)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.SaveChanges();
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConAjax(Sala sala)
+        {
+            Sala salaFind = _context.Sala.Find(sala.IdSala);
+            _context.Sala.Remove(salaFind);
+            _context.SaveChanges();
+            return Json(new { result = true, });
         }
     }
 }

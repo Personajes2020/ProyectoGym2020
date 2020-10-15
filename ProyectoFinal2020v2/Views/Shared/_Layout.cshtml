@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/datatables.min.css" />
     <link rel="stylesheet" href="~/css/sweetalert2.min.css" />
+    <link rel="stylesheet" href="~/css/NavBarMenuGymGarderia.css" />
+    <link rel="stylesheet" href="~/css/Recarga.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -24,18 +26,28 @@
 <body>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a href="/Home/Index"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-fire-alt"></i> About</a>
+        <a href="#"><i class="fa fa-fw fa-wrench"></i> Services</a>
+        <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
         <button class="dropdown-btn">
-            Dropdown
+            <i class="fa fa-fw fa-user"></i>  Cliente
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            <a href="/Clientes/Index">Ver cliente</a>
+            <a href="/Clientes/create">Agregar cliente</a>
+        </div>
+
+        <button class="dropdown-btn">
+            <i class="fas fa-id-badge"></i>
+            Empleado
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="/Empleados/Index">Ver empleados</a>
+            <a href="/Empleados/create">Agregar empleados</a>
+            @*<a href="#">Link 3</a>*@
         </div>
         <a href="#">Contact2</a>
     </div>
@@ -51,10 +63,85 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-fw fa-home"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fas fa-lock"></i> Privacy</a>
+                        </li>
+                        <li >
+                            <div class="dpdownMenu">
+                                <button type="button" class="dropbtnMenu"><i class="fas fa-dumbbell"></i> Gym <i class="fa fa-caret-down"></i></button>
+                                <div class="dpdownMenu-content">
+                                    <div class="header">
+                                        <h2><i class="fas fa-dumbbell"></i> Menu Gym</h2>
+                                    </div>
+                                    <div class="rowMenu">
+                                        <div class="columnMenu">
+                                            <h4>Gestion de actividad</h4>
+                                            <a href="/Actividades/Index">Actividades</a>
+                                            <a href="#">Alta de actividad</a>
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="columnMenu">
+                                            <h4> Gestion clase</h4>
+                                            <a href="/clasesGym/Index">Mostrar clases</a>
+                                            <a href="/clasesGym/create">Agregar clase</a>
+                                            <a href="#">Link 3</a>
+                                        </div>
+                                        <div class="columnMenu">
+                                            <h4>Nueva gestion</h4>
+                                            <a href="/Salas/Create">Alta Sala</a>
+                                            <a href="#">Alta Casillero</a>
+                                            <a href="#">Alta Producto</a>
+                                            <a href="#">Alta Tarida</a>
+                                        </div>
+                                        <div class="columnMenu">
+                                            <h4>Consulta</h4>
+                                            <a href="/Salas/Index">Sala</a>
+                                            <a href="#">Casillero</a>
+                                            <a href="#">Producto</a>
+                                            <a href="#">Tarifa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dpdownMenu">
+                                <button class="dropbtnMenu"><i class="fas fa-baby-carriage"></i> Guardería  <i class="fa fa-caret-down"></i></button>
+                                <div class="dpdownMenu-content">
+                                    <div class="header">
+                                        <h2><i class="fas fa-baby"></i> Menu Guardería</h2>
+                                    </div>
+                                    <div class="rowMenu">
+                                        <div class="columnMenu">
+                                            <h3>Inscripción a guardería</h3>
+                                            <a href="#">Matrícula</a>
+                                            <a href="#">Alta clase</a>
+                                            <a href="#">Alta de padre</a>
+                                            <a href="#">Alta de bebe</a>
+
+                                        </div>
+                                        <div class="columnMenu">
+                                            <h3>Consulta</h3>
+                                            <a href="#">Matrícula</a>
+                                            <a href="#">Clases</a>
+                                            <a href="#">Padre</a>@*Cliente(Controler)/(padre)action->Index*@
+                                            <a href="#">Bebé</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li >
+                            <div class="dropRecardown">
+                                <button class="dropRecarbtn">Recarga  <i class="fa fa-caret-down"></i></button>
+                                <div class="dropRecardown-content">
+                                    <a href="#">Monedero virtual</a>
+                                    <a href="#">Renovación</a>
+                                    <a href="#">Compra</a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -67,11 +154,11 @@
 
 
 
-    <div class="container1">
+    @*<div class="container1">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    </div>*@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
