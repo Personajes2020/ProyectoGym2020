@@ -21,6 +21,7 @@ namespace ProyectoFinal2020v2.Models
         public virtual DbSet<ClaseGuarderiaEmpleado> ClaseGuarderiaEmpleado { get; set; }
         public virtual DbSet<ClaseGym> ClaseGym { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Casillero> Casillero { get; set; }
         public virtual DbSet<DetallesPedido> DetallesPedido { get; set; }
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Hijo> Hijo { get; set; }
@@ -191,11 +192,6 @@ namespace ProyectoFinal2020v2.Models
                     .HasMaxLength(25)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Casillero)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Direccion)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -212,12 +208,8 @@ namespace ProyectoFinal2020v2.Models
 
                 entity.Property(e => e.FechaNac)
                     .HasColumnName("Fecha_Nac")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.IdTarifa)
-                    .IsRequired()
-                    .HasMaxLength(25)
-                    .IsUnicode(false);
+                    .HasColumnType("datetime")
+                    .IsUnicode(false); ;
 
                 entity.Property(e => e.Identificacion)
                     .IsRequired()
@@ -230,13 +222,30 @@ namespace ProyectoFinal2020v2.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Sexo)
-                    .IsRequired()
                     .HasMaxLength(1)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Telefono)
                     .IsRequired()
                     .HasMaxLength(15)
+                    .IsUnicode(false);
+                entity.HasOne(d => d.IdCasilleroNavigation)
+                    .WithMany(p => p.Cliente)
+                    .HasForeignKey(d => d.IdCasillero)
+                    .HasConstraintName("FK_Cliente_Casillero");
+
+                entity.HasOne(d => d.IdTarifaNavigation)
+                    .WithMany(p => p.Cliente)
+                    .HasForeignKey(d => d.IdTarifa)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Cliente_Tarifa");
+            });
+            modelBuilder.Entity<Casillero>(entity =>
+            {
+                entity.HasKey(e => e.IdCasillero);
+
+                entity.Property(e => e.Descripcion)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 
@@ -573,14 +582,9 @@ namespace ProyectoFinal2020v2.Models
                     .HasMaxLength(25)
                     .IsUnicode(false);
             });
-
             modelBuilder.Entity<Tarifa>(entity =>
             {
                 entity.HasKey(e => e.IdTarifa);
-
-                entity.Property(e => e.IdTarifa)
-                    .HasMaxLength(25)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()

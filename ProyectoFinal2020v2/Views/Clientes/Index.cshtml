@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-<link rel="stylesheet" href="~/css/StyleCliente.css" />
+
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#217e7e"><i class="fas fa-user-alt"></i>Clientes</h1>
 
 
@@ -36,15 +36,15 @@
             </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.Estado)
-                </th>*@
-            @*<th>
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Sexo)
                 </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Casillero)
+                @Html.DisplayNameFor(model => model.IdCasilleroNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdTarifa)
+                @Html.DisplayNameFor(model => model.IdTarifaNavigation)
             </th>
             <th>
                 <a class="btn btn-success" asp-action="Create">
@@ -84,15 +84,15 @@
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Estado)
-                    </td>*@
-                @*<td>
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Sexo)
                     </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => item.Casillero)
+                    @Html.DisplayFor(modelItem => item.IdCasilleroNavigation.IdCasillero)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdTarifa)
+                    @Html.DisplayFor(modelItem => item.IdTarifaNavigation.Descripcion)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdCliente" class="btn btn-primary btn-sm"><i class="fas fa-marker"></i>Editar</a>
@@ -103,10 +103,9 @@
         }
     </tbody>
 </table>
-@section scripts{
-    <script>
+
+<script>
  $(document).ready(function () {
  $('#table').DataTable();
  });
-    </script>
-}
+</script>

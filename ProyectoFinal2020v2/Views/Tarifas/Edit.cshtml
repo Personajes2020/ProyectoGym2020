@@ -1,0 +1,84 @@
+﻿@model ProyectoFinal2020v2.Models.Tarifa
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#3d2149"><i class="far fa-money-bill-alt"></i>Editar</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-controller="Tarifas" method="post" id="formulario">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdTarifa" />
+            <div class="form-group">
+                <label asp-for="PrecioTarifa" class="control-label"></label>
+                <input asp-for="PrecioTarifa" class="form-control" />
+                <span asp-validation-for="PrecioTarifa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bebes" class="control-label"></label>
+                <input asp-for="Bebes" class="form-control" />
+                <span asp-validation-for="Bebes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duracion" class="control-label"></label>
+                <input asp-for="Duracion" class="form-control" />
+                <span asp-validation-for="Duracion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" />
+                <a asp-action="Index" class="btn btn-secondary ">Atrás</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#editAjax").click(function (event) {
+            var form = $("#formulario");
+            $.ajax({
+                url: "/Tarifas/EditConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) { //Si en ActividadesController la variable result = true, osea que editó y es validó el modelo, mande la sweetAlert
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'La tarifa se editó correctamente.',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+
+                    } else {//Si result = false, osea no editó porque el modelo no es valido, mande sweetAlert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo editar la tarifa',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
+
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

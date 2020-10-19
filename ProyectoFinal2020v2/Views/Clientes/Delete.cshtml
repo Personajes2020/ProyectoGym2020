@@ -4,11 +4,10 @@
     ViewData["Title"] = "Delete";
 }
 
-<link rel="stylesheet" href="~/css/StyleCliente.css" />
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#600404"><i class="fas fa-trash">Eliminar Cliente</i></h1>
 
+
 <div>
-    <h4>Cliente<i class="fas fa-user-alt"></i></h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -72,16 +71,16 @@
             @Html.DisplayFor(model => model.Sexo)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Casillero)
+            @Html.DisplayNameFor(model => model.IdCasilleroNavigation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Casillero)
+            @Html.DisplayFor(model => model.IdCasilleroNavigation.IdCasillero)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdTarifa)
+            @Html.DisplayNameFor(model => model.IdTarifaNavigation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdTarifa)
+            @Html.DisplayFor(model => model.IdTarifaNavigation.Descripcion)
         </dd>
     </dl>
 

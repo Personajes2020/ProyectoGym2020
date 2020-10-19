@@ -12,22 +12,25 @@ namespace ProyectoFinal2020v2.Models
             HijoCliente = new HashSet<HijoCliente>();
             MatriculaClaseGym = new HashSet<MatriculaClaseGym>();
             Monedero = new HashSet<Monedero>();
+            //Casillero = new HashSet<Casillero>();
+            //Tarifa = new HashSet<Tarifa>();
+            
         }
 
         public int IdCliente { get; set; }
         [Required(ErrorMessage = "Es obligatorio la identificacion.")]
         public string Identificacion { get; set; }
-        [Required(ErrorMessage ="El nombre es requerido")]
+        [Required(ErrorMessage = "El nombre es requerido")]
         public string Nombre { get; set; }
         [DisplayName("Primer apellido")]
-        [Required(ErrorMessage ="El apellido es requerido")]
+        [Required(ErrorMessage = "El apellido es requerido")]
         public string Apellido1 { get; set; }
         [DisplayName("Segundo apellido")]
         public string Apellido2 { get; set; }
         [DisplayName("Fecha de nacimiento")]
-        [Required(ErrorMessage ="Su fecha de nacimiento es necesaria")]
+        [Required(ErrorMessage = "Su fecha de nacimiento es necesaria")]
         public DateTime FechaNac { get; set; }
-        [Required(ErrorMessage ="Su numero de telefono es necesario")]
+        [Required(ErrorMessage = "Su numero de telefono es necesario")]
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         [Required(ErrorMessage = "Es necesario el Email")]
@@ -35,13 +38,17 @@ namespace ProyectoFinal2020v2.Models
             ErrorMessage = ("Email Invalido, debe tener una escructura como: ejemplo@ejemplo.com"))]
         public string Email { get; set; }
         public string Estado { get; set; }
-        [Required(ErrorMessage ="h si es hombre, m si es mujer")]
+        [Required(ErrorMessage = "h si es hombre, m si es mujer")]
         public string Sexo { get; set; }
-        public string Casillero { get; set; }
-        [Required(ErrorMessage ="La tarifa es obligatoria.")]
+        [Required(ErrorMessage = "La tarifa es obligatoria.")]
+        [DisplayName("Casillero")]
+        public int? IdCasillero { get; set; }
+        [Required(ErrorMessage = "La tarifa es obligatoria.")]
         [DisplayName("Tarifa")]
-        public string IdTarifa { get; set; }
+        public int IdTarifa { get; set; }
 
+        public virtual Casillero IdCasilleroNavigation { get; set; }
+        public virtual Tarifa IdTarifaNavigation { get; set; }
         public virtual ICollection<HijoCliente> HijoCliente { get; set; }
         public virtual ICollection<MatriculaClaseGym> MatriculaClaseGym { get; set; }
         public virtual ICollection<Monedero> Monedero { get; set; }

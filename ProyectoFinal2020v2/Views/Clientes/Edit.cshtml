@@ -4,10 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<link rel="stylesheet" href="~/css/StyleCliente.css" />
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#3d2149"><i class="fas fa-marker"></i>Editar</h1>
 
-<h4>Cliente<i class="fas fa-user-alt"></i></h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -65,13 +63,13 @@
                 <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Casillero" class="control-label"></label>
-                <input asp-for="Casillero" class="form-control" />
-                <span asp-validation-for="Casillero" class="text-danger"></span>
+                <label asp-for="IdCasillero" class="control-label"></label>
+                <select asp-for="IdCasillero" class="form-control" asp-items="ViewBag.IdCasillero"></select>
+                <span asp-validation-for="IdCasillero" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdTarifa" class="control-label"></label>
-                <input asp-for="IdTarifa" class="form-control" />
+                <select asp-for="IdTarifa" class="form-control" asp-items="ViewBag.IdTarifa"></select>
                 <span asp-validation-for="IdTarifa" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -115,6 +113,8 @@
         });
     });
 </script>
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

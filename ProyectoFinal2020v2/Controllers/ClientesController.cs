@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,7 +21,8 @@ namespace ProyectoFinal2020v2.Controllers
         // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cliente.ToListAsync());
+            var gymContext = _context.Cliente.Include(c => c.IdCasilleroNavigation).Include(c => c.IdTarifaNavigation);
+            return View(await gymContext.ToListAsync());
         }
 
         // GET: Clientes/Details/5
@@ -34,6 +34,8 @@ namespace ProyectoFinal2020v2.Controllers
             }
 
             var cliente = await _context.Cliente
+                .Include(c => c.IdCasilleroNavigation)
+                .Include(c => c.IdTarifaNavigation)
                 .FirstOrDefaultAsync(m => m.IdCliente == id);
             if (cliente == null)
             {
@@ -46,6 +48,8 @@ namespace ProyectoFinal2020v2.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
+            ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero");
+            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "Descripcion");
             return View();
         }
 
@@ -54,15 +58,16 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCliente,Identificacion,Nombre,Apellido1,Apellido2,FechaNac,Telefono,Direccion,Email,Estado,Sexo,Casillero,IdTarifa")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("IdCliente,Identificacion,Nombre,Apellido1,Apellido2,FechaNac,Telefono,Direccion,Email,Estado,Sexo,IdCasillero,IdTarifa")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
-                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero", cliente.IdCasillero);
+            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "Descripcion", cliente.IdTarifa);
             return View(cliente);
         }
 
@@ -79,6 +84,8 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 return NotFound();
             }
+            ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero", cliente.IdCasillero);
+            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "Descripcion", cliente.IdTarifa);
             return View(cliente);
         }
 
@@ -87,7 +94,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCliente,Identificacion,Nombre,Apellido1,Apellido2,FechaNac,Telefono,Direccion,Email,Estado,Sexo,Casillero,IdTarifa")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCliente,Identificacion,Nombre,Apellido1,Apellido2,FechaNac,Telefono,Direccion,Email,Estado,Sexo,IdCasillero,IdTarifa")] Cliente cliente)
         {
             if (id != cliente.IdCliente)
             {
@@ -112,9 +119,10 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
-                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero", cliente.IdCasillero);
+            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "Descripcion", cliente.IdTarifa);
             return View(cliente);
         }
 
@@ -127,6 +135,8 @@ namespace ProyectoFinal2020v2.Controllers
             }
 
             var cliente = await _context.Cliente
+                .Include(c => c.IdCasilleroNavigation)
+                .Include(c => c.IdTarifaNavigation)
                 .FirstOrDefaultAsync(m => m.IdCliente == id);
             if (cliente == null)
             {
@@ -165,7 +175,7 @@ namespace ProyectoFinal2020v2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConAjax(Cliente cliente)
         {
-          
+
             Cliente clienteFind = _context.Cliente.Find(cliente.IdCliente);
             _context.Cliente.Remove(clienteFind);
             _context.SaveChanges();
