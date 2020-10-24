@@ -12,7 +12,7 @@
 
         @if (TempData["MessageRegistration"] != null)
         {
-            <p class="alert alert-success" id="successMessage">@TempData["MessageRegistration"] <a class="btn btn-success" href="/Login/Login">Go To Sign in </a></p>}
+            <p class="alert alert-success" id="successMessage">@TempData["MessageRegistration"] <a class="btn btn-success" href="/Login/Login">Volver al Login </a></p>}
         @Html.ValidationSummary()
         @Html.ValidationSummary(true)
         <form method="post" asp-controller="Usuarios" asp-action="Usuarios">

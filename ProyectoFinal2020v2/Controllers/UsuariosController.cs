@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal2020v2.Interface;
-using ProyectoFinal2020v2.Library;
+
 
 namespace ProyectoFinal2020v2.Controllers
 {
