@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#0a1139"><i class="fas fa-coins"></i>Tarifas</h1>
 
 
@@ -57,7 +57,7 @@
     </tbody>
 </table>
 <script>
- $(document).ready(function () {
- $('#table').DataTable();
- });
+    $(document).ready(function () {
+        $('#table').DataTable();
+    });
 </script>

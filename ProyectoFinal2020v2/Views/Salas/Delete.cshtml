@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 <h4 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i> Eliminar Sala</h4>
 
 <h3>Are you sure you want to delete this?</h3>
@@ -43,7 +43,7 @@
 $(document).ready(function () {
     $("#deleteAjax").click(function (event) {
         var form = $("#formulario");
-        Swal.fire({   
+        Swal.fire({
             title: '¿Está seguro(a) de eliminar?',
             text: "¡No podrá recuperar esta sala!",
             icon: 'warning',
@@ -59,7 +59,7 @@ $(document).ready(function () {
                     data: form.serialize(),
                     method: "POST",
                 });
-                Swal.fire({    
+                Swal.fire({
                     position: 'center',
                     icon: 'success',
                     title: 'Sala eliminada correctamente.',

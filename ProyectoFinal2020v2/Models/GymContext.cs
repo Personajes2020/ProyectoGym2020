@@ -36,7 +36,8 @@ namespace ProyectoFinal2020v2.Models
         public virtual DbSet<Sala> Sala { get; set; }
         public virtual DbSet<Tarifa> Tarifa { get; set; }
         public virtual DbSet<TipoMovimiento> TipoMovimiento { get; set; }
-
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 //            if (!optionsBuilder.IsConfigured)
@@ -612,6 +613,39 @@ namespace ProyectoFinal2020v2.Models
                     .IsRequired()
                     .HasMaxLength(25)
                     .IsUnicode(false);
+            });
+            modelBuilder.Entity<Roles>(entity =>
+            {
+                entity.HasKey(e => e.IdRole);
+
+                entity.Property(e => e.IdRole).ValueGeneratedNever();
+
+                entity.Property(e => e.NombreRole)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Usuarios>(entity =>
+            {
+                entity.HasKey(e => e.IdUsuario);
+
+                entity.Property(e => e.ConfirmarContraseña)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Contraseña)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FechaCreacion).HasColumnType("datetime");
+
+                entity.Property(e => e.NombreUsuario)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                
             });
 
             OnModelCreatingPartial(modelBuilder);

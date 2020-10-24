@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProyectoFinal2020v2.Concrete;
+using ProyectoFinal2020v2.Interface;
 using ProyectoFinal2020v2.Models;
 
 namespace ProyectoFinal2020v2
@@ -27,6 +29,11 @@ namespace ProyectoFinal2020v2
         {
             services.AddDbContext<GymContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+
+            services.AddTransient<ILogin, LoginConcrete>();
+            services.AddTransient<IRoles, RolesConcrete>();
+            services.AddSession();
+            services.AddTransient<IUsuarios, UsuariosConcrete>();
 
             services.AddControllersWithViews();
         }
@@ -50,6 +57,8 @@ namespace ProyectoFinal2020v2
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
+
 
             app.UseEndpoints(endpoints =>
             {

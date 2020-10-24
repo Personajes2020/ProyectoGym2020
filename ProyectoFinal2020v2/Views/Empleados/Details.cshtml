@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Details";
 }
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 <h4 class="container p-3 my-3 bg-secondary text-white text-center rounded-l"><i class="fas fa-align-justify "></i> Detalle Empleado</h4>
 
 <div>
@@ -117,8 +118,8 @@
             </dl>
         </div>
     </div>
-   
-    
+
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.IdEmpleado" class="btn btn-primary">Editar</a> |

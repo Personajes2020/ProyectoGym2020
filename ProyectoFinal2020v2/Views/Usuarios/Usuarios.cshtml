@@ -1,0 +1,64 @@
+﻿@model ProyectoFinal2020v2.Usuarios
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<h4 class="container p-3 my-3 bg-dark text-white text-center rounded-l"><i class="fas fa-user fa-3x"></i> Registrar Usuario</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        @if (TempData["MessageRegistration"] != null)
+        {
+            <p class="alert alert-success" id="successMessage">@TempData["MessageRegistration"] <a class="btn btn-success" href="/Login/Login">Go To Sign in </a></p>}
+        @Html.ValidationSummary()
+        @Html.ValidationSummary(true)
+        <form method="post" asp-controller="Usuarios" asp-action="Usuarios">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreUsuario" class="control-label">Nombre Usuario</label>
+                <input asp-for="NombreUsuario" class="form-control" />
+                <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contraseña" class="control-label"></label>
+                <input asp-for="Contraseña" class="form-control" type="password" />
+                <span asp-validation-for="Contraseña" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="FechaCreacion" class="control-label"></label>
+                <input asp-for="FechaCreacion" class="form-control" />
+                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check" >
+                <label class="form-check-label" >
+                    <input checked="checked" class="form-check-input" asp-for="Activo" onclick="return false;" /><br>@Html.DisplayNameFor(model => model.Activo)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmarContraseña" class="control-label">Confirmar Contraseña</label>
+                <input asp-for="ConfirmarContraseña" class="form-control" type="password" />
+                <span asp-validation-for="ConfirmarContraseña" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="IdRole" class="control-label"></label>
+                <input asp-for="IdRole" class="form-control" value="2" />
+                <span asp-validation-for="IdRole" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <input type="submit" value="Crear usuario" class="btn btn-primary" id="Submit1" />
+                <a class="btn btn-secondary" href="/Login/Login">Volver al login </a>
+
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

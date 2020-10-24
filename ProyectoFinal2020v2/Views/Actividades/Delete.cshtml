@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 <h4 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i> Eliminar Actividad</h4>
 
 
@@ -80,65 +80,65 @@ $(document).ready(function () {
         });
     });
 </script>
- @*Swal.fire({
-                            title: 'Está seguro?',
-                            text: "No podrá recuperarlo!",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Sí, eliminar!'
-                        }).then((resultado) => {
-                            if (result.isConfirmed) {
-                                Swal.fire(
+@*Swal.fire({
+        title: 'Está seguro?',
+        text: "No podrá recuperarlo!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar!'
+    }).then((resultado) => {
+        if (result.isConfirmed) {
+            Swal.fire(
 
-                                    'Eliminada!',
-                                    'Actividad eliminada correctamente.',
-                                    'success'
-                                    
-                                )
-                            }
-                        })*@
+                'Eliminada!',
+                'Actividad eliminada correctamente.',
+                'success'
+
+            )
+        }
+    })*@
 
 
 @*Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
-  }
-})
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
 
- $.ajax({
-                url: "/Actividades/DeleteConSweet",
-                data: form.serialize(),
-                method: "POST",
-                success: function (resultado) {
-                   if (resultado.result) {
-                    Swal.fire({
-                        type: 'success',
-                        title: '<strong>Actividad eliminada!!!</strong>',
-                        text: resultado.mensaje,
-                        confirmButtonText: 'Ok'
-                        }).then((result) => {
-                            if (result.value) {
-                                window.location.href = '@Url.Action("Index", "Actividades")'
-                                }
-                                });
-                                } else {
-                                Swal.fire({
-                                type: 'error',
-                                title: 'Oops...',
-                                text: resultado.mensaje
-                                })
-                                }*@
+     $.ajax({
+                    url: "/Actividades/DeleteConSweet",
+                    data: form.serialize(),
+                    method: "POST",
+                    success: function (resultado) {
+                       if (resultado.result) {
+                        Swal.fire({
+                            type: 'success',
+                            title: '<strong>Actividad eliminada!!!</strong>',
+                            text: resultado.mensaje,
+                            confirmButtonText: 'Ok'
+                            }).then((result) => {
+                                if (result.value) {
+                                    window.location.href = '@Url.Action("Index", "Actividades")'
+                                    }
+                                    });
+                                    } else {
+                                    Swal.fire({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: resultado.mensaje
+                                    })
+                                    }*@
