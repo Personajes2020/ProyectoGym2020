@@ -1424,3 +1424,9 @@ C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Usuarios.cshtml.g.cs
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Index.cshtml.g.cs
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_UsuarioLayout.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Create.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Delete.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Details.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Edit.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\IndexU.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\UsuariosCrear.cshtml.g.cs

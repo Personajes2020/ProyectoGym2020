@@ -144,6 +144,7 @@ namespace ProyectoFinal2020v2.Controllers
             var actividad = await _context.Actividad.FindAsync(id);
             _context.Actividad.Remove(actividad);
             await _context.SaveChangesAsync();
+            Thread.Sleep(1000);
             return RedirectToAction(nameof(Index));
         }
 

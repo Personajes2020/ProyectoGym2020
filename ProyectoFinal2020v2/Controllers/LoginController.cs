@@ -58,12 +58,12 @@ namespace ProyectoFinal2020v2.Controllers
                             }
                             else if (IdRole == 2)
                             {
-                                return RedirectToAction("Index", "Usuarios");
+                                return RedirectToAction("IndexU", "Usuarios");
                             }
-                            //else if (IdRole == 3)
-                            //{
-                            //    return RedirectToAction("Dashboard", "SuperAdmin");
-                            //}
+                            else if (IdRole == 3)
+                            {
+                                return RedirectToAction("Index", "Empleado");
+                            }
                         }
                     }
                     else

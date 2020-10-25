@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Delete";
 }
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#5c2600"><i class="fas fa-th">Eliminar Casillero</i></h1>
 
@@ -10,7 +11,7 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)    
+            @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Descripcion)

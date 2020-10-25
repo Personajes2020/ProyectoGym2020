@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoFinal2020v2.Models
@@ -16,7 +17,8 @@ namespace ProyectoFinal2020v2.Models
         public string Nombre { get; set; }
         [Required(ErrorMessage = "Es obligatorio la Descripcion.")]
         public string Descripcion { get; set; }
-        [Required(ErrorMessage = "Es obligatorio la Duracion.")]
+        [Required(ErrorMessage = "Es obligatorio la Duracion en horas")]
+        [DisplayName("Duración(Horas)")]
         public string Duracion { get; set; }
 
         public virtual ICollection<ClaseGym> ClaseGym { get; set; }
