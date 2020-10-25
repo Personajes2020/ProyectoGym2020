@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -69,12 +70,13 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdClaseGym,IdSala,Hora,Fecha,Cupo,IdActividad,IdEmpleado")] ClaseGym claseGym)
+        public async Task<IActionResult> Create([Bind("IdClaseGym,IdSala,HoraInicio,HoraFinal,Fecha,Cupo,IdActividad,IdEmpleado,Estado")] ClaseGym claseGym)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(claseGym);
                 await _context.SaveChangesAsync();
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdActividad"] = new SelectList(_context.Actividad, "IdActividad", "Nombre", claseGym.IdActividad);
@@ -121,7 +123,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdClaseGym,IdSala,Hora,Fecha,Cupo,IdActividad,IdEmpleado")] ClaseGym claseGym)
+        public async Task<IActionResult> Edit(int id, [Bind("IdClaseGym,IdSala,HoraInicio,HoraFinal,Fecha,Cupo,IdActividad,IdEmpleado,Estado")] ClaseGym claseGym)
         {
             if (id != claseGym.IdClaseGym)
             {
@@ -146,6 +148,7 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdActividad"] = new SelectList(_context.Actividad, "IdActividad", "Nombre", claseGym.IdActividad);
@@ -226,6 +229,88 @@ namespace ProyectoFinal2020v2.Controllers
             _context.ClaseGym.Remove(claseGymFind);
             _context.SaveChanges();
             return Json(new { result = true, });
+        }
+        public ActionResult Calendar()
+        {
+            List<Actividad> actividad = _context.Actividad.Where(a=>a.Estado=="Activo").ToList();
+            List<Sala> sala = _context.Sala.Where(a => a.Estado == "Activo").ToList();
+            List<Empleado> empleado = _context.Empleado.Where(a => a.Estado == "Activo").ToList();
+            ViewData["Actividad"] = actividad;
+            ViewData["Sala"] = sala;
+            ViewData["Empleado"] = empleado;
+            return View();
+        }
+        [HttpPost, ActionName("Guardar")]
+
+        public ActionResult GuardarCalendar(ClaseGym claseGym)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.ClaseGym.Add(claseGym);
+                _context.SaveChanges();
+                return Json(new { status = true });
+            }
+
+            return Json(new { status = false });
+        }
+        [HttpGet, ActionName("Listar")]
+        public ActionResult ListaCalendar()
+        {
+            try
+            {
+                List<ClasesGymViewModel> clases = (List<ClasesGymViewModel>)(from cl in _context.ClaseGym
+                                                                             join a in _context.Actividad on cl.IdActividad equals a.IdActividad
+                                                                             join s in _context.Sala on cl.IdSala equals s.IdSala
+                                                                             join e in _context.Empleado on cl.IdEmpleado equals e.IdEmpleado
+                                                                             select new ClasesGymViewModel
+                                                                             {
+                                                                                 IdClaseGym = cl.IdClaseGym,
+                                                                                 Fecha = cl.Fecha,
+                                                                                 HoraInicio = cl.HoraInicio,
+                                                                                 HoraFinal = cl.HoraFinal,
+                                                                                 Cupo = cl.Cupo,
+                                                                                 IdActividad = a.IdActividad,
+                                                                                 NActividad = a.Nombre,
+                                                                                 IdSala = s.IdSala,
+                                                                                 NSala = s.NombreSala,
+                                                                                 IdEmpleado = e.IdEmpleado,
+                                                                                 NEmpleado = (e.Nombre.ToString() + e.Apellido1.ToString()),
+                                                                                 Estado = cl.Estado
+                                                                             }).ToList();
+                return Json(new { status = true, data = clases });
+            }
+            catch (Exception)
+            {
+                return Json(new { status = false });
+            }
+
+
+        }
+        [HttpDelete, ActionName("Borrar")]
+        public ActionResult BorrarCalendar(ClaseGym claseGym)
+        {
+            ClaseGym claseFind = _context.ClaseGym.Find(claseGym.IdClaseGym);
+            if (claseFind != null)
+            {
+                _context.ClaseGym.Remove(claseFind);
+                _context.SaveChanges();
+                return Json(new { status = true });
+            }
+            return Json(new { status = false });
+
+        }
+        [HttpPost, ActionName("Modificar")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarCalendar(ClaseGym claseGym)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _context.Entry(claseGym).State = EntityState.Modified;
+                _context.SaveChanges();
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
         }
     }
 }

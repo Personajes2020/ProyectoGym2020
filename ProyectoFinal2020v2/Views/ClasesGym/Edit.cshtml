@@ -20,9 +20,14 @@
                 <span asp-validation-for="IdSala" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Hora" class="control-label"></label>
-                <input asp-for="Hora" class="form-control" />
-                <span asp-validation-for="Hora" class="text-danger"></span>
+                <label asp-for="HoraInicio" class="control-label"></label>
+                <input asp-for="HoraInicio" type="time" class="form-control" />
+                <span asp-validation-for="HoraInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoraFinal" class="control-label"></label>
+                <input asp-for="HoraFinal" type="time" class="form-control" />
+                <span asp-validation-for="HoraFinal" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fecha" class="control-label"></label>
@@ -43,6 +48,14 @@
                 <label asp-for="IdEmpleado" class="control-label"></label>
                 <select asp-for="IdEmpleado" class="form-control" asp-items="ViewBag.IdEmpleado"></select>
                 <span asp-validation-for="IdEmpleado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label><br />
+                <input asp-for="Estado" type="radio" name="Estado" value="Activo">
+                <label asp-for="Estado">Activo</label><br>
+                <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
+                <label asp-for="Estado">Inactivo</label><br>
+                <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" /> |

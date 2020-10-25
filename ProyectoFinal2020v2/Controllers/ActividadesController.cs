@@ -54,7 +54,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdActividad,Nombre,Descripcion,Duracion")] Actividad actividad)
+        public async Task<IActionResult> Create([Bind("IdActividad,Nombre,Descripcion,Duracion,Estado")] Actividad actividad)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdActividad,Nombre,Descripcion,Duracion")] Actividad actividad)
+        public async Task<IActionResult> Edit(int id, [Bind("IdActividad,Nombre,Descripcion,Duracion,Estado")] Actividad actividad)
         {
             if (id != actividad.IdActividad)
             {
@@ -171,7 +171,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateConAjax([Bind("IdActividad,Nombre,Descripcion,Duracion")] Actividad actividad)
+        public ActionResult CreateConAjax([Bind("IdActividad,Nombre,Descripcion,Duracion,Estado")] Actividad actividad)
         {//ESTE METODO LO QUE HACE ES RETORNAR UN RESULT PARA UTILIZARLO EN LA VISTA CREATE JUNTO LA SWEET ALERT
             if (ModelState.IsValid)
             {

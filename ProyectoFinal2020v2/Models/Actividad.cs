@@ -19,8 +19,9 @@ namespace ProyectoFinal2020v2.Models
         public string Descripcion { get; set; }
         [Required(ErrorMessage = "Es obligatorio la Duracion en horas")]
         [DisplayName("Duración(Horas)")]
-        public string Duracion { get; set; }
-
+        public int Duracion { get; set; }
+        [Required(ErrorMessage = "Es obligatorio el estado")]
+        public string Estado { get; set; }
         public virtual ICollection<ClaseGym> ClaseGym { get; set; }
     }
 }

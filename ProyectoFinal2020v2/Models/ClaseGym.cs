@@ -17,8 +17,11 @@ namespace ProyectoFinal2020v2.Models
         [Required(ErrorMessage ="Se necesita el nombre de la sala")]
         public int IdSala { get; set; }
         [Required(ErrorMessage = "Se necesita la hora de inicio")]
-        [DataType(DataType.Time)]
-        public TimeSpan Hora { get; set; }
+        //[DataType(DataType.Time)]
+        public string HoraInicio { get; set; }
+        [Required(ErrorMessage = "Se necesita la hora de final")]
+        //[DataType(DataType.Time)]
+        public string HoraFinal { get; set; }
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Se necesita la fecha de la clase")]
         public DateTime Fecha { get; set; }
@@ -29,7 +32,8 @@ namespace ProyectoFinal2020v2.Models
         [DisplayName("Empleado")]
         [Required(ErrorMessage = "Es necesario el empleado")]
         public int IdEmpleado { get; set; }
-
+        [Required(ErrorMessage = "Es obligatorio el estado")]
+        public string Estado { get; set; }
         public virtual Actividad IdActividadNavigation { get; set; }
         public virtual Empleado IdEmpleadoNavigation { get; set; }
         public virtual Sala IdSalaNavigation { get; set; }

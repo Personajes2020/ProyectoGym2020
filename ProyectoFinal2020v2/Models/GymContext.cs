@@ -58,7 +58,11 @@ namespace ProyectoFinal2020v2.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Duracion)
+                //entity.Property(e => e.Duracion)
+                //    .IsRequired()
+                //    .HasMaxLength(25)
+                //    .IsUnicode(false);
+                entity.Property(e => e.Estado)
                     .IsRequired()
                     .HasMaxLength(25)
                     .IsUnicode(false);
@@ -145,15 +149,29 @@ namespace ProyectoFinal2020v2.Models
             {
                 entity.HasKey(e => e.IdClaseGym);
 
-                entity.HasIndex(e => new { e.IdSala, e.Hora, e.Fecha })
+                entity.HasIndex(e => new { e.IdSala, e.HoraInicio, e.Fecha })
                     .HasName("Fk_ClaseGym")
                     .IsUnique();
 
+                entity.Property(e => e.Estado)
+                    .IsRequired()
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
                 //entity.Property(e => e.IdClaseGym).ValueGeneratedNever();
 
                 entity.Property(e => e.Fecha).HasColumnType("date");
 
                 //entity.Property(e => e.IdSala).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.HoraFinal)
+                    .IsRequired()
+                    .HasMaxLength(5)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.HoraInicio)
+                    .IsRequired()
+                    .HasMaxLength(5)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.IdActividadNavigation)
                     .WithMany(p => p.ClaseGym)
@@ -290,7 +308,7 @@ namespace ProyectoFinal2020v2.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Direccion)
-                    .HasMaxLength(50)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Email)
@@ -570,7 +588,7 @@ namespace ProyectoFinal2020v2.Models
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
-                    .HasMaxLength(25)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Estado)
