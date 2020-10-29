@@ -1458,4 +1458,5 @@ C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\Details.cshtml.g.cs
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\Edit.cshtml.g.cs
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\Index.cshtml.g.cs
-C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\SelectClase.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\SelectCreateClase.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\SelectEditClase.cshtml.g.cs
