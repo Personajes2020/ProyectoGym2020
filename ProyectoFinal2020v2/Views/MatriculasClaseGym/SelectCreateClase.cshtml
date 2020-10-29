@@ -6,7 +6,7 @@
 
 <h3 class="container p-3 my-3 text-white text-center rounded-l"
     style="background-color: rgb(107, 0, 130)">
-    <i class="fas fa-chalkboard"></i> Clases Gym
+    <i class="fas fa-chalkboard"></i> Clases Gym C
 </h3>
 <table id="table" class="display" style="width:100%">
     <thead>
@@ -63,10 +63,10 @@
                 </td>
 
                 <td>
-                    <!--<a asp-controller="MatriculasClasesGym" asp-action="Create" asp-route-id="@item.IdClaseGym" class="btn btn-info btn-sm">Seleccionar <i class="fas fa-pen"></i></a>-->  @*asp-route-id="@item.IdClaseGym"*@
-                    <button class="btn btn-info" style="color:white">
-                        @Html.ActionLink("Select", "SelectB", "MatriculasClaseGym", new { id = @item.IdClaseGym })
-                    </button>
+                    <a type="button" class="btn btn-info" asp-action="SelectA" asp-controller="MatriculasClaseGym" asp-route-id="@item.IdClaseGym ">Selecionar</a>
+                    @*<button class="btn btn-info" style="color:white">
+                        @Html.ActionLink("Seleccionar", "SelectA", "MatriculasClaseGym", new { id = @item.IdClaseGym })
+                    </button>*@
 
 
                     @*<a asp-action="Details" asp-route-id="@item.IdClaseGym" class="btn btn-secondary btn-sm">Detalle <i class="fas fa-align-justify "></i></a> |

@@ -4,38 +4,78 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<header class="container p-2 my-2 bg-primary text-white text-center rounded-l">
+    <h3> <i class="fas fa-pen"></i> Editar Matricula</h3>
+</header>
 
-<h4>MatriculaClaseGym</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit"asp-controller="MatriculasClaseGym" method="post"id="formularioMatricula">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdMatriculaGym" />
+            <div class="form-group">
+                <label asp-for="IdClaseGym" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="IdClaseGym" class="form-control " readonly value="@ViewData["IdClaseGym"]" />
+                    <div class="input-group-btn">
+                        <a type="button" class="btn btn-secondary" asp-action="IndexClase2" asp-controller="MatriculasClaseGym">Selecionar</a>
+                    </div>
+                </div>
+                <span asp-validation-for="IdClaseGym" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="IdCliente" class="control-label"></label>
                 <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente"></select>
                 <span asp-validation-for="IdCliente" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="IdClaseGym" class="control-label"></label>
-                <select asp-for="IdClaseGym" class="form-control" asp-items="ViewBag.IdClaseGym"></select>
-                <span asp-validation-for="IdClaseGym" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="Fecha" class="control-label"></label>
                 <input asp-for="Fecha" class="form-control" />
                 <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" onclick="editVali()" />
+                <a asp-action="Index" class="btn btn-secondary">Atrás</a>
             </div>
         </form>
     </div>
 </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <script>
+        function editVali() {
+            let formulario = $("#formularioMatricula").serialize();
+            $.ajax({
+                url: "/MatriculasclaseGym/EditVali",
+                type:'post',
+                data: formulario,
+                dataType: 'json'
+            }).done(function (respuesta) {
+                if (respuesta.result == true) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Se editó matricula correctamente.',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No se pudo editar matricular',
+                        text: '¡Verifique que los datos del cliente y clase sean correctos!',
+                    })
+                }
+
+            })
+
+
+
+        }
+
+    </script>
+}
 
