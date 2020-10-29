@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -59,6 +60,7 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 _context.Add(proveedor);
                 await _context.SaveChangesAsync();
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             return View(proveedor);
@@ -110,6 +112,7 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             return View(proveedor);
@@ -147,6 +150,40 @@ namespace ProyectoFinal2020v2.Controllers
         private bool ProveedorExists(int id)
         {
             return _context.Proveedor.Any(e => e.IdProveedor == id);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateConAjax(Proveedor proveedor)
+        {
+            if (ModelState.IsValid)
+            {
+                //_context.Empleado.Add(empleado);
+                //_context.SaveChanges();
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
+        }
+
+        public ActionResult EditConAjax(Proveedor proveedor)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.SaveChanges();
+                return Json(new { result = true });
+
+            }
+            return Json(new { result = false });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConAjax(Proveedor proveedor)
+        {
+            Proveedor proveedorFind = _context.Proveedor.Find(proveedor.IdProveedor);
+            _context.Proveedor.Remove(proveedorFind);
+            _context.SaveChanges();
+            return Json(new { result = true, });
         }
     }
 }

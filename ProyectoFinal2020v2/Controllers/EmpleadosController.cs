@@ -168,6 +168,7 @@ namespace ProyectoFinal2020v2.Controllers
         {
             return _context.Empleado.Any(e => e.IdEmpleado == id);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateConAjax(Empleado empleado)
