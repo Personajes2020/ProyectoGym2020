@@ -1,0 +1,97 @@
+﻿@model ProyectoFinal2020v2.Models.ClaseGuarderiaViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4 class="container p-3 my-3 bg-secondary text-white text-center rounded-l"><i class="fas fa-align-justify "></i> Detalle Clase</h4>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="column">
+            <h4>ClaseGuarderia</h4>
+            <dl class="row">
+                @foreach (var guarderia in Model.ClaseGuarderia)
+                {
+                    <dt class="col-sm-4">
+                        HoraInicio
+                    </dt>
+                    <dd class="col-sm-8">
+                        @guarderia.HoraInicio
+                    </dd>
+                    <dt class="col-sm-4">
+                        Hora Fin
+                    </dt>
+                    <dd class="col-sm-8">
+                        @guarderia.HoraFin
+                    </dd>
+                    <dt class="col-sm-4">
+                        Fecha
+                    </dt>
+                    <dd class="col-sm-8">
+                        @guarderia.Fecha
+                    </dd>
+                    <dt class="col-sm-4">
+                        Cupo
+                    </dt>
+                    <dd class="col-sm-8">
+                        @guarderia.Cupo
+                    </dd>
+                    <dt class="col-sm-4">
+                        Duracion(Horas)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @guarderia.Duracion
+                    </dd>
+                    <dt class="col-sm-4">
+                        Estado
+                    </dt>
+                    <dd class="col-sm-8">
+                        @guarderia.Estado
+                    </dd>
+                    <dt class="col-sm-4"></dt>
+                    <dd class="col-sm-8"></dd>
+                    <dt class="col-sm-4">
+
+                        <a asp-action="Edit" asp-route-id="@guarderia.IdClaseGuarderia" class="btn btn-primary">Editar</a> |
+                        <a asp-action="Index" class="btn btn-secondary">Atras</a>
+                    </dt>
+
+                }
+
+            </dl>
+        </div>
+        <div class="column">
+            <h4>
+                Cuidador
+            </h4>
+            <dl class="row">
+
+                @foreach (var empleado in Model.ClaseGuarderiaEmpleado)
+                {
+
+                    <dt class="col-sm-4">
+                        Id Empleado
+                    </dt>
+                    <dd class="col-sm-8">
+                        @empleado.IdEmpleado
+                    </dd>
+                    <dt class="col-sm-4">
+                        Empleado
+                    </dt>
+                    <dd class="col-sm-8">
+                        @foreach (Empleado emp in (List<Empleado>)ViewData["Empleados"])
+                        {
+                            if (empleado.IdEmpleado == emp.IdEmpleado)
+                            {
+                                @emp.Nombre @emp.Apellido1
+                            }
+                        }
+                    </dd>
+                }
+            </dl>
+        </div>
+    </div>
+</div>

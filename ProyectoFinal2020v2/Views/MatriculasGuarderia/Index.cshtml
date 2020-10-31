@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ProyectoFinal2020v2.Models.MatriculaGuarderia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3 class="container p-3 my-3 text-white text-center rounded-l"
+    style="background-color: #0080FF">
+    <i class="fas fa-laptop"></i>  Matricula Guarderia
+</h3>
+<table id="table" class="display" style="width:100%">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.IdClaseGuarderia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHijo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                <a class="btn btn-success" asp-action="Create">
+                    Crear Nuevo
+                    <i class="fas fa-plus-square"></i>
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdClaseGuarderia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdHijoNavigation.Nombre)
+                    @Html.DisplayFor(modelItem => item.IdHijoNavigation.Apellido1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdMatricula" class="btn btn-primary btn-sm">Editar <i class="fas fa-pen"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.IdMatricula" class="btn btn-secondary btn-sm">Detalle <i class="fas fa-align-justify "></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdMatricula" class="btn btn-danger btn-sm">Eliminar <i class="fas fa-trash"></i></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+    </script>
+}

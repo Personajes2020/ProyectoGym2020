@@ -1,0 +1,39 @@
+﻿@model ProyectoFinal2020v2.Models.MatriculaGuarderia
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3 class="container p-3 my-3 bg-secondary text-white text-center rounded-l"><i class="fas fa-align-justify "></i> Detalle matricula</h3>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdClaseGuarderia)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdClaseGuarderia)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdHijo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdHijoNavigation.Nombre)
+            @Html.DisplayFor(model => model.IdHijoNavigation.Apellido1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdMatricula" class="btn btn-primary">Editar</a> |
+    <a asp-action="Index" class="btn btn-secondary">Atras</a>
+
+</div>

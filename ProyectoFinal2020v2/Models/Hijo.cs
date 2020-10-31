@@ -8,6 +8,7 @@ namespace ProyectoFinal2020v2.Models
         public Hijo()
         {
             HijoCliente = new HashSet<HijoCliente>();
+            MatriculaGuarderia = new HashSet<MatriculaGuarderia>();
         }
 
         public int IdHijo { get; set; }
@@ -18,5 +19,6 @@ namespace ProyectoFinal2020v2.Models
         public DateTime FechaDeNac { get; set; }
 
         public virtual ICollection<HijoCliente> HijoCliente { get; set; }
+        public virtual ICollection<MatriculaGuarderia> MatriculaGuarderia { get; set; }
     }
 }

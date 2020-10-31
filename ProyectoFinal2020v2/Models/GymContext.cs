@@ -92,35 +92,21 @@ namespace ProyectoFinal2020v2.Models
             {
                 entity.HasKey(e => e.IdClaseGuarderia);
 
-                entity.HasIndex(e => new { e.IdSala, e.Hora, e.Fecha })
-                    .HasName("FK_ClaseGuarderia")
-                    .IsUnique();
-
-                entity.Property(e => e.Capacidad)
+                entity.Property(e => e.Estado)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Descripcion)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Duracion)
-                    .IsRequired()
-                    .HasMaxLength(24)
+                    .HasMaxLength(10)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Fecha).HasColumnType("date");
 
-                entity.Property(e => e.IdSala)
+                entity.Property(e => e.HoraFin)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(5)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Nombre)
+                entity.Property(e => e.HoraInicio)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(5)
                     .IsUnicode(false);
             });
 
@@ -447,7 +433,13 @@ namespace ProyectoFinal2020v2.Models
                     .HasForeignKey(d => d.IdClaseGuarderia)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_MatriculaGuarderia_ClaseGuarderia1");
-            });
+
+                entity.HasOne(d => d.IdHijoNavigation)
+                    .WithMany(p => p.MatriculaGuarderia)
+                    .HasForeignKey(d => d.IdHijo)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MatriculaGuarderia_Hijo");
+        });
 
             modelBuilder.Entity<Monedero>(entity =>
             {

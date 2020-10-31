@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoFinal2020v2.Models
 {
@@ -12,15 +14,24 @@ namespace ProyectoFinal2020v2.Models
         }
 
         public int IdClaseGuarderia { get; set; }
-        public string Nombre { get; set; }
-        public string IdSala { get; set; }
-        public TimeSpan Hora { get; set; }
+        [DisplayName("Hora Inicio")]
+        [Required(ErrorMessage ="Se necesita hora inicio")]
+        public string HoraInicio { get; set; }
+        [DisplayName("Hora Final")]
+        [Required(ErrorMessage = "Se necesita hora final")]
+        public string HoraFin { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Se requiere la fecha")]
         public DateTime Fecha { get; set; }
-        public string Descripcion { get; set; }
-        public string Capacidad { get; set; }
-        public string Duracion { get; set; }
-
-        public virtual ICollection<ClaseGuarderiaEmpleado> ClaseGuarderiaEmpleado { get; set; }
+        [Required(ErrorMessage = "Se requiere la cantidad max")]
+        public int Cupo { get; set; }
+        [DisplayName("Duracion(Horas)")]
+        [Required(ErrorMessage = "Se requiere la duracion")]
+        public int Duracion { get; set; }
+        [Required(ErrorMessage = "Es obligatorio el estado")]
+        public string Estado { get; set; }
+    
+    public virtual ICollection<ClaseGuarderiaEmpleado> ClaseGuarderiaEmpleado { get; set; }
         public virtual ICollection<MatriculaGuarderia> MatriculaGuarderia { get; set; }
     }
 }

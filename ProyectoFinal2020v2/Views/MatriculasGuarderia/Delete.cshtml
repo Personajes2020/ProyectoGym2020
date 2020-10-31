@@ -1,0 +1,76 @@
+﻿@model ProyectoFinal2020v2.Models.MatriculaGuarderia
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i> Eliminar Matricula</h3>
+<div>
+
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdClaseGuarderia)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdClaseGuarderia)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdHijo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdHijoNavigation.Nombre)
+            @Html.DisplayFor(model => model.IdHijoNavigation.Apellido1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" asp-controller="MatriculasGuarderia" method="delete" id="formularioDelete">
+        <input type="hidden" asp-for="IdMatricula" />
+        <input type="button" value="Eliminar" class="btn btn-danger" onclick="deleteVali()" /> |
+        <a class="btn btn-secondary" asp-action="Index">Atrás</a>
+    </form>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+
+<script>
+   function deleteVali() {
+      let formulario = $("#formularioDelete").serialize();
+         Swal.fire({
+                title: '¿Está seguro(a) de eliminar?',
+                text: "¡No podrá recuperar el registro!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar!'
+         }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "/MatriculasGuarderia/DeleteVali",
+                        type: 'post',
+                        data: formulario,
+                        dataType: 'json'
+                    });
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Matricula se eliminadó correctamente',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "MatriculasGuarderia")'
+                }, 2000);
+            }
+            })
+        }
+
+</script>

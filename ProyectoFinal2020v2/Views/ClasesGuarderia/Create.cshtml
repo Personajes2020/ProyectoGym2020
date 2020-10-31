@@ -1,0 +1,98 @@
+﻿@model ProyectoFinal2020v2.Models.ClaseGuarderia
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<header class="container p-2 my-2 bg-success text-white text-center rounded-l">
+    <h4><i class="fas fa-plus-square"></i> Agregar Clase</h4>
+</header>
+<hr />
+<div class="container">
+    <form asp-action="Create" asp-controller="ClaseGuarderiaEmpleados" method="post" id="formulario">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="column">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label asp-for="HoraInicio" class="control-label"></label>
+                    <input asp-for="HoraInicio" type="time" class="form-control" />
+                    <span asp-validation-for="HoraInicio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoraFin" class="control-label"></label>
+                    <input asp-for="HoraFin" type="time" class="form-control" />
+                    <span asp-validation-for="HoraFin" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Fecha" class="control-label"></label>
+                    <input asp-for="Fecha" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="column">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label asp-for="Cupo" class="control-label"></label>
+                    <input asp-for="Cupo" class="form-control" />
+                    <span asp-validation-for="Cupo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Duracion" class="control-label"></label>
+                    <input asp-for="Duracion" class="form-control" />
+                    <span asp-validation-for="Duracion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Estado" class="control-label"></label><br />
+                    <input asp-for="Estado" type="radio" name="Estado" value="Activo">
+                    <label asp-for="Estado">Activo</label><br>
+                    <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
+                    <label asp-for="Estado">Inactivo</label><br>
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Crear" class="btn btn-success" id="saveValidacion" />
+            <a class="btn btn-secondary" asp-action="Index">Atrás</a>
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#saveValidacion").click(function (event) {
+            var form = $("#formulario"); $.ajax({
+                url: "/ClasesGuarderia/CreateConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Se creó la clase correctamente.',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo crear la clase',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
+
+                    }
+                }
+            });
+        });
+    });</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
