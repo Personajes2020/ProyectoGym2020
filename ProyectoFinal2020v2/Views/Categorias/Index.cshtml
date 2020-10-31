@@ -53,62 +53,11 @@
     </tbody>
 </table>
 
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $('#table').DataTable();
-        });
-    </script>
-}
-
-section scripts{
 <script>
     $(document).ready(function () {
         $('#table').DataTable();
-        $(".edit").editable("/Categorias/EditField", {
-            submitdata: function () {
-                return {
-                    id: $(this).data("id"),
-                    field: $(this).data("propertyname"),
-                    value: $(this).value
-                }
-            },
-            //Función para poder recibir el nuevo valor y mostrarlo
-            callback: function (value, settings) {
-                var jsonData = $.parseJSON(value);
-                if (jsonData.status) {
-                    $(this).text(jsonData.value);
-                }
-                else {
-                    $(this).text(jsonData.mensaje);
-                }
-            }
-        });
-        $(".edit-cat").editable("/Empleados/EditField", {
-            loadurl: "/Empleados/Ids_CategoriasJSON",
-            type: "select",
-            submit: "Ok",
-            cssclass: "form-control",
-            submitcssclass: 'btn btn-success',
-            submitdata: function () {
-                return {
-                    id: $(this).data("id"),
-                    field: $(this).data("propertyname"),
-                    value: $(this).value
-                }
-            },
-            //Función para poder recibir el nuevo valor y mostrarlo
-            callback: function (value, settings) {
-                var jsonData = $.parseJSON(value);
-                if (jsonData.status) {
-                    $(this).text(jsonData.value);
-                }
-                else {
-                    $(this).text(jsonData.mensaje);
-                }
-            }
-        });
     });
 </script>
-}
+
+
 
