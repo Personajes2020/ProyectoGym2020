@@ -1,0 +1,50 @@
+﻿@model ProyectoFinal2020v2.Models.Hijo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#e07326"> <i class="fas fa-baby-carriage"></i>Detalles</h1>
+
+
+<div>
+    <h4>Hijo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Identificacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellido1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Apellido1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellido2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Apellido2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaDeNac)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaDeNac)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdHijo" class="btn btn-primary"><i class="fas fa-marker"></i>Editar</a>
+    <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-undo-alt"></i>Atrás</a>
+</div>

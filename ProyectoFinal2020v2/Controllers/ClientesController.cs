@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -48,8 +49,16 @@ namespace ProyectoFinal2020v2.Controllers
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero");
-            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "Descripcion");
+            
+            List<Tarifa> tari = _context.Tarifa.ToList();         
+            TempData["Tarifa"] = tari;
+
+            List<Casillero> casi = _context.Casillero.ToList();
+            TempData["Casillero"] = casi;
+
+
+            //ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero");
+            //ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "IdTarifa");
             return View();
         }
 
@@ -64,16 +73,20 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero", cliente.IdCasillero);
-            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "Descripcion", cliente.IdTarifa);
+            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "IdTarifa", cliente.IdTarifa);
             return View(cliente);
         }
 
         // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            //List<Tarifa> tari = _context.Tarifa.ToList();
+            //TempData["Tarifa"] = tari;
+
             if (id == null)
             {
                 return NotFound();
@@ -84,8 +97,14 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 return NotFound();
             }
+            List<Tarifa> tari = _context.Tarifa.ToList();
+            TempData["Tarifa"] = tari;
+            List<Casillero> casi = _context.Casillero.ToList();
+            TempData["Casillero"] = casi;
+            //TempData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero", cliente.IdCasillero);
+            //TempData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "IdTarifa", cliente.IdTarifa);
             ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero", cliente.IdCasillero);
-            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "Descripcion", cliente.IdTarifa);
+            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "IdTarifa", cliente.IdTarifa);
             return View(cliente);
         }
 
@@ -119,10 +138,11 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCasillero"] = new SelectList(_context.Casillero, "IdCasillero", "IdCasillero", cliente.IdCasillero);
-            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "Descripcion", cliente.IdTarifa);
+            ViewData["IdTarifa"] = new SelectList(_context.Tarifa, "IdTarifa", "IdTarifa", cliente.IdTarifa);
             return View(cliente);
         }
 
@@ -154,6 +174,7 @@ namespace ProyectoFinal2020v2.Controllers
             var cliente = await _context.Cliente.FindAsync(id);
             _context.Cliente.Remove(cliente);
             await _context.SaveChangesAsync();
+            Thread.Sleep(1000);
             return RedirectToAction(nameof(Index));
         }
 

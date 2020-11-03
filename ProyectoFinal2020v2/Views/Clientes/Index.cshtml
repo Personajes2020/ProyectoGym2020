@@ -31,9 +31,9 @@
             @*<th>
                     @Html.DisplayNameFor(model => model.Direccion)
                 </th>*@
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Email)
-            </th>
+            </th>*@
             @*<th>
                     @Html.DisplayNameFor(model => model.Estado)
                 </th>
@@ -79,9 +79,9 @@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Direccion)
                     </td>*@
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Email)
-                </td>
+                </td>*@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Estado)
                     </td>
@@ -92,7 +92,7 @@
                     @Html.DisplayFor(modelItem => item.IdCasilleroNavigation.IdCasillero)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdTarifaNavigation.Descripcion)
+                    @Html.DisplayFor(modelItem => item.IdTarifaNavigation.IdTarifa)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdCliente" class="btn btn-primary btn-sm"><i class="fas fa-marker"></i>Editar</a>

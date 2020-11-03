@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -59,6 +60,7 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 _context.Add(tarifa);
                 await _context.SaveChangesAsync();
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             return View(tarifa);
@@ -110,6 +112,7 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             return View(tarifa);
@@ -141,6 +144,7 @@ namespace ProyectoFinal2020v2.Controllers
             var tarifa = await _context.Tarifa.FindAsync(id);
             _context.Tarifa.Remove(tarifa);
             await _context.SaveChangesAsync();
+            Thread.Sleep(1000);
             return RedirectToAction(nameof(Index));
         }
 

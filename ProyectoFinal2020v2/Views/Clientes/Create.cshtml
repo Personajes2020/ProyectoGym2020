@@ -53,26 +53,40 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" placeholder="Estado" />
+                <label asp-for="Estado" class="control-label"></label><br />
+                <input asp-for="Estado" type="radio" name="Estado" value="Activo">
+                <label asp-for="Estado">Activo</label><br>
+                <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
+                <label asp-for="Estado">Inactivo</label><br>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sexo" class="control-label"></label>
-                <input asp-for="Sexo" class="form-control" placeholder="Sexo" />
+                <label asp-for="Sexo" class="control-label"></label><br />
+                <input asp-for="Sexo" type="radio" name="Sexo" value="M">
+                <label asp-for="Sexo">M</label><br>
+                <input asp-for="Sexo" type="radio" name="Sexo" value="F">
+                <label asp-for="Sexo">F</label><br>
                 <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group">               
                 <label asp-for="IdCasillero" class="control-label"></label>
-                <select asp-for="IdCasillero" class="form-control" asp-items="ViewBag.IdCasillero">
-                    <option>Casillero</option>
-                </select>
+                <div class="input-group">
+                    <input asp-for="IdCasillero" class="form-control" id="Casi" readonly value="@TempData["IdCasillero"]" />
+                    <div class="input-group-btn">
+                        <button type="button" class=" btn btn-info" style="height:38px; color:#ffffff;" data-toggle="modal" data-target="#modalCasillereo">Seleccionar</button>
+                    </div>
+                    <span asp-validation-for="IdCasillero" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="IdTarifa" class="control-label"></label>
-                <select asp-for="IdTarifa" class="form-control" asp-items="ViewBag.IdTarifa">
-                    <option>Tarifa</option>
-                </select>
+                <div class="input-group">
+                    <input asp-for="IdTarifa" class="form-control" id="Tari" readonly value="@TempData["IdTarifa"]" />
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-info" style="height:38px; color:#ffffff" data-toggle="modal" data-target="#modalCliente">Seleccionar</button>
+                    </div>
+                    <span asp-validation-for="IdTarifa" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" id="saveAjax" />
@@ -82,14 +96,132 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title container p-3 my-3 text-white text-center rounded-l" id="exampleModalLabel" style="background:#0a1139"><i class="fas fa-coins"></i>Tarifa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="table" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    #Tarifa
+                                </th>
+                                <th>
+                                    Precio
+                                </th>
+                                <th>
+                                    Bebes
+                                </th>
+                                <th>
+                                    Duracion
+                                </th>
+                                <th>
+                                    Estado
+                                </th>
+                                <th>
+                                    Descripcion
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Tarifa item in (List<Tarifa>)TempData["Tarifa"])
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdTarifa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PrecioTarifa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Bebes)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Duracion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Estado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" onclick="recibir(@item.IdTarifa)">Seleccionar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCasillereo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title container p-3 my-3 text-white text-center rounded-l" id="exampleModalLabel" style="background:#810038"><i class="fas fa-th"></i>Casilleros</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tableCasillero" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    #Casillero
+                                </th>
+                                <th>
+                                    Descripcion
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Casillero item in (List<Casillero>)TempData["Casillero"])
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdCasillero)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" onclick="recibirCasillero(@item.IdCasillero)">Seleccionar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
 <script src="~/js/sweetalert2.all.min.js"></script>
 
 <script>
     $(document).ready(function () {
         $("#saveAjax").click(function (event) {
-            var form = $("#formulario");
-            $.ajax({
+            var form = $("#formulario"); $.ajax({
                 url: "/Clientes/CreateConAjax",
                 data: form.serialize(),
                 method: "POST",
@@ -98,12 +230,12 @@
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'El cliente se creó correctamente',
+                            title: 'Se creó el cliente correctamente.',
                             showConfirmButton: false,
-                            timer: 2000
+                            timer: 3000
                         })
 
-                    } else {
+                    } else {//Si result = false, osea no creó porque el modelo no es valido, mande sweetAlert
                         Swal.fire({
                             icon: 'error',
                             title: 'No se pudo crear el cliente',
@@ -115,6 +247,30 @@
             });
         });
     });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#tableCasillero').DataTable();
+    });
+</script>
+<script>
+    function recibir(n) {
+        var valor = n;
+        document.getElementById("Tari").value = valor;
+    }
+
+</script>
+<script>
+    function recibirCasillero(nc) {
+        var valor = nc;
+        document.getElementById("Casi").value = valor;
+    }
+
 </script>
 
 @section Scripts {
