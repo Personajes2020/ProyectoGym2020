@@ -95,9 +95,11 @@
                     @Html.DisplayFor(modelItem => item.IdTarifaNavigation.IdTarifa)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdCliente" class="btn btn-primary btn-sm"><i class="fas fa-marker"></i>Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.IdCliente" class="btn btn-secondary btn-sm"><i class="fas fa-stream"></i>Detalles</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdCliente" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Eliminar</a>
+                    <div class="btn-group" style='font-size: 5px'>
+                        <a asp-action="Edit" asp-route-id="@item.IdCliente" class="btn btn-primary btn-sm"><i class="fas fa-marker"></i>Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.IdCliente" class="btn btn-secondary btn-sm"><i class="fas fa-stream"></i>Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdCliente" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Eliminar</a>
+                     </div>
                 </td>
             </tr>
         }
@@ -106,6 +108,10 @@
 
 <script>
     $(document).ready(function () {
-        $('#table').DataTable();
+        $('#table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
     });
 </script>

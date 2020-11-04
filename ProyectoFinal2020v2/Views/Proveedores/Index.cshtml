@@ -4,7 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h4 class="container p-3 my-3 bg-danger text-white text-center rounded-l" style="background:#338AFF"><i class="fas fa-cart-plus"></i>Proveedores</h4>
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#0489B1"><i class="fas fa-cart-plus">Proveedores</i></h1>
+
 <table id="table" class="display" style="width:100%">
     <thead>
         <tr>
@@ -59,9 +60,11 @@
                     @Html.DisplayFor(modelItem => item.Estado)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdProveedor" class="btn btn-primary btn-sm"><i class="fas fa-marker"></i>Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.IdProveedor" class="btn btn-secondary btn-sm"><i class="fas fa-stream"></i>Detalles</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdProveedor" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Eliminar</a>
+                    <div class="btn-group" style='font-size: 5px'>
+                        <a asp-action="Edit" asp-route-id="@item.IdProveedor" class="btn btn-primary btn-sm"><i class="fas fa-marker"></i>Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.IdProveedor" class="btn btn-secondary btn-sm"><i class="fas fa-stream"></i>Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdProveedor" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Eliminar</a>
+                    </div>
                 </td>
             </tr>
         }
@@ -70,6 +73,10 @@
 
 <script>
     $(document).ready(function () {
-        $('#table').DataTable();
+        $('#table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
     });
 </script>

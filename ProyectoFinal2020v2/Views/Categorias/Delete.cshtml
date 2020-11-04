@@ -4,9 +4,11 @@
     ViewData["Title"] = "Delete";
 }
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
-<h4 class="container p-3 my-3 bg-primary text-white text-center rounded-l"><i class="fas fa-pen"></i> Elimninar Categoria</h4>
-<div>
-    <h4>Categoria</h4>
+
+
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#DF7401"> <i class="far fa-address-card">Eliminar Categorias</i></h1>
+
+<div>    
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -25,7 +27,7 @@
 
     <form asp-action="Delete" asp-controller="Categorias" method="post" id="formulario">
         <input type="hidden" asp-for="IdCategoria" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" id="deleteAjax" />
+        <input type="button" value="Eliminar" class="btn btn-danger" id="deleteAjax" />
         <a asp-action="Index" class="btn btn-secondary">Atras</a>
     </form>
 </div>

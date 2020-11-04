@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -64,6 +65,7 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 _context.Add(producto);
                 await _context.SaveChangesAsync();
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
@@ -119,6 +121,7 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
+                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);

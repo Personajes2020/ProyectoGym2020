@@ -4,9 +4,9 @@
     ViewData["Title"] = "Index";
 }
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
-<h4 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i>Productos</h4>
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#DF3A01"><i class="fas fa-gifts">Productos</i></h1>
 
-<table class="table">
+<table id="table" class="display" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -41,43 +41,47 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td class="edit" id="@item.IdProducto " data-propertyName="Nombre">
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td class="edit" id="@item.IdProducto " data-propertyName="Descripcion">
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td class="edit" id="@item.IdProducto " data-propertyName="Existencia">
-                    @Html.DisplayFor(modelItem => item.Existencia)
-                </td>
-                <td class="edit" id="@item.IdProducto " data-propertyName="FechaCadu">
-                    @Html.DisplayFor(modelItem => item.FechaCadu)
-                </td>
-                <td class="edit" id="@item.IdProducto " data-propertyName="PrecioUnidad">
-                    @Html.DisplayFor(modelItem => item.PrecioUnidad)
-                </td>
-                <td class="edit" id="@item.IdProducto " data-propertyName="Nombre">
-                    @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.Nombre)
-                </td>
-                <td class="edit" id="@item.IdProducto " data-propertyName="NombreProducto">
-                    @Html.DisplayFor(modelItem => item.IdProveedorNavigation.NombreProducto)
-                </td>
-                <td>
-                    <div class="btn-group" style='font-size: 5px'>
-                        <a asp-action="Edit" asp-route-id="@item.IdProducto" class="btn btn-primary btn-sm">Editar<i class="fas fa-pen"></i></a>
-                        <a asp-action="Details" asp-route-id="@item.IdProducto" class="btn btn-secondary btn-sm">Detalle<i class="fas fa-align-justify "></i></a>
-                        <a asp-action="Delete" asp-route-id="@item.IdProducto" class="btn btn-danger btn-sm">Eliminar<i class="fas fa-trash"></i></a>
-                    </div>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Existencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCadu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioUnidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProveedorNavigation.NombreProducto)
+            </td>
+            <td>
+                <div class="btn-group" style='font-size: 5px'>
+                    <a asp-action="Edit" asp-route-id="@item.IdProducto" class="btn btn-primary btn-sm">Editar<i class="fas fa-pen"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.IdProducto" class="btn btn-secondary btn-sm">Detalle<i class="fas fa-align-justify "></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.IdProducto" class="btn btn-danger btn-sm">Eliminar<i class="fas fa-trash"></i></a>
+                </div>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
 @section scripts{
     <script>
         $(document).ready(function () {
-            $('#table').DataTable();
+            $('#table').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
         });
     </script>
 }

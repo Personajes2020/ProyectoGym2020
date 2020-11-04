@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -49,15 +50,29 @@ namespace ProyectoFinal2020v2.Controllers
             return View();
         }
 
-        // POST: Proveedores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdProveedor,NombreProducto,Descripcion,NombreRepresentante,Telefono,Email,Estado")] Proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
+                var validacionDNI = _context.Proveedor.Any(p => p.IdProveedor.Equals(proveedor.IdProveedor));
+                var validacionEmail = _context.Proveedor.Any(p => p.Email.Equals(proveedor.Email));
+
+                if (validacionDNI || validacionEmail)
+                {
+                    if (validacionDNI)
+                    {
+                        ModelState.AddModelError("Id", "Ya se encuentra registrado");
+                    }
+                    if (validacionEmail)
+                    {
+                        ModelState.AddModelError("Email", "Ya se encuentra registrado");
+                    }
+                    return View("Create");
+
+                }
+
                 _context.Add(proveedor);
                 await _context.SaveChangesAsync();
                 Thread.Sleep(1000);
@@ -159,8 +174,6 @@ namespace ProyectoFinal2020v2.Controllers
         {
             if (ModelState.IsValid)
             {
-                //_context.Empleado.Add(empleado);
-                //_context.SaveChanges();
                 return Json(new { result = true });
             }
             return Json(new { result = false });

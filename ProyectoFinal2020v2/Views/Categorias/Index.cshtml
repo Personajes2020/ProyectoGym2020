@@ -4,10 +4,9 @@
     ViewData["Title"] = "Index";
 }
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
-<h3 class="container p-3 my-3 text-white text-center rounded-l"
-    style="background-color: rgb(0, 70, 0)">
-    <i class="fas fa-plus-square"></i> Categorias
-</h3>
+
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#DF7401"> <i class="far fa-address-card">Categorias</i></h1>
+
 
 
 <table id="table" class="display" style="width:100%">
@@ -55,7 +54,11 @@
 
 <script>
     $(document).ready(function () {
-        $('#table').DataTable();
+        $('#table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
     });
 </script>
 

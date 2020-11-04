@@ -4,9 +4,9 @@
     ViewData["Title"] = "Details";
 }
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
-<h4 class="container p-3 my-3 bg-secondary text-white text-center rounded-l"><i class="fas fa-align-justify "></i> Detalle Productos</h4>
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#DF3A01"><i class="fas fa-gifts">Detalle Productos</i></h1>
 <div>
-    <h4>Producto</h4>
+    
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -54,6 +54,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.IdProducto">Edit</a> |
-    <a asp-action="Index" class="btn btn-secondary">Atras</a>
+    <a asp-action="Edit" asp-route-id="@Model.IdProducto" class="btn btn-primary"><i class="fas fa-marker"></i>Editar</a>
+    <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-undo-alt"></i>Atrás</a>
 </div>
