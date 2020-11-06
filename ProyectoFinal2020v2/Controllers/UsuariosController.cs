@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal2020v2;
 using ProyectoFinal2020v2.Models;
+using Microsoft.AspNetCore.Http;
+//using ProyectoFinal2020v2.Filters;
 
 namespace ProyectoFinal2020v2.Controllers
 {
@@ -29,7 +31,6 @@ namespace ProyectoFinal2020v2.Controllers
             try
             {
                 Usuarios Usuarios = new Usuarios();
-
                 return View(Usuarios);
             }
             catch (System.Exception)
@@ -43,6 +44,7 @@ namespace ProyectoFinal2020v2.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Usuarios(Usuarios Usuarios)
         {
+
             try
             {
                 var isUsernameExists = _IRepository.CheckUserNameExists(Usuarios.NombreUsuario);
@@ -108,7 +110,9 @@ namespace ProyectoFinal2020v2.Controllers
         // GET: UsuariosG
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole");
+            var gymContext = _context.Usuarios.Include(c => c.IdRoleNavigation);
+            return View(await gymContext.ToListAsync());
         }
 
         // GET: UsuariosG/Details/5
@@ -120,18 +124,22 @@ namespace ProyectoFinal2020v2.Controllers
             }
 
             var usuarios = await _context.Usuarios
+                .Include(c => c.IdRoleNavigation)
                 .FirstOrDefaultAsync(m => m.IdUsuario == id);
             if (usuarios == null)
             {
                 return NotFound();
             }
-
+            ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole");
             return View(usuarios);
+
         }
 
         // GET: UsuariosG/Create
         public IActionResult Create()
         {
+            ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole");
+
             return View();
         }
 
@@ -149,12 +157,14 @@ namespace ProyectoFinal2020v2.Controllers
                 Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole", usuarios.IdRole);
             return View(usuarios);
         }
 
         // GET: UsuariosG/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole");
             if (id == null)
             {
                 return NotFound();
@@ -201,6 +211,7 @@ namespace ProyectoFinal2020v2.Controllers
                 Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole", usuarios.IdRole);
             return View(usuarios);
         }
 
@@ -218,7 +229,7 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole");
             return View(usuarios);
         }
 
@@ -283,6 +294,7 @@ namespace ProyectoFinal2020v2.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult UsuariosCrear(Usuarios usuarios)
         {
+            ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole");
             try
             {
                 var isUsernameExists = _IRepository.CheckUserNameExists(usuarios.NombreUsuario);
@@ -290,7 +302,7 @@ namespace ProyectoFinal2020v2.Controllers
                 if (isUsernameExists)
                 {
 
-                    ModelState.AddModelError("", errorMessage: "Nombre de usuario en uso, porfavor elija otro!");
+                    ModelState.AddModelError("",errorMessage: "Nombre de usuario en uso, porfavor elija otro!");
                 }
                 else
                 {
@@ -329,6 +341,35 @@ namespace ProyectoFinal2020v2.Controllers
 
 
         }
+        //[ValidateUserSession]
+        //[HttpGet]
+        //public IActionResult Profile()
+        //{
+        //    try
+        //    {
+        //        var profile = _IRepository.Userinformation(Convert.ToInt32(HttpContext.Session.GetString("IdUsuario")));
+        //        return View(profile);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+        //[HttpGet]
+        //public ActionResult Profile()
+        //{
+        //    try
+        //    {
+        //        var profile = _IRepository.Userinformation(Convert.ToInt32(HttpContext.Session.GetString("IdUsuario")));
+        //        return View(profile);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+
+        //}
+
     }
 }
 

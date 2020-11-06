@@ -33,10 +33,10 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 if (!string.IsNullOrEmpty(loginViewModel.NombreUsuario) && !string.IsNullOrEmpty(loginViewModel.Contraseña))
                 {
-                    var NombreUsuario = loginViewModel.NombreUsuario;
-                    var Contraseña = loginViewModel.Contraseña;
+                    var nombreUsuario = loginViewModel.NombreUsuario;
+                    var contraSeña = loginViewModel.Contraseña;
 
-                    var result = _ILogin.ValidateUser(NombreUsuario, Contraseña);
+                    var result = _ILogin.ValidateUser(nombreUsuario, contraSeña);
 
                     if (result != null)
                     {

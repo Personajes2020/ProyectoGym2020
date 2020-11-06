@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoFinal2020v2
@@ -23,7 +24,8 @@ namespace ProyectoFinal2020v2
         [Required(ErrorMessage = "Ingresar un role es requerido")]
 
         public int? IdRole { get; set; }
-
-        //public virtual Roles IdRoleNavigation { get; set; }
+        [DisplayName("Role")]
+        public virtual Roles IdRoleNavigation { get; set; }
     }
 }
+

@@ -680,8 +680,12 @@ namespace ProyectoFinal2020v2.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                
+                entity.HasOne(d => d.IdRoleNavigation)
+                    .WithMany(p => p.Usuarios)
+                    .HasForeignKey(d => d.IdRole)
+                    .HasConstraintName("FK_Usuarios_Roles");
             });
+
 
             OnModelCreatingPartial(modelBuilder);
         }

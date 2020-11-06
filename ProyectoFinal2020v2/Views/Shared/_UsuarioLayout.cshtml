@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/datatables.min.css" />
-    @*<link rel="stylesheet" href="~/css/sweetalert2.min.css" />*@
+    <link rel="stylesheet" href="~/css/sweetalert2.min.css" />
     <link rel="stylesheet" href="~/css/NavBarMenuGymGarderia.css" />
     <link rel="stylesheet" href="~/css/Recarga.css" />
 
@@ -72,11 +72,9 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CosaUsuario" asp-action="UsuariosCosas"><i class="fa fa-fw fa-home"></i>Cosas que hará usuario</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="UsuarioPerfil" asp-action="Profile"><i class="fa fa-fw fa-user"></i>Perfil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CosaUsuario" asp-action="UsuariosCosas"><i class="fas fa-lock"></i> Cosas que hará usuario</a>
-                        </li>
+
 
                     </ul>
                 </div>
@@ -94,8 +92,8 @@
                 </ul>
             </div>
             @*<div id="main">
-                <a class="openbtn" onclick="openNav()">&#9776</a>
-            </div>*@
+                    <a class="openbtn" onclick="openNav()">&#9776</a>
+                </div>*@
         </nav>
     </header>
 
@@ -125,8 +123,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/datatables.min.js" asp-append-version="true"></script>
-    <script src="~/js/sweetalert2.all.min.js" asp-append-version="true"></script>
-    @*<script src="~/js/jquery.editable.min.js" asp-append-version="true"></script>*@
+    <script src="~/js/sweetalert2.min.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.editable.min.js" asp-append-version="true"></script>
 
     @*<script src="~/js/sweetalert2.min.js" asp-append-version="true"></script>*@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

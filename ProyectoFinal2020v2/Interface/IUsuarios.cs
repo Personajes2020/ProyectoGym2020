@@ -11,7 +11,7 @@ namespace ProyectoFinal2020v2.Interface
         int AddUser(Usuarios entity);
         void AddAdmin(Usuarios entity);
         bool CheckUserNameExists(string NombreUsuario);
-        UsuariosViewModel Userinformation(int idUsuario);
+        UsuariosViewModel Userinformation(int IdUsuario);
         IQueryable<UsuariosViewModel> UserinformationList(string sortColumn, string sortColumnDir, string Search);
 
     }

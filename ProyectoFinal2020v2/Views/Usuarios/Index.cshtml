@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.ConfirmarContraseña)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdRole)
+                @Html.DisplayNameFor(model => model.IdRoleNavigation)
             </th>
 
             <th>
@@ -57,8 +57,11 @@
                     @Html.DisplayFor(modelItem => item.ConfirmarContraseña)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdRole)
+                    @Html.DisplayFor(modelItem => item.IdRoleNavigation.NombreRole)
                 </td>
+
+
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-primary">
                         Editar
@@ -79,7 +82,11 @@
     </tbody>
 </table>
 <script>
-        $(document).ready(function () {
-            $('#table').DataTable();
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
         });
+    });
 </script>
