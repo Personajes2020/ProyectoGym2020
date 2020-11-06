@@ -9,6 +9,7 @@ namespace ProyectoFinal2020v2.Models
     {
         public Producto()
         {
+            Compra = new HashSet<Compra>();
             Pedido = new HashSet<Pedido>();
         }
         
@@ -43,5 +44,6 @@ namespace ProyectoFinal2020v2.Models
         public virtual Categoria IdCategoriaNavigation { get; set; }
         public virtual Proveedor IdProveedorNavigation { get; set; }
         public virtual ICollection<Pedido> Pedido { get; set; }
+        public virtual ICollection<Compra> Compra { get; set; }
     }
 }

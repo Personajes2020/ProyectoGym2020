@@ -1,0 +1,230 @@
+﻿@model ProyectoFinal2020v2.Models.RecargaMonederoV
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container" style="border:groove">
+    <h2>Recarga Modenero Virtual</h2>
+    <hr />
+
+    <div class="container">
+        <form asp-action="Create" asp-controller="RecargasMV" method="post" id="formulario">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="column">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label asp-for="IdMonedero" class="control-label"></label>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input asp-for="IdMonedero" readonly class="form-control" id="monedero" />
+                                    <div class="input-group-btn">
+                                        <button type="button" class=" btn btn-info" data-toggle="modal" data-target="#modalCliente">Seleccionar</button>
+                                    </div>
+                                </div>
+
+                                <span asp-validation-for="IdMonedero" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label asp-for="Monto" class="control-label"></label>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <input asp-for="Monto" type="number" class="form-control" />
+                                <span asp-validation-for="Monto" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row position-static">
+                <div class="row ">
+                    <div class="form-group " style="text-align: right;width:1000px">
+                        <input type="submit" value="Recargar" class="btn btn-primary" id="saveAjax" />
+                        <a asp-action="Index" class="btn btn-secondary">Atrás</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<h3 class="container p-3 my-3 text-white text-center rounded-l"
+    style="background-color: #8B0000">
+    <i class="fas fa-stream"></i> Registro de recargas
+</h3>
+<table id="table" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMonedero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Monto)
+            </th>
+            <th>
+                Cliente
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (RecargaMonederoV item in (IEnumerable<RecargaMonederoV>)ViewData["ListaRecarga"])
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdMonederoNavigation.IdMonedero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdMonederoNavigation.IdCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.IdRecargaMv">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdRecargaMv">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdRecargaMv">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title container p-3 my-3 text-white text-center rounded-l" id="exampleModalLabel" style="background:#810038">@*<i class="fas fa-plus-square"></i>*@Cliente</h4>
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>*@
+            </div>
+            <div class="modal-body">
+                @*<div class="table-responsive">*@
+                    <table id="tableCliente" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id Monedero
+                                </th>
+                                <th>
+                                    Id cliente
+                                </th>
+                                <th>
+                                    Cliente
+                                </th>
+                                <th>
+                                    @* 2do Apellido*@
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Monedero item in (List<Monedero>)TempData["Cliente"])
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdMonedero)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdCliente)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdClienteNavigation.Nombre)
+                                        @Html.DisplayFor(modelItem => item.IdClienteNavigation.Apellido1)
+                                        @Html.DisplayFor(modelItem => item.IdClienteNavigation.Apellido2)
+                                    </td>
+                                    <td>
+                                        @* @Html.DisplayFor(modelItem => item.Apellido2)*@
+                                    </td>
+
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" onclick="recibir(@item.IdMonedero)" aria-hidden="true">Seleccionar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                @*</div>*@
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#saveAjax").click(function (event) {
+            var form = $("#formulario"); $.ajax({
+                url: "/RecargasMV/CreateConAjax",
+                data: form.serialize(),
+                method: "POST",
+                success: function (resultado) {
+                    if (resultado.result == true) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'La recarga se hizo exitosamente',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+
+                    } else {//Si result = false, osea no creó porque el modelo no es valido, mande sweetAlert
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se pudo hace la recarga',
+                            text: '¡Verifique que los datos de los campos sean correctos!',
+                        })
+
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+
+
+    });
+
+
+    function recibir(n) {
+        var valor = n;
+        document.getElementById("monedero").value = valor;
+        //$('#modalCliente').modal(hide);
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $('#tableCliente').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

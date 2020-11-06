@@ -22,6 +22,7 @@ namespace ProyectoFinal2020v2.Models
         public virtual DbSet<ClaseGym> ClaseGym { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Casillero> Casillero { get; set; }
+        public virtual DbSet<Compra> Compra { get; set; }
         public virtual DbSet<DetallesPedido> DetallesPedido { get; set; }
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Hijo> Hijo { get; set; }
@@ -29,13 +30,12 @@ namespace ProyectoFinal2020v2.Models
         public virtual DbSet<MatriculaClaseGym> MatriculaClaseGym { get; set; }
         public virtual DbSet<MatriculaGuarderia> MatriculaGuarderia { get; set; }
         public virtual DbSet<Monedero> Monedero { get; set; }
-        public virtual DbSet<MovimientoMonedero> MovimientoMonedero { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Proveedor> Proveedor { get; set; }
         public virtual DbSet<Sala> Sala { get; set; }
         public virtual DbSet<Tarifa> Tarifa { get; set; }
-        public virtual DbSet<TipoMovimiento> TipoMovimiento { get; set; }
+        public virtual DbSet<RecargaMonederoV> RecargaMonederoV { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -260,6 +260,25 @@ namespace ProyectoFinal2020v2.Models
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<Compra>(entity =>
+            {
+                entity.HasKey(e => e.IdCompra);
+
+                entity.Property(e => e.Fecha).HasColumnType("date");
+
+                entity.HasOne(d => d.IdMonederoNavigation)
+                    .WithMany(p => p.Compra)
+                    .HasForeignKey(d => d.IdMonedero)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Compra_Monedero");
+
+                entity.HasOne(d => d.IdProductoNavigation)
+                    .WithMany(p => p.Compra)
+                    .HasForeignKey(d => d.IdProducto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Compra_Producto");
+            });
+
             modelBuilder.Entity<DetallesPedido>(entity =>
             {
                 entity.HasKey(e => e.IdDetalles);
@@ -458,23 +477,6 @@ namespace ProyectoFinal2020v2.Models
                     .HasConstraintName("FK_Monedero_Cliente");
             });
 
-            modelBuilder.Entity<MovimientoMonedero>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.HasOne(d => d.IdMonederoNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdMonedero)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_MovimientoMonedero_Monedero");
-
-                entity.HasOne(d => d.IdTipoMovimientoNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdTipoMovimiento)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_MovimientoMonedero_TipoMovimiento");
-            });
-
             modelBuilder.Entity<Pedido>(entity =>
             {
                 entity.HasKey(e => e.IdPedido);
@@ -629,17 +631,24 @@ namespace ProyectoFinal2020v2.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<TipoMovimiento>(entity =>
+            modelBuilder.Entity<RecargaMonederoV>(entity =>
             {
-                entity.HasKey(e => e.IdTipoMovimiento);
 
-                entity.Property(e => e.IdTipoMovimiento).ValueGeneratedNever();
+                entity.HasKey(e => e.IdRecargaMv);
 
-                entity.Property(e => e.Descripcion)
-                    .IsRequired()
-                    .HasMaxLength(25)
-                    .IsUnicode(false);
+                entity.Property(e => e.IdRecargaMv)
+                    .HasColumnName("IdRecargaMv");
+                //.ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Fecha).HasColumnType("date");
+
+                entity.HasOne(d => d.IdMonederoNavigation)
+                    .WithMany(p => p.RecargaMonederoV)
+                    .HasForeignKey(d => d.IdMonedero)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RecargaMonederoV_Monedero");
             });
+
             modelBuilder.Entity<Roles>(entity =>
             {
                 entity.HasKey(e => e.IdRole);
