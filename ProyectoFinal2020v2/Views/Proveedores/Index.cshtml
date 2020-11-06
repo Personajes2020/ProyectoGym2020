@@ -4,11 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
+
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#0489B1"><i class="fas fa-cart-plus">Proveedores</i></h1>
 
 <table id="table" class="display" style="width:100%">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.NombreProducto)
             </th>
@@ -40,6 +44,9 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Identificacion)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.NombreProducto)
                 </td>
                 <td>
@@ -51,11 +58,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Telefono)
                 </td>
-
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>*@
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Estado)
                 </td>
@@ -70,6 +75,7 @@
         }
     </tbody>
 </table>
+
 
 <script>
     $(document).ready(function () {

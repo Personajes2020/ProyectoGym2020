@@ -3,12 +3,19 @@
 @{
     ViewData["Title"] = "Details";
 }
-@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#DF3A01"><i class="fas fa-gifts">Detalle Productos</i></h1>
+
+
 <div>
-    
-    <hr />
+
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
@@ -43,7 +50,7 @@
             @Html.DisplayNameFor(model => model.IdCategoriaNavigation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdCategoriaNavigation.Descripcion)
+            @Html.DisplayFor(model => model.IdCategoriaNavigation.Codigo)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdProveedorNavigation)
@@ -57,3 +64,4 @@
     <a asp-action="Edit" asp-route-id="@Model.IdProducto" class="btn btn-primary"><i class="fas fa-marker"></i>Editar</a>
     <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-undo-alt"></i>Atrás</a>
 </div>
+

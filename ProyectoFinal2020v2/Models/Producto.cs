@@ -11,9 +11,11 @@ namespace ProyectoFinal2020v2.Models
         {
             Pedido = new HashSet<Pedido>();
         }
-        [DisplayName("Id Producto")]
-        [Required(ErrorMessage = "Es obligatorio la identificacion.")]
+        
         public int IdProducto { get; set; }
+        [Required(ErrorMessage = "Es obligatorio el codigo del producto.")]
+        public string Codigo { get; set; }
+       
         [DisplayName("Nombre")]
         [Required(ErrorMessage = "Es obligatorio el nombre.")]
         public string Nombre { get; set; }
@@ -25,7 +27,7 @@ namespace ProyectoFinal2020v2.Models
         public int IdProveedor { get; set; }
         [DisplayName("Existencia")]
         [Required(ErrorMessage = "Es obligatorio una cantidad")]
-        public string Existencia { get; set; }
+        public int Existencia { get; set; }
         [DisplayName("Fecha de Vencimiento")]
         [Required(ErrorMessage = "Es necesario la fecha de caducidad.")]
         [DataType(DataType.Date)]
@@ -36,7 +38,7 @@ namespace ProyectoFinal2020v2.Models
         public int IdCategoria { get; set; }
         [DisplayName("Precio unidad")]
         [Required(ErrorMessage = "Es necesario el precio del producto")]
-        public string PrecioUnidad { get; set; }
+        public double PrecioUnidad { get; set; }
 
         public virtual Categoria IdCategoriaNavigation { get; set; }
         public virtual Proveedor IdProveedorNavigation { get; set; }

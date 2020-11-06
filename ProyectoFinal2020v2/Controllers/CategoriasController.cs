@@ -54,17 +54,27 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCategoria,Nombre,Descripcion")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("IdCategoria,Codigo,Nombre,Descripcion")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
+                var validacionCodigo = _context.Categoria.Any(c => c.Codigo.Equals(categoria.Codigo));
+
+                if (validacionCodigo)
+                {
+                    ModelState.AddModelError("Codigo", "Ya se encuentra registrado");
+
+                    return View("Create");
+                }
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();
                 Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
             return View(categoria);
+
         }
+
 
         // GET: Categorias/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -87,7 +97,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCategoria,Nombre,Descripcion")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCategoria,Codigo,Nombre,Descripcion")] Categoria categoria)
         {
             if (id != categoria.IdCategoria)
             {
@@ -96,6 +106,14 @@ namespace ProyectoFinal2020v2.Controllers
 
             if (ModelState.IsValid)
             {
+                var validacionCodigo = _context.Categoria.Any(c => c.Codigo.Equals(categoria.Codigo));
+
+                if (validacionCodigo)
+                {
+                    ModelState.AddModelError("Codigo", "Ya se encuentra registrado");
+
+                    return View("Edit");
+                }
                 try
                 {
                     _context.Update(categoria);
@@ -152,62 +170,22 @@ namespace ProyectoFinal2020v2.Controllers
             return _context.Categoria.Any(e => e.IdCategoria == id);
         }
 
-
-        [HttpPost]
-        public ActionResult EditField(int id, string field, string value)
-        {
-            bool status = false; string mensaje = "Valor no establecido";
-            Categoria categoria = (from a in _context.Categoria
-                                   where a.IdCategoria == id
-                                   select a).FirstOrDefault();
-            switch (field)
-            {
-                case "Nombre":
-                    categoria.Nombre = value.Trim();
-                    break;
-                case "Descripcion":
-                    categoria.Descripcion = value.Trim();
-                    break;
-            }
-            _context.SaveChanges();
-            status = true;
-            mensaje = "Valor establecido";
-            return Json(new { value = value, status = status, mensaje = mensaje });
-        }
-        //Para el uso de jeditable
-        /*
-        public string Ids_CategoriasJSON()
-        {
-            StringBuilder sb = new StringBuilder();
-            var datos = _context.Categorias.ToList();
-            foreach (var item in datos)
-                sb.Append(string.Format("'{0}':'{1}',", item.CategoriaId, item.Descripcion));
-            return "{" + sb.ToString() + "}";
-        }
-        */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateConAjax(Categoria categoria)
         {
-            //tring mensaje = "Error al crea el registro";
-            if (ModelState.IsValid)
-            {
-                //_context.Categoria.Add(categoria);
-                //_context.SaveChanges();
-                // mensaje = "Registro creado";
-                return Json(new { result = true, });
-            }
-            return Json(new { result = false });
-        }
+                if (ModelState.IsValid)
+                {
+                    var validacionCodigo = _context.Categoria.Any(c => c.Codigo.Equals(categoria.Codigo));
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditConAjax(Categoria categoria)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.SaveChanges();
-                return Json(new { result = true });
+                    if (validacionCodigo)
+                    {
+                        ModelState.AddModelError("Codigo", "Ya se encuentra registrado");
+
+                        return View("Create");
+                    }
+
+                    return Json(new { result = true, });
             }
             return Json(new { result = false });
         }
@@ -224,6 +202,20 @@ namespace ProyectoFinal2020v2.Controllers
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditConAjax(Categoria categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.SaveChanges();
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
+        }
+
 
     }
+
+
 }

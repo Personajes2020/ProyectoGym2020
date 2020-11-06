@@ -53,9 +53,10 @@
     </div>
     <header>
 
+
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-fw fa-home"></i>Inicio</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -63,23 +64,18 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-fw fa-home"></i> Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Gym"><i class="fas fa-dumbbell"></i>Gym</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fas fa-lock"></i> Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Guarderia"><i class="fas fa-baby-carriage"></i> Guarderia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Algo" asp-action="Algoaqui"><i class="fas fa-"></i> Sobre nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Algo" asp-action="Algoaqui"><i class="fas fa-"></i> Descuentos o nose algo agui</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Tienda"><i class="	fas fa-archway"></i>Tienda</a>
                         </li>
                     </ul>
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-
-
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Login"><i class="fas fa-sign-in-alt"></i>Iniciar sesion</a>
                         </li>
@@ -90,7 +86,8 @@
                     </ul>
                 </div>
             </div>
-        </nav>       
+        </nav>
+
     </header>
 
 
@@ -123,7 +120,7 @@
     @*<script src="~/js/jquery.editable.min.js" asp-append-version="true"></script>*@
 
     @*<script src="~/js/sweetalert2.min.js" asp-append-version="true"></script>*@
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>*@
 
     @RenderSection("Scripts", required: false)
 </body>

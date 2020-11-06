@@ -3,15 +3,18 @@
 @{
     ViewData["Title"] = "Edit";
 }
-@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#DF3A01"><i class="fas fa-pen"> Editar Producto</i></h1>
 <hr />
 <div class="row">
-    <div class="container">
+    <div class="col-md-4">
         <form asp-action="Edit" asp-controller="Productos" method="post" id="formulario">
-
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdProducto" />
+            <div class="form-group">
+                <label asp-for="Codigo" class="control-label"></label>
+                <input asp-for="Codigo" class="form-control" />
+                <span asp-validation-for="Codigo" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
@@ -55,6 +58,7 @@
     </div>
 </div>
 
+
 <script src="~/js/sweetalert2.all.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
 
@@ -71,7 +75,7 @@
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Se editó empleado correctamente.',
+                            title: 'Se editó producto correctamente.',
                             showConfirmButton: false,
                             timer: 3000
                         })

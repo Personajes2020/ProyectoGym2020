@@ -3,28 +3,27 @@
 @{
     ViewData["Title"] = "Create";
 }
-@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#DF3A01"><i class="fas fa-gifts">Agregar Producto</i></h1>
 
 <hr />
 <div class="row">
-    <div class="container">
+    <div class="col-md-4">
         <form asp-action="Create" asp-controller="Productos" method="post" id="formulario">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="IdProducto" class="control-label"></label>
-                <input asp-for="IdProducto" class="form-control" placeholder="Id Producto" />
-                <span asp-validation-for="IdProducto" class="text-danger"></span>
+                <label asp-for="Codigo" class="control-label"></label>
+                <input asp-for="Codigo" class="form-control" />
+                <span asp-validation-for="Codigo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" placeholder="Nombre" />
+                <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" placeholder="Descripcion" />
+                <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -33,12 +32,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Existencia" class="control-label"></label>
-                <input asp-for="Existencia" class="form-control" placeholder="Existencia" />
+                <input asp-for="Existencia" class="form-control" />
                 <span asp-validation-for="Existencia" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaCadu" class="control-label"></label>
-                <input asp-for="FechaCadu" class="form-control" placeholder="Fecha de vencimiento" />
+                <input asp-for="FechaCadu" class="form-control" />
                 <span asp-validation-for="FechaCadu" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -47,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="PrecioUnidad" class="control-label"></label>
-                <input asp-for="PrecioUnidad" class="form-control" placeholder="Precio" />
+                <input asp-for="PrecioUnidad" class="form-control" />
                 <span asp-validation-for="PrecioUnidad" class="text-danger"></span>
             </div>
             <div class="form-group">

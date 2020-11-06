@@ -12,7 +12,9 @@ namespace ProyectoFinal2020v2.Models
         }
        // [Required(ErrorMessage = "Es obligatorio la identificacion.")]
         public int IdProveedor { get; set; }
-       
+        [Required(ErrorMessage = "Es obligatorio una identificacion.")]
+        public string Identificacion { get; set; }
+
         [Required(ErrorMessage = "Es obligatorio un nombre.")]
         public string NombreProducto { get; set; }
         

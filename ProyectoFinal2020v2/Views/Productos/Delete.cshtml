@@ -3,12 +3,19 @@
 @{
     ViewData["Title"] = "Delete";
 }
-@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#DF3A01"><i class="fas fa-gifts"> Eliminar Producto</i></h1>
 
 <div>
+    <h4>Producto</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
@@ -43,7 +50,7 @@
             @Html.DisplayNameFor(model => model.IdCategoriaNavigation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdCategoriaNavigation.Descripcion)
+            @Html.DisplayFor(model => model.IdCategoriaNavigation.Codigo)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdProveedorNavigation)
@@ -53,7 +60,7 @@
         </dd>
     </dl>
 
-    <form asp-action="Delete" asp-controller="Productos" method="post" id=" formulario">
+    <form asp-action="Delete" asp-controller="Productos" method="post" id="formulario">
         <input type="hidden" asp-for="IdProducto" />
         <input type="button" value="Delete" class="btn btn-danger" id="deleteAjax" /> |
         <a asp-action="Index" class="btn btn-secondary">Atras</a>

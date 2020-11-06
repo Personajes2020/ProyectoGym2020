@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Alert\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {}
+    "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Final-Cambios\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {}
   },
   "projects": {
-    "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Alert\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {
+    "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Final-Cambios\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Alert\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+        "projectUniqueName": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Final-Cambios\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
         "projectName": "ProyectoFinal2020v2",
-        "projectPath": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Alert\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+        "projectPath": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Final-Cambios\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
         "packagesPath": "C:\\Users\\reymo\\.nuget\\packages\\",
-        "outputPath": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Alert\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
+        "outputPath": "E:\\Universidad Nacional\\UNA 2020\\Semestre II\\Programacion III\\Proyecto-Final-Cambios\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

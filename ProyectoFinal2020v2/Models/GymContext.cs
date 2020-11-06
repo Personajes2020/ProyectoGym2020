@@ -77,6 +77,12 @@ namespace ProyectoFinal2020v2.Models
             {
                 entity.HasKey(e => e.IdCategoria);
 
+                entity.Property(e => e.Codigo)
+                   .IsRequired()
+                   .HasMaxLength(50)
+                   .IsUnicode(false);
+
+
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
                     .HasMaxLength(25)
@@ -503,7 +509,12 @@ namespace ProyectoFinal2020v2.Models
             {
                 entity.HasKey(e => e.IdProducto);
 
-                entity.Property(e => e.IdProducto).ValueGeneratedNever();
+                entity.Property(e => e.Codigo)
+                   .IsRequired()
+                   .HasMaxLength(50)
+                   .IsUnicode(false);
+
+                //entity.Property(e => e.IdProducto).ValueGeneratedNever();
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
@@ -542,6 +553,11 @@ namespace ProyectoFinal2020v2.Models
             modelBuilder.Entity<Proveedor>(entity =>
             {
                 entity.HasKey(e => e.IdProveedor);
+
+                entity.Property(e => e.Identificacion)
+                   .IsRequired()
+                   .HasMaxLength(50)
+                   .IsUnicode(false);
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()

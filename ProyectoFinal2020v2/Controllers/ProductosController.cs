@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -49,7 +48,7 @@ namespace ProyectoFinal2020v2.Controllers
         // GET: Productos/Create
         public IActionResult Create()
         {
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion");
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Codigo");
             ViewData["IdProveedor"] = new SelectList(_context.Proveedor, "IdProveedor", "Descripcion");
             return View();
         }
@@ -59,16 +58,15 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProducto,Nombre,Descripcion,IdProveedor,Existencia,FechaCadu,IdCategoria,PrecioUnidad")] Producto producto)
+        public async Task<IActionResult> Create([Bind("IdProducto,Codigo,Nombre,Descripcion,IdProveedor,Existencia,FechaCadu,IdCategoria,PrecioUnidad")] Producto producto)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(producto);
                 await _context.SaveChangesAsync();
-                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Codigo", producto.IdCategoria);
             ViewData["IdProveedor"] = new SelectList(_context.Proveedor, "IdProveedor", "Descripcion", producto.IdProveedor);
             return View(producto);
         }
@@ -86,7 +84,7 @@ namespace ProyectoFinal2020v2.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Codigo", producto.IdCategoria);
             ViewData["IdProveedor"] = new SelectList(_context.Proveedor, "IdProveedor", "Descripcion", producto.IdProveedor);
             return View(producto);
         }
@@ -96,7 +94,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProducto,Nombre,Descripcion,IdProveedor,Existencia,FechaCadu,IdCategoria,PrecioUnidad")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProducto,Codigo,Nombre,Descripcion,IdProveedor,Existencia,FechaCadu,IdCategoria,PrecioUnidad")] Producto producto)
         {
             if (id != producto.IdProducto)
             {
@@ -121,10 +119,9 @@ namespace ProyectoFinal2020v2.Controllers
                         throw;
                     }
                 }
-                Thread.Sleep(1000);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Descripcion", producto.IdCategoria);
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Codigo", producto.IdCategoria);
             ViewData["IdProveedor"] = new SelectList(_context.Proveedor, "IdProveedor", "Descripcion", producto.IdProveedor);
             return View(producto);
         }
@@ -164,18 +161,17 @@ namespace ProyectoFinal2020v2.Controllers
         {
             return _context.Producto.Any(e => e.IdProducto == id);
         }
-
-
-        public ActionResult EditConAjax(Producto productos)
+        public ActionResult CreateConAjax(Producto producto)
         {
             if (ModelState.IsValid)
             {
-                _context.SaveChanges();
+                //  _context.Empleado.Add(producto);
+                // _context.SaveChanges();
                 return Json(new { result = true });
-
             }
             return Json(new { result = false });
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConAjax(Producto producto)
@@ -185,14 +181,13 @@ namespace ProyectoFinal2020v2.Controllers
             _context.SaveChanges();
             return Json(new { result = true, });
         }
-
-        public ActionResult CreateConAjax(Producto producto)
+        public ActionResult EditConAjax(Producto productos)
         {
             if (ModelState.IsValid)
             {
-                //  _context.Empleado.Add(producto);
-                // _context.SaveChanges();
+                _context.SaveChanges();
                 return Json(new { result = true });
+
             }
             return Json(new { result = false });
         }

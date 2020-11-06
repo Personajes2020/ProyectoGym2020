@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -50,20 +49,23 @@ namespace ProyectoFinal2020v2.Controllers
             return View();
         }
 
+        // POST: Proveedores/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProveedor,NombreProducto,Descripcion,NombreRepresentante,Telefono,Email,Estado")] Proveedor proveedor)
+        public async Task<IActionResult> Create([Bind("IdProveedor,Identificacion,NombreProducto,Descripcion,NombreRepresentante,Telefono,Email,Estado")] Proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
-                var validacionDNI = _context.Proveedor.Any(p => p.IdProveedor.Equals(proveedor.IdProveedor));
+                var validacionDNI = _context.Proveedor.Any(p => p.Identificacion.Equals(proveedor.Identificacion));
                 var validacionEmail = _context.Proveedor.Any(p => p.Email.Equals(proveedor.Email));
 
                 if (validacionDNI || validacionEmail)
                 {
                     if (validacionDNI)
                     {
-                        ModelState.AddModelError("Id", "Ya se encuentra registrado");
+                        ModelState.AddModelError("Identificacion", "Ya se encuentra registrado");
                     }
                     if (validacionEmail)
                     {
@@ -102,7 +104,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProveedor,NombreProducto,Descripcion,NombreRepresentante,Telefono,Email,Estado")] Proveedor proveedor)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProveedor,Identificacion,NombreProducto,Descripcion,NombreRepresentante,Telefono,Email,Estado")] Proveedor proveedor)
         {
             if (id != proveedor.IdProveedor)
             {
@@ -167,17 +169,37 @@ namespace ProyectoFinal2020v2.Controllers
             return _context.Proveedor.Any(e => e.IdProveedor == id);
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateConAjax(Proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
-                return Json(new { result = true });
+                var validacionID = _context.Proveedor.Any(c => c.Identificacion.Equals(proveedor.Identificacion));
+
+                if (validacionID)
+                {
+                    ModelState.AddModelError("Identificacion", "Ya se encuentra registrado");
+
+                    return View("Create");
+                }
+
+                return Json(new { result = true, });
             }
             return Json(new { result = false });
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConAjax(Proveedor proveedor)
+        {
+            Proveedor proveedorFind = _context.Proveedor.Find(proveedor.IdProveedor);
+            _context.Proveedor.Remove(proveedorFind);
+            _context.SaveChanges();
+            return Json(new { result = true, });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult EditConAjax(Proveedor proveedor)
         {
@@ -189,14 +211,7 @@ namespace ProyectoFinal2020v2.Controllers
             }
             return Json(new { result = false });
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConAjax(Proveedor proveedor)
-        {
-            Proveedor proveedorFind = _context.Proveedor.Find(proveedor.IdProveedor);
-            _context.Proveedor.Remove(proveedorFind);
-            _context.SaveChanges();
-            return Json(new { result = true, });
-        }
+       
+
     }
 }
