@@ -15,7 +15,7 @@ namespace ProyectoFinal2020v2.Models
         public string NombreUsuario { get; set; }
 
         public string Contraseña { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; } 
         public bool Activo { get; set; }
         public string ConfirmarContraseña { get; set; }
         public int? IdRole { get; set; }

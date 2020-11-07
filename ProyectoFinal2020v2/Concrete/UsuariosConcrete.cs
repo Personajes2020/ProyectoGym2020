@@ -43,17 +43,17 @@ namespace ProyectoFinal2020v2.Concrete
             }
         }
 
-        public UsuariosViewModel Userinformation(int UserID)
+        public UsuariosViewModel Userinformation(int IdUsuario)
         {
             var result = (from user in _context.Usuarios
                           
-                          where user.IdUsuario == UserID
+                          where user.IdUsuario == IdUsuario
                           select new UsuariosViewModel
                           {
                              
-                            
-                              //FechaCreacion = user.FechaCreacion.ToString("dd/MM/yyyy"),
-                   
+                              
+                              FechaCreacion = user.FechaCreacion,
+                              Activo=user.Activo,
                               NombreUsuario = user.NombreUsuario,
                               Contraseña = user.Contraseña,
                           }).SingleOrDefault();

@@ -13,8 +13,8 @@
         @if (TempData["MessageRegistration"] != null)
         {
             <p class="alert alert-success" id="successMessage">@TempData["MessageRegistration"]  <a class="btn btn-success" href="/Usuarios/Index">Ir atrás </a></p>}
-        @Html.ValidationSummary()
-        @Html.ValidationSummary(true)
+        @*@Html.ValidationSummary()
+        @Html.ValidationSummary(true)*@
         <form asp-action="UsuariosCrear" asp-controller="Usuarios" method="post" id="formulario">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">

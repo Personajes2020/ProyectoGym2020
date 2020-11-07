@@ -292,40 +292,40 @@ namespace ProyectoFinal2020v2.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UsuariosCrear(Usuarios usuarios)
+        public IActionResult UsuariosCrear(Usuarios Usuarios)
         {
             ViewData["IdRole"] = new SelectList(_context.Roles, "IdRole", "NombreRole");
             try
             {
-                var isUsernameExists = _IRepository.CheckUserNameExists(usuarios.NombreUsuario);
+                var isUsernameExists = _IRepository.CheckUserNameExists(Usuarios.NombreUsuario);
 
                 if (isUsernameExists)
                 {
 
-                    ModelState.AddModelError("",errorMessage: "Nombre de usuario en uso, porfavor elija otro!");
+                    ModelState.AddModelError("  ",errorMessage: "Nombre de usuario en uso, porfavor elija otro!");
                 }
                 else
                 {
-                    usuarios.FechaCreacion = DateTime.Now;
-                    usuarios.IdRole = usuarios.IdRole;
-                    usuarios.Contraseña = (usuarios.Contraseña);
-                    usuarios.ConfirmarContraseña = (usuarios.ConfirmarContraseña);
-                    if (_IRepository.AddUser(usuarios) > 0)
+                    Usuarios.FechaCreacion = DateTime.Now;
+                    Usuarios.IdRole = Usuarios.IdRole;
+                    Usuarios.Contraseña = (Usuarios.Contraseña);
+                    Usuarios.ConfirmarContraseña = (Usuarios.ConfirmarContraseña);
+                    if (_IRepository.AddUser(Usuarios) > 0)
                     {
                         TempData["MessageRegistration"] = "Usuario creado correctamente!";
 
 
 
-                        return View(usuarios);
+                        return View(Usuarios);
 
                     }
                     else
                     {
-                        return View(usuarios);
+                        return View(Usuarios);
                     }
                 }
 
-                return View(usuarios);
+                return View(Usuarios);
             }
             catch (System.Exception)
             {
