@@ -1,0 +1,150 @@
+﻿@model ProyectoFinal2020v2.Models.Compra
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<h3 class="container p-3 my-3 bg-secondary text-white text-center rounded-l"><i class="fas fa-align-justify "></i> Detalle de Factura</h3>
+<div class="container">
+
+    <hr />
+
+    <dl class="row">
+        <div class="column">
+            <dt class="col-sm-4">
+
+            </dt>
+            <dd class="col-sm-8">
+
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.IdCliente)
+            </dd>
+            <dt class="col-sm-4">
+                Identificación
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.IdClienteNavigation.Identificacion)
+            </dd>
+            <dt class="col-sm-4">
+                Cliente
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.IdClienteNavigation.Nombre) @Html.DisplayFor(model => model.IdClienteNavigation.Apellido1) @Html.DisplayFor(model => model.IdClienteNavigation.Apellido2)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.IdEmpleado)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.IdEmpleado)
+            </dd>
+            <dt class="col-sm-4">
+                Identificación
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.IdEmpleadoNavigation.Identificacion)
+            </dd>
+            <dt class="col-sm-4">
+                Empleado
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.IdEmpleadoNavigation.Nombre) @Html.DisplayFor(model => model.IdEmpleadoNavigation.Apellido1) @Html.DisplayFor(model => model.IdEmpleadoNavigation.Apellido2)
+            </dd>
+
+        </div>
+        <div class="column">
+            <dt class="col-sm-3"></dt>
+            @* <dd class="col-sm-2"></dd>*@
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdCompra)
+            </dt>
+            <dd class="col-sm-1">
+                @Html.DisplayFor(model => model.IdCompra)
+            </dd>
+            <dt class="col-sm-1">
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
+            <dd class="col-sm-3">
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
+        </div>
+
+
+    </dl>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="table" id="tableDetalle">
+            <thead>
+                <tr>
+                    <th>
+                        Id Producto
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Precio Unidad
+                    </th>
+                    <th>
+                        SubTotal
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (DetalleCompra item in (List<DetalleCompra>)ViewData["Detalles"])
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdProductoNavigation.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                            <input type="hidden" id="cantidad" value="@item.Cantidad">
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrecioUnidad)
+                            <input type="hidden" id="precioUnidad" value="@item.PrecioUnidad">
+                        </td>
+                        <td>
+                            <h5><span id="suma"></span> </h5>
+                            <script>
+                                $('#suma').text(parseInt($('#precioUnidad').val()) * parseInt($('#cantidad').val()));
+                            </script>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <h3>Total: @Html.DisplayFor(model => model.Importe) </h3>
+                        @*<input name="Compra.Importe" type="hidden" id="Total" value="0.0" />*@
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<div>
+    @* <a asp-action="Edit" asp-route-id="@Model.IdCompra">Edit</a> |*@
+    <a asp-action="Index" class="btn btn-secondary">Atras</a>
+</div>
+

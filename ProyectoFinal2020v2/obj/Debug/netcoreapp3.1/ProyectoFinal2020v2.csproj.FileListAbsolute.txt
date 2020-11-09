@@ -3053,3 +3053,8 @@ C:\Users\elder\Desktop\Prueba\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netc
 C:\Users\elder\Desktop\Prueba\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\ProyectoFinal2020v2.genruntimeconfig.cache
 C:\Users\elder\Desktop\Prueba\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\UsuarioPerfil\Profile.cshtml.g.cs
 C:\Users\elder\Desktop\Prueba\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutEmpleado.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutEmpleado.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\UsuarioPerfil\Profile.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Create.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Index.cshtml.g.cs
+C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Details.cshtml.g.cs

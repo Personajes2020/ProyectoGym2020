@@ -9,12 +9,13 @@ namespace ProyectoFinal2020v2.Models
     {
         public Cliente()
         {
+            Compra = new HashSet<Compra>();
             HijoCliente = new HashSet<HijoCliente>();
             MatriculaClaseGym = new HashSet<MatriculaClaseGym>();
             Monedero = new HashSet<Monedero>();
             //Casillero = new HashSet<Casillero>();
             //Tarifa = new HashSet<Tarifa>();
-            
+
         }
 
         public int IdCliente { get; set; }
@@ -52,6 +53,7 @@ namespace ProyectoFinal2020v2.Models
         public virtual Casillero IdCasilleroNavigation { get; set; }    
         [DisplayName("Tarifa")]
         public virtual Tarifa IdTarifaNavigation { get; set; }
+        public virtual ICollection<Compra> Compra { get; set; }
         public virtual ICollection<HijoCliente> HijoCliente { get; set; }
         public virtual ICollection<MatriculaClaseGym> MatriculaClaseGym { get; set; }
         public virtual ICollection<Monedero> Monedero { get; set; }

@@ -7,7 +7,6 @@ namespace ProyectoFinal2020v2.Models
     {
         public Monedero()
         {
-            Compra = new HashSet<Compra>();
             RecargaMonederoV = new HashSet<RecargaMonederoV>();
         }
         public int IdMonedero { get; set; }
@@ -15,7 +14,7 @@ namespace ProyectoFinal2020v2.Models
         public double Saldo { get; set; }
 
         public virtual Cliente IdClienteNavigation { get; set; }
-        public virtual ICollection<Compra> Compra { get; set; }
+        
         public virtual ICollection<RecargaMonederoV> RecargaMonederoV { get; set; }
     }
 }

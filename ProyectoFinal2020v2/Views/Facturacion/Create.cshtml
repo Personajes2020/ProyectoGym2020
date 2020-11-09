@@ -1,0 +1,484 @@
+﻿@model ProyectoFinal2020v2.Models.FacturacionViewModel
+
+
+<h3 class="container p-3 my-3 text-white text-center rounded-l"style="background-color: #0000FF"><i class="fas fa-cart-plus"></i> Facturacion</h3>
+
+<hr />
+
+<div class="container">
+
+    <form asp-action="Guardar" asp-controller="Facturacion" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container" style="border:groove">
+            <div class="row">
+                <div class="column">
+
+                </div>
+                <div class="column">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2">
+                        <label asp-for="Compra.IdCompra" class="control-label"></label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input asp-for="Compra.IdCompra" class="form-control" readonly value="@Html.Raw(ViewBag.IdCompra)" />
+                        <span asp-validation-for="Compra.IdCompra" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Compra.Fecha" class="control-label"></label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" name="Compra.Fecha" readonly value="@TempData["Fecha"]" />
+                        <span asp-validation-for="Compra.Fecha" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+
+                    <div class="form-group">
+                        <label asp-for="Compra.IdCliente" class="control-label"></label>
+                        <div class="input-group">
+                            <input asp-for="Compra.IdCliente" class="form-control" placeholder="Ingrese Cliente" id="idCliente" />
+                            <div class="input-group-btn">
+                                <button type="button" class=" btn btn-info" style="height:34px; color:#ffffff;" data-toggle="modal" data-target="#modalCliente">Seleccionar</button>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Compra.IdCliente" class="text-danger"></span>
+                    </div>
+
+
+                    @*<div class="form-group">
+                        <label asp-for="Compra.Importe" class="control-label"></label>
+                        <input asp-for="Compra.Importe" class="form-control" placeholder="Ingrese Empleado" />
+                        <span asp-validation-for="Compra.Importe" class="text-danger"></span>
+                    </div>*@
+
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Compra.IdEmpleado" class="control-label"></label>
+                        <div class="input-group">
+                            <input asp-for="Compra.IdEmpleado" class="form-control" placeholder="Ingrese Empleado" id="idEmpleado" />
+                            <div class="input-group-btn">
+                                <button type="button" class=" btn btn-info" style="height:34px; color:#ffffff;" data-toggle="modal" data-target="#modalEmpleado">Seleccionar</button>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Compra.IdEmpleado" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            @* Tabla normal de producto *@
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id Pruducto
+                                </th>
+                                <th>
+                                    Stock
+                                </th>
+                                <th>
+                                    Cantidad
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <div class="input-group">
+                                        <input readonly type="number" class="form-control" placeholder="Ingrese producto" id="idProducto" />
+                                        <div class="input-group-btn">
+                                            <button type="button" class=" btn btn-info" style="height:34px; color:#ffffff;" data-toggle="modal" data-target="#modalProducto">Seleccionar</button>
+                                        </div>
+                                    </div>
+                                    @*<span asp-validation-for="DetalleCompra[0].IdProducto" class="text-danger"></span>*@
+                                </th>
+                                <th>
+                                    <input class="form-control" placeholder="Existente" readonly id="idProductoExi" />
+                                </th>
+                                <th>
+                                    <input type="number" class="form-control" placeholder="Ingrese Cantidad" id="cantidadSolicitada" />
+                                    @*<span asp-validation-for="DetalleCompra[0].Cantidad" class="text-danger"></span>*@
+                                </th>
+                                <th>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="agregar()">Agregar</button>
+                                </th>
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr /><br />
+
+        @*  *@
+        @*<div class="row">
+        <div class="col-md-7">*@
+        <table class="table" id="tableDetalle">
+            <thead>
+                <tr>
+                    <th>
+                        Id Producto
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Precio Unidad
+                    </th>
+                    <th>
+                        SubTotal
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <h3>Total: <span id="total"></span></h3>
+                        <input name="Compra.Importe" type="hidden" id="Total" value="0.0" />
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        @*</div>
+        </div>*@
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Facturar" class="btn btn-primary" id="saveAjax" />
+            <a asp-action="Index" class="btn btn-secondary">Atrás</a>
+        </div>
+    </form>
+</div>
+<div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title container p-3 my-3 text-white text-center rounded-l" id="exampleModalLabel" style="background: #217e7e"><i class="fas fa-user-alt"></i> Clientes</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tableCliente" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id cliente
+                                </th>
+                                <th>
+                                    Identificacion
+                                </th>
+                                <th>
+                                    Cliente
+                                </th>
+
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Cliente item2 in (List<Cliente>)ViewData["Cliente"])
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item2.IdCliente)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item2.Identificacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item2.Nombre)
+                                        @Html.DisplayFor(modelItem => item2.Apellido1)
+                                        @Html.DisplayFor(modelItem => item2.Apellido2)
+                                    </td>
+
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm" onclick="recibirCliente(@item2.IdCliente)" data-dismiss="modal">Enviar</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalEmpleado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title container p-3 my-3 text-white text-center rounded-l" id="exampleModalLabel" style="background: rgb(0, 70, 0)"><i class="fas fa-address-book"></i> Empleados</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tableEmpleado" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id Empleado
+                                </th>
+                                <th>
+                                    Identificacion
+                                </th>
+                                <th>
+                                    Empleado
+                                </th>
+                                <th>
+
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdEmpleado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Identificacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                        @Html.DisplayFor(modelItem => item.Apellido1)
+                                        @Html.DisplayFor(modelItem => item.Apellido2)
+                                    </td>
+
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm" onclick="recibirEmpleado(@item.IdEmpleado)" data-dismiss="modal">Enviar</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title container p-3 my-3 text-white text-center rounded-l" id="exampleModalLabel" style="background:#DF3A01"><i class="fas fa-gifts"></i> Producto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tableProducto" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id Producto
+                                </th>
+                                <th>
+                                    Codigo
+                                </th>
+                                <th>
+                                    Producto
+                                </th>
+                                <th>
+                                    Precio
+                                </th>
+                                <th>
+                                    Categoria
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Producto item in (List<Producto>)ViewData["Producto"])
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdProducto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Codigo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PrecioUnidad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.Nombre)
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm" onclick="enviarProducto(@item.IdProducto, @item.Existencia)" data-dismiss="modal">Enviar</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+
+<script>
+
+    function recibirCliente(n) {
+        var valor = n;
+        document.getElementById("idCliente").value = valor;
+
+    }
+    function recibirEmpleado(n) {
+        var valor = n;
+        document.getElementById("idEmpleado").value = valor;
+    }
+    function enviarProducto(n, c) {
+        var valor = n;
+        var cantidad = c;
+        document.getElementById("idProducto").value = valor;
+        document.getElementById("idProductoExi").value = cantidad;
+    }
+    function agregar() {
+        $.ajax({
+            cache: false,
+            url: 'ValidarExistencia',
+            data: {
+                idProducto: $("#idProducto").val(),
+                cantidad: $("#cantidadSolicitada").val(),
+                idcliente: $("#idCliente").val(),
+                total: $("#Total").val()
+            },
+            success: function (result) {
+                switch (result.code) {
+                    case "0": //No hay errores
+                        agregarFila(result.idProducto, result.nombre, result.existencia, result.precioUnidad, result.subTotal);
+                        break;
+                    case "1"://Cantidad insuficiente
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se agregó el producto',
+                            text: '¡La cantidad en existencia no es suficiente!',
+                        })
+                        break;
+                    case "2"://Cantidad negativa
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se agregó el producto',
+                            text: '¡La cantidad no es valida!',
+                        })
+                        break;
+                    case "3"://Cantidad negativa
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Saldo insuficiente',
+                            text: '¡El cliente no cuenta con suficiente saldo, por favor recargar!',
+                        })
+                        break;
+                }
+            },
+            error: function (result) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en el servidor',
+
+                })
+
+            }
+        });
+
+    }
+    var cont = 0;
+
+    function agregarFila(IdProducto, Producto, Cantidad, PrecioUnidad, SubTotal) {
+
+        //var htmlTags = '<tr>' +
+        //    '<td>' + IdProducto + '</td>' +
+        //    '<td>' + Producto + '</td>' +
+        //    '<td>' + Cantidad + '</td>' +
+        //    '<td>' + PrecioUnidad + '</td>' +
+        //    '<td>' + SubTotal + '</td>' +
+        //    '<td><button class="btn btn-danger btn-lg-5 btn-block btn-retirar" type ="button" value ="retirar"></button></td>'
+        //    + '</tr>';
+        //$('#tableDetalle').append(htmlTags);
+        $('#tableDetalle').append(`
+                 <tr>
+                       <td>
+                             <input type="hidden" name="DetalleCompra[${cont}].IdProducto" value="${IdProducto}">
+                             ${IdProducto}
+                       </td>
+                       <td>
+
+                             ${Producto}
+                       </td>
+                       <td>
+                             <input type="hidden" name="DetalleCompra[${cont}].Cantidad" value="${Cantidad}">
+                             ${Cantidad}
+                       </td>
+                       <td>
+                             <input type="hidden" name="DetalleCompra[${cont}].PrecioUnidad" value="${PrecioUnidad}">
+                             ${PrecioUnidad}
+                             </td>
+                       <td>
+                             ${SubTotal}
+                       </td>
+                </tr>
+        `);
+
+
+        $('#total').text(SubTotal + parseInt($('#Total').val()));
+        $('#Total').val(SubTotal + parseInt($('#Total').val()));
+
+        cont++;
+    }
+    $(document).ready(function () {
+        $('#tableCliente').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+        $('#tableEmpleado').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+        $('#tableProducto').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+        //$('#tableDetalle').DataTable({
+        //    "language": {
+        //        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        //    },
+        //    "paging": false,
+        //    "searching": false,
+        //    "ordering": false,
+        //    "info": false,
+
+        //});
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

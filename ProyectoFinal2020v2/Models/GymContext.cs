@@ -23,6 +23,7 @@ namespace ProyectoFinal2020v2.Models
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Casillero> Casillero { get; set; }
         public virtual DbSet<Compra> Compra { get; set; }
+        public virtual DbSet<DetalleCompra> DetalleCompra { get; set; }
         public virtual DbSet<DetallesPedido> DetallesPedido { get; set; }
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Hijo> Hijo { get; set; }
@@ -128,7 +129,7 @@ namespace ProyectoFinal2020v2.Models
                     .WithMany(p => p.ClaseGuarderiaEmpleado)
                     .HasForeignKey(d => d.IdClaseGuarderia)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ClaseGuarderia_Empleado_ClaseGuarderia");
+                    .HasConstraintName("FK_ClaseGuarderia_Empleado_ClaseGuarderia1");
 
                 entity.HasOne(d => d.IdEmpleadoNavigation)
                     .WithMany(p => p.ClaseGuarderiaEmpleado)
@@ -266,17 +267,35 @@ namespace ProyectoFinal2020v2.Models
 
                 entity.Property(e => e.Fecha).HasColumnType("date");
 
-                entity.HasOne(d => d.IdMonederoNavigation)
+                entity.HasOne(d => d.IdClienteNavigation)
                     .WithMany(p => p.Compra)
-                    .HasForeignKey(d => d.IdMonedero)
+                    .HasForeignKey(d => d.IdCliente)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Compra_Monedero");
+                    .HasConstraintName("FK_Compra_Monedero1");
+
+                entity.HasOne(d => d.IdEmpleadoNavigation)
+                    .WithMany(p => p.Compra)
+                    .HasForeignKey(d => d.IdEmpleado)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Compra_Empleado");
+
+            });
+
+            modelBuilder.Entity<DetalleCompra>(entity =>
+            {
+                entity.HasKey(e => e.IdDetalleCompra);
+
+                entity.HasOne(d => d.IdCompraNavigation)
+                    .WithMany(p => p.DetalleCompra)
+                    .HasForeignKey(d => d.IdCompra)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_DetalleCompra_Compra");
 
                 entity.HasOne(d => d.IdProductoNavigation)
-                    .WithMany(p => p.Compra)
+                    .WithMany(p => p.DetalleCompra)
                     .HasForeignKey(d => d.IdProducto)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Compra_Producto");
+                    .HasConstraintName("FK_DetalleCompra_Producto");
             });
 
             modelBuilder.Entity<DetallesPedido>(entity =>

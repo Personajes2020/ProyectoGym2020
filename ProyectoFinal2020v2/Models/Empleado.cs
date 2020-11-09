@@ -10,6 +10,7 @@ namespace ProyectoFinal2020v2.Models
         public Empleado()
         {
             ClaseGuarderiaEmpleado = new HashSet<ClaseGuarderiaEmpleado>();
+            Compra = new HashSet<Compra>();
         }
 
         public int IdEmpleado { get; set; }
@@ -58,5 +59,6 @@ namespace ProyectoFinal2020v2.Models
         public string Estado { get; set; }
         public virtual ICollection<ClaseGuarderiaEmpleado> ClaseGuarderiaEmpleado { get; set; }
         public virtual ICollection<ClaseGym> ClaseGym { get; set; }
+        public virtual ICollection<Compra> Compra { get; set; }
     }
 }
