@@ -3058,3 +3058,39 @@ C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Create.cshtml.g.cs
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Index.cshtml.g.cs
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Details.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClaseGuarderiaEmpleados\Create.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClaseGuarderiaEmpleados\Delete.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClaseGuarderiaEmpleados\Details.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClaseGuarderiaEmpleados\Edit.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClaseGuarderiaEmpleados\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClasesGuarderia\Create.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClasesGuarderia\Delete.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClasesGuarderia\Details.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClasesGuarderia\Edit.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClasesGuarderia\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClasesGym\Calendar.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Create.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Details.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Facturacion\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Hijos\Create.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Hijos\Delete.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Hijos\Details.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Hijos\Edit.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Hijos\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\Create.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\Delete.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\Details.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\Edit.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\SelectCreateClase.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasClaseGym\SelectEditClase.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasGuarderia\Create.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasGuarderia\Delete.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasGuarderia\Details.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasGuarderia\Edit.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasGuarderia\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasGuarderia\SelectCreateClase.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\MatriculasGuarderia\SelectEditClase.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\RecargasMV\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutEmpleado.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\UsuarioPerfil\Profile.cshtml.g.cs

@@ -1,15 +1,18 @@
 ﻿@model IEnumerable<ProyectoFinal2020v2.Models.ClaseGuarderiaEmpleado>
-
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Clase Guarderia</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear nueva</a>
 </p>
-<table class="table">
+<br />
+<br />
+<table id="table" class="display" cellspacing="0" style="width:100%">
+
     <thead>
         <tr>
             <th>
@@ -18,24 +21,71 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
             </th>
-            <th></th>
+            <th>
+                Acciones
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdClaseGuarderiaNavigation.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido1)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdClaseGuarderiaEmpleado">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdClaseGuarderiaEmpleado">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdClaseGuarderiaEmpleado">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdClaseGuarderiaNavigation.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido1)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdClaseGuarderiaEmpleado">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdClaseGuarderiaEmpleado">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdClaseGuarderiaEmpleado">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@*<link href="~/css/tablas.css" rel="stylesheet" />
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+                responsive: "true",
+                dom: 'Bfrtilp',
+
+                buttons: [
+
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success',
+
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf"></i> ',
+                        titleAttr: 'Exportar a PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        onclick: 'columna',
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> ',
+                        titleAttr: 'Imprimir',
+                        className: 'btn btn-info'
+
+                    },
+
+                ]
+
+
+
+            });
+        });
+    </script>
+
+}*@

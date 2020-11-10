@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ProyectoFinal2020v2.Models.MatriculaGuarderia>
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 
 @{
     ViewData["Title"] = "Index";
@@ -8,7 +9,13 @@
     style="background-color: #0080FF">
     <i class="fas fa-laptop"></i>  Matricula Guarderia
 </h3>
-<table id="table" class="display" style="width:100%">
+<a class="btn btn-success" asp-action="Create">
+    Crear Nuevo
+    <i class="fas fa-plus-square"></i>
+</a>
+<br />
+<br />
+<table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
     <thead>
         <tr>
 
@@ -22,10 +29,7 @@
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                <a class="btn btn-success" asp-action="Create">
-                    Crear Nuevo
-                    <i class="fas fa-plus-square"></i>
-                </a>
+                Acciones
             </th>
         </tr>
     </thead>
@@ -54,10 +58,47 @@
         }
     </tbody>
 </table>
+<link href="~/css/tablas.css" rel="stylesheet" />
 @section scripts{
     <script>
         $(document).ready(function () {
-            $('#table').DataTable();
+            $('#table').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+                responsive: "true",
+                dom: 'Bfrtilp',
+
+                buttons: [
+
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success',
+
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf"></i> ',
+                        titleAttr: 'Exportar a PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        onclick: 'columna',
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> ',
+                        titleAttr: 'Imprimir',
+                        className: 'btn btn-info'
+
+                    },
+
+                ]
+
+
+
+            });
         });
     </script>
+
 }
