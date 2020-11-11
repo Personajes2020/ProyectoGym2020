@@ -26,8 +26,8 @@ namespace ProyectoFinal2020v2.Models
         [Required(ErrorMessage = "Se requiere la cantidad max")]
         public int Cupo { get; set; }
         [DisplayName("Duracion(Horas)")]
-        [Required(ErrorMessage = "Se requiere la duracion")]
-        public int Duracion { get; set; }
+        //[Required(ErrorMessage = "Se requiere la duracion")]
+        public int? Duracion { get; set; }
         [Required(ErrorMessage = "Es obligatorio el estado")]
         public string Estado { get; set; }
     

@@ -7,7 +7,7 @@
 <header>
     <h3 class="container p-3 my-3 text-white text-center rounded-l"
         style="background-color: #DB7093">
-        Clases Guarderia
+        <i class="fas fa-shapes"></i> Clases Guarderia
     </h3>
     <a class="btn btn-success" asp-action="Create">
         Crear Nueva
@@ -34,9 +34,9 @@
             <th>
                 Cupo
             </th>
-            <th>
+            @*<th>
                 Duracion(Horas)
-            </th>
+            </th>*@
             <th>
                 Estado
             </th>
@@ -60,21 +60,21 @@
                 </td>
                 <td>
 
-                    @clase.Fecha
+                    @clase.Fecha.ToString("dd/MM/yyyy")
                 </td>
                 <td>
                     @clase.Cupo
                 </td>
-                <td>
+                @*<td>
                     @clase.Duracion
-                </td>
+                </td>*@
                 <td>
                     @clase.Estado
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-primary"> Editar<i class="fas fa-pen"></i></a>
-                    <a asp-action="Details" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-secondary"> Detalles<i class="fas fa-align-justify"> </i></a>
-                    <a asp-action="Delete" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-danger">Eliminar<i class="fas fa-trash"></i></a>
+                    <a asp-action="Edit" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-primary"> Editar <i class="fas fa-pen"></i></a>
+                    <a asp-action="Details" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-secondary"> Detalles <i class="fas fa-align-justify"> </i></a>
+                    <a asp-action="Delete" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-danger">Eliminar <i class="fas fa-trash"></i></a>
 
                 </td>
             </tr>
@@ -83,7 +83,7 @@
 </table>
 <br />
 <br />
-<h3 class="container p-3 my-3 bg-primary text-black text-left rounded-l"> Cuidadores</h3>
+<h3 class="container p-3 my-3 bg-primary text-black text-left rounded-l"><i class="fas fa-baby-carriage"></i> Cuidadores</h3>
 
 <table id="table2" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
     <thead>

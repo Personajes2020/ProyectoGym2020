@@ -1,7 +1,10 @@
 ﻿
 @model ClaseGym
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
-
+<h2 class="container p-3 my-3 text-white text-center rounded-l"
+    style="background-color: #006699">
+    <i class="fas fa-calendar-alt"></i> Gym
+</h2>
 <div>
     <div>
         <div id='loading'>loading...</div>
@@ -43,7 +46,7 @@
                             <div class="form-group">
                                 <label>Actividad</label>
                                 <select class="form-control" asp-for="IdActividad">
-                                    <option>Seleccione</option>
+                                    <option>Seleccionar</option>
                                     @foreach (Actividad item in (List<Actividad>)ViewData["Actividad"])
                                     {
                                         <option value="@item.IdActividad">@item.Nombre</option>
@@ -55,7 +58,7 @@
                             <div class="form-group col-7">
                                 <label>Sala</label>
                                 <select class="form-control" asp-for="IdSala">
-                                    <option>Seleccione</option>
+                                    <option>Seleccionar</option>
                                     @foreach (Sala item in (List<Sala>)ViewData["Sala"])
                                     {
                                         <option value="@item.IdSala">@item.NombreSala</option>
@@ -74,7 +77,7 @@
                             <div class="form-group">
                                 <label>Empleado</label>
                                 <select class="form-control" asp-for="IdEmpleado">
-                                    <option>Seleccione</option>
+                                    <option>Seleccionar</option>
                                     @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
                                     {
                                         <option value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>

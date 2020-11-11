@@ -100,7 +100,7 @@ namespace ProyectoFinal2020v2.Models
                 entity.HasKey(e => e.IdClaseGuarderia);
 
                 entity.Property(e => e.Estado)
-                    .IsRequired()
+                    //.IsRequired()
                     .HasMaxLength(10)
                     .IsUnicode(false);
 

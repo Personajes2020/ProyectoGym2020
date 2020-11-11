@@ -13,6 +13,7 @@ namespace ProyectoFinal2020v2.Controllers
     public class ClasesGuarderiaController : Controller
     {
         private readonly GymContext _context;
+        public int xValor=0;
 
         public ClasesGuarderiaController(GymContext context)
         {
@@ -43,7 +44,7 @@ namespace ProyectoFinal2020v2.Controllers
                 return NotFound();
             }
             ClaseGuarderiaViewModel claseGuarderiaViewModel = new ClaseGuarderiaViewModel();
-            var claseGuarderia =  _context.ClaseGuarderia
+            var claseGuarderia = _context.ClaseGuarderia
                 .Where(m => m.IdClaseGuarderia == id).ToList();
             if (claseGuarderia == null)
             {
@@ -199,6 +200,116 @@ namespace ProyectoFinal2020v2.Controllers
             _context.ClaseGuarderia.Remove(claseGuarderiaFind);
             _context.SaveChanges();
             return Json(new { result = true, });
+        }
+        public ActionResult Calendar()
+        {
+            //List<Actividad> actividad = _context.Actividad.Where(a => a.Estado == "Activo").ToList();
+            //List<Sala> sala = _context.Sala.Where(a => a.Estado == "Activo").ToList();
+            List<Empleado> empleado = _context.Empleado.Where(a => a.Estado == "Activo").ToList();
+            //ViewData["Actividad"] = actividad;
+            //ViewData["Sala"] = sala;
+            ViewData["Empleado"] = empleado;
+            return View();
+        }
+        [HttpPost, ActionName("Guardar")]
+        public ActionResult GuardarCalendar(ClaseGuarderiaCalendarViewModel claseGuarderiVm)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                    ClaseGuarderia claseguarderia = new ClaseGuarderia
+                    {
+                        Fecha = claseGuarderiVm.ClaseGuarderia.Fecha,
+                        HoraInicio = claseGuarderiVm.ClaseGuarderia.HoraInicio,
+                        HoraFin = claseGuarderiVm.ClaseGuarderia.HoraFin,
+                        Cupo = claseGuarderiVm.ClaseGuarderia.Cupo,
+                        Estado = claseGuarderiVm.ClaseGuarderia.Estado
+                    };
+                    _context.Add(claseguarderia);
+               
+                _context.SaveChanges();
+
+                var idclaseGuarderia = _context.ClaseGuarderia.Max(cl => cl.IdClaseGuarderia);
+                
+                foreach (ClaseGuarderiaEmpleado item2 in claseGuarderiVm.ClaseGuarderiaEmpleado)
+                {
+                    ClaseGuarderiaEmpleado claseguarderiaEmpl = new ClaseGuarderiaEmpleado
+                    {
+                         IdClaseGuarderia = idclaseGuarderia,
+                         IdEmpleado = item2.IdEmpleado
+                    };
+                    _context.Add(claseguarderiaEmpl);
+                }
+                _context.SaveChanges();
+               
+                return Json(new { status = true });
+            }
+
+            return Json(new { status = false });
+        }
+        [HttpGet, ActionName("Listar")]
+        public ActionResult ListaCalendar()
+        {
+            try
+            {
+                //var claseguarderiaVModel = new ClaseGuarderiaListarViewModel();
+                var clases = _context.ClaseGuarderia.Where(x=>x.Estado=="Activo").ToList();
+
+                List<ClaseGuarderia> clases1 = (List<ClaseGuarderia>)
+                    (from cl in _context.ClaseGuarderia 
+                     select new ClaseGuarderia
+                     {
+                         IdClaseGuarderia = cl.IdClaseGuarderia,
+                         Fecha = cl.Fecha,
+                         HoraInicio = cl.HoraInicio,
+                         HoraFin = cl.HoraFin,
+                         Cupo = cl.Cupo,
+                         Estado = cl.Estado,
+
+                     }).ToList();
+
+                return Json(new { status = true, data = clases1 });
+            }
+            catch (Exception)
+            {
+                return Json(new { status = false });
+            }
+
+
+        }
+        [HttpDelete, ActionName("Borrar")]
+        public ActionResult BorrarCalendar(ClaseGuarderiaCalendarViewModel claseguar)
+        {
+            var borrarclase = _context.ClaseGuarderiaEmpleado
+                .Where(cl => cl.IdClaseGuarderia == claseguar.ClaseGuarderia.IdClaseGuarderia).ToList();
+            foreach (ClaseGuarderiaEmpleado item in borrarclase)
+            {
+                _context.Remove(item);
+
+            }
+            _context.SaveChanges();
+            ClaseGuarderia claseFind = _context.ClaseGuarderia.Find(claseguar.ClaseGuarderia.IdClaseGuarderia);
+            if (claseFind != null)
+            {
+                _context.Remove(claseFind);
+                _context.SaveChanges();
+                return Json(new { status = true });
+            }
+            return Json(new { status = false });
+
+        }
+        [HttpPost, ActionName("Modificar")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarCalendar(ClaseGuarderiaCalendarViewModel claseguar)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _context.Entry(claseguar).State = EntityState.Modified;
+                _context.SaveChanges();
+                return Json(new { result = true });
+            }
+            return Json(new { result = false });
         }
     }
 }
