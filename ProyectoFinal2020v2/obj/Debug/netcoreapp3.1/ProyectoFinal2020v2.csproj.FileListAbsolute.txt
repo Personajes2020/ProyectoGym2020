@@ -544,7 +544,6 @@ C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\ProyectoFinal2020v2.pdb
 C:\Users\Daniel Jesús\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\ProyectoFinal2020v2.genruntimeconfig.cache
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\bin\Debug\netcoreapp3.1\ProyectoFinal2020v2.exe
 C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\bin\Debug\netcoreapp3.1\ProyectoFinal2020v2.deps.json
@@ -3911,3 +3910,11 @@ C:\Users\reymo\Downloads\Part-Nueva\ProyectoGym2020\ProyectoFinal2020v2\obj\Debu
 C:\Users\reymo\Downloads\Part-Nueva\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Gym.cshtml.g.cs
 C:\Users\reymo\Downloads\Part-Nueva\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Guarderia.cshtml.g.cs
 C:\Users\reymo\Downloads\Part-Nueva\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Tienda.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\scopedcss\bundle\ProyectoFinal2020v2.styles.css
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Guarderia.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Gym.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Tienda.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\ClasesGuarderia\Calendar.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\DetallesPedidos\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Pedidos\Index.cshtml.g.cs
+C:\Users\elder\Desktop\ProyectoGym\ProyectoGym2020\ProyectoFinal2020v2\obj\Debug\netcoreapp3.1\Razor\Views\Pedidos\PedidoPro.cshtml.g.cs

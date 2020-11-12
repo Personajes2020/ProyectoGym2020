@@ -228,9 +228,6 @@ namespace ProyectoFinal2020v2.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult detalles(int id) 
-        {
-            return RedirectToAction("Index","DetallesPedidos"); 
-        }
+      
     }
 }

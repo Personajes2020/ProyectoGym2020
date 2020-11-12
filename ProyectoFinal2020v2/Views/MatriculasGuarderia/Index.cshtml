@@ -9,96 +9,96 @@
     style="background-color: #0080FF">
     <i class="fas fa-laptop"></i>  Matricula Guarderia
 </h3>
-<a class="btn btn-success" asp-action="Create">
-    Crear Nuevo
-    <i class="fas fa-plus-square"></i>
-</a>
-<br />
-<br />
-<table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-    <thead>
-        <tr>
-
-            <th>
-                @Html.DisplayNameFor(model => model.IdClaseGuarderia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdHijo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                Acciones
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="container">
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+        <thead>
             <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdClaseGuarderia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdHijoNavigation.Nombre)
-                    @Html.DisplayFor(modelItem => item.IdHijoNavigation.Apellido1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdMatricula" class="btn btn-primary btn-sm">Editar <i class="fas fa-pen"></i></a> |
-                    <a asp-action="Details" asp-route-id="@item.IdMatricula" class="btn btn-secondary btn-sm">Detalle <i class="fas fa-align-justify "></i></a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdMatricula" class="btn btn-danger btn-sm">Eliminar <i class="fas fa-trash"></i></a>
-
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdClaseGuarderia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdHijo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    Acciones
+                    <a class="btn btn-success" asp-action="Create">
+                        Crear Nueva
+                        <i class="fas fa-plus-square"></i>
+                    </a>
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
-<link href="~/css/tablas.css" rel="stylesheet" />
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $('#table').DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                },
-                responsive: "true",
-                dom: 'Bfrtilp',
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
 
-                buttons: [
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdClaseGuarderia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdHijoNavigation.Nombre)
+                        @Html.DisplayFor(modelItem => item.IdHijoNavigation.Apellido1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdMatricula" class="btn btn-primary btn-sm">Editar <i class="fas fa-pen"></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.IdMatricula" class="btn btn-secondary btn-sm">Detalle <i class="fas fa-align-justify "></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdMatricula" class="btn btn-danger btn-sm">Eliminar <i class="fas fa-trash"></i></a>
 
-                    {
-                        extend: 'excelHtml5',
-                        text: '<i class="fas fa-file-excel"></i> ',
-                        titleAttr: 'Exportar a Excel',
-                        className: 'btn btn-success',
-
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>>
+    <link href="~/css/tablas.css" rel="stylesheet" />
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $('#table').DataTable({
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                     },
-                    {
-                        extend: 'pdfHtml5',
-                        text: '<i class="fas fa-file-pdf"></i> ',
-                        titleAttr: 'Exportar a PDF',
-                        className: 'btn btn-danger'
-                    },
-                    {
-                        onclick: 'columna',
-                        extend: 'print',
-                        text: '<i class="fa fa-print"></i> ',
-                        titleAttr: 'Imprimir',
-                        className: 'btn btn-info'
+                    responsive: "true",
+                    dom: 'Bfrtilp',
 
-                    },
+                    buttons: [
 
-                ]
+                        {
+                            extend: 'excelHtml5',
+                            text: '<i class="fas fa-file-excel"></i> ',
+                            titleAttr: 'Exportar a Excel',
+                            className: 'btn btn-success',
+
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            text: '<i class="fas fa-file-pdf"></i> ',
+                            titleAttr: 'Exportar a PDF',
+                            className: 'btn btn-danger'
+                        },
+                        {
+                            onclick: 'columna',
+                            extend: 'print',
+                            text: '<i class="fa fa-print"></i> ',
+                            titleAttr: 'Imprimir',
+                            className: 'btn btn-info'
+
+                        },
+
+                    ]
 
 
 
+                });
             });
-        });
-    </script>
+        </script>
 
-}
+    }

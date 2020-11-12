@@ -1,5 +1,5 @@
 ﻿@model ProyectoFinal2020v2.Models.Proveedor
-
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml";}
 @{
     ViewData["Title"] = "Delete";
 }
@@ -76,7 +76,7 @@ $(document).ready(function () {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, eliminar!' 
+            confirmButtonText: 'Sí, eliminar!'
         }).then((result) => {
             if (result.isConfirmed) {//Si confirmo eliminarla, que llame a traves de ajax el metodo eliminar
 

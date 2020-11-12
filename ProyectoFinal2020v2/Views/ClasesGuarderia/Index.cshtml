@@ -11,13 +11,7 @@
     </h3>
 </header>
 <div class="container">
-    <br />
-    <a class="btn btn-success" asp-action="Create">
-        Crear Nueva
-        <i class="fas fa-plus-square"></i>
-    </a>
-
-    <br />
+  
 
     <table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
         <thead>
@@ -45,6 +39,10 @@
                 </th>
                 <th>
                     Acciones
+                    <a class="btn btn-success" asp-action="Create">
+                        Crear Nueva
+                        <i class="fas fa-plus-square"></i>
+                    </a>
                 </th>
             </tr>
         </thead>
@@ -91,12 +89,7 @@
 <h3 class="container p-3 my-3 bg-primary text-black text-left rounded-l"><i class="fas fa-baby-carriage"></i> Cuidadores</h3>
 
 <div class="container">
-    <br />
-    <a class="btn btn-success" asp-controller="ClaseGuarderiaEmpleados" asp-action="Create">
-        Crear Nueva
-        <i class="fas fa-plus-square"></i>
-    </a>
-    <br />
+ 
 
     <table id="table2" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
         <thead>
@@ -111,7 +104,11 @@
                     Empleado
                 </th>
                 <th>
-
+                    Acciones
+                    <a class="btn btn-success" asp-controller="ClaseGuarderiaEmpleados" asp-action="Create">
+                        Crear Nueva
+                        <i class="fas fa-plus-square"></i>
+                    </a>
                 </th>
             </tr>
         </thead>
