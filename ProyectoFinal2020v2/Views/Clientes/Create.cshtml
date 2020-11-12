@@ -68,7 +68,13 @@
                 <label asp-for="Sexo">F</label><br>
                 <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
-            <div class="form-group">               
+            <div class="form-group">
+                <label asp-for="FechaRenovacion" class="control-label"></label>
+                <input asp-for="FechaRenovacion" class="form-control" placeholder="Fecha de Renovacion" />
+                <span asp-validation-for="FechaRenovacion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <label asp-for="IdCasillero" class="control-label"></label>
                 <div class="input-group">
                     <input asp-for="IdCasillero" class="form-control" id="Casi" readonly value="@TempData["IdCasillero"]" />

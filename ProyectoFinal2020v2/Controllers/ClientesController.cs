@@ -67,10 +67,11 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCliente,Identificacion,Nombre,Apellido1,Apellido2,FechaNac,Telefono,Direccion,Email,Estado,Sexo,IdCasillero,IdTarifa")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("IdCliente,Identificacion,Nombre,Apellido1,Apellido2,FechaNac,Telefono,Direccion,Email,Estado,Sexo,IdCasillero,IdTarifa,FechaRenovacion")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
+               
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 Thread.Sleep(1000);
@@ -113,7 +114,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCliente,Identificacion,Nombre,Apellido1,Apellido2,FechaNac,Telefono,Direccion,Email,Estado,Sexo,IdCasillero,IdTarifa")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCliente,Identificacion,Nombre,Apellido1,Apellido2,FechaNac,Telefono,Direccion,Email,Estado,Sexo,IdCasillero,IdTarifa,FechaRenovacion")] Cliente cliente)
         {
             if (id != cliente.IdCliente)
             {
@@ -186,9 +187,9 @@ namespace ProyectoFinal2020v2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateConAjax(Cliente cliente)
         {
-            if (ModelState.IsValid)
-            {
-                return Json(new { result = true });
+                if (ModelState.IsValid)
+                {
+                    return Json(new { result = true });
             }
             return Json(new { result = false });
         }

@@ -41,7 +41,9 @@ namespace ProyectoFinal2020v2.Models
         [Required(ErrorMessage = "Es necesario el precio del producto")]
         public double PrecioUnidad { get; set; }
 
+        [DisplayName("Categoria")]
         public virtual Categoria IdCategoriaNavigation { get; set; }
+        [DisplayName("Proveedor")]
         public virtual Proveedor IdProveedorNavigation { get; set; }
         public virtual ICollection<Pedido> Pedido { get; set; }
         public virtual ICollection<DetalleCompra> DetalleCompra { get; set; }

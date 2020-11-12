@@ -41,7 +41,13 @@ namespace ProyectoFinal2020v2.Models
         public string Email { get; set; }
         public string Estado { get; set; }   
         [Required(ErrorMessage ="Obligatorio")]
+
         public string Sexo { get; set; }
+
+        [DisplayName("Fecha de Renovacion")]
+        [DataType(DataType.Date)]
+        public DateTime FechaRenovacion { get; set; }
+
         [Required(ErrorMessage = "La casillero es obligatoria.")]
         [DisplayName("Casillero")]
         public int? IdCasillero { get; set; }

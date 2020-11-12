@@ -51,7 +51,7 @@
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+            </div>0
             <div class="form-group">
                 <label asp-for="Estado" class="control-label"></label><br />
                 <input asp-for="Estado" type="radio" name="Estado" value="Activo">
@@ -68,9 +68,14 @@
                 <label asp-for="Sexo">F</label><br>
                 <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
-            <div class="form-group">              
+            <div class="form-group">
+                <label asp-for="FechaRenovacion" class="control-label"></label>
+                <input asp-for="FechaRenovacion" class="form-control" placeholder="Fecha de Renovacion" />
+                <span asp-validation-for="FechaRenovacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="IdCasillero" class="control-label"></label>
-                <div class="input-group">                    
+                <div class="input-group">
                     <input asp-for="IdCasillero" class="form-control" id="Casi" readonly asp-items="ViewBag.IdCasillero" />
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-info" style="height:35px; width:150px;" data-toggle="modal" data-target="#modalCasillereo">Seleccionar</button>
@@ -78,10 +83,10 @@
                     <span asp-validation-for="IdCasillero" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group">                
+            <div class="form-group">
                 <label asp-for="IdTarifa" class="control-label"></label>
-                <div class="input-group">                    
-                    <input asp-for="IdTarifa" class="form-control" id="Tari"  readonly asp-items="ViewBag.IdTarifa"/>
+                <div class="input-group">
+                    <input asp-for="IdTarifa" class="form-control" id="Tari" readonly asp-items="ViewBag.IdTarifa" />
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-info" style="height:35px;width:150px;" data-toggle="modal" data-target="#modalCliente">Seleccionar</button>
                     </div>

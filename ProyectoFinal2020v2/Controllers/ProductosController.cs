@@ -48,7 +48,7 @@ namespace ProyectoFinal2020v2.Controllers
         // GET: Productos/Create
         public IActionResult Create()
         {
-            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Codigo");
+            ViewData["IdCategoria"] = new SelectList(_context.Categoria, "IdCategoria", "Nombre");
             ViewData["IdProveedor"] = new SelectList(_context.Proveedor, "IdProveedor", "Descripcion");
             return View();
         }

@@ -221,7 +221,11 @@ namespace ProyectoFinal2020v2.Models
                 entity.Property(e => e.FechaNac)
                     .HasColumnName("Fecha_Nac")
                     .HasColumnType("datetime")
-                    .IsUnicode(false); ;
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FechaRenovacion)
+                   .HasColumnName("fechaRenovacion")
+                   .HasColumnType("datetime");
 
                 entity.Property(e => e.Identificacion)
                     .IsRequired()
