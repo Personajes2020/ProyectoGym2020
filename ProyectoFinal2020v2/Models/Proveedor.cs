@@ -7,7 +7,7 @@ namespace ProyectoFinal2020v2.Models
     {
         public Proveedor()
         {
-            Pedido = new HashSet<Pedido>();
+            DetallesPedido = new HashSet<DetallesPedido>();
             Producto = new HashSet<Producto>();
         }
        // [Required(ErrorMessage = "Es obligatorio la identificacion.")]
@@ -35,7 +35,7 @@ namespace ProyectoFinal2020v2.Models
         [Required(ErrorMessage = "Debe seleccionar un estado.")]
         public string Estado { get; set; }
 
-        public virtual ICollection<Pedido> Pedido { get; set; }
+        public virtual ICollection<DetallesPedido> DetallesPedido { get; set; }
         public virtual ICollection<Producto> Producto { get; set; }
     }
 }

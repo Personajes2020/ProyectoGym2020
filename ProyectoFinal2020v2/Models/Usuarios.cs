@@ -22,7 +22,7 @@ namespace ProyectoFinal2020v2
         [Compare("Contraseña", ErrorMessage = "Ingrese una contraseña valida, verifique que sean iguales")]
         public string ConfirmarContraseña { get; set; }
         [Required(ErrorMessage = "Ingresar un role es requerido")]
-
+        [DisplayName("Role")]
         public int? IdRole { get; set; }
         [DisplayName("Role")]
         public virtual Roles IdRoleNavigation { get; set; }

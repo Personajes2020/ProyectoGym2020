@@ -8,6 +8,7 @@ namespace ProyectoFinal2020v2.Models
     {
         public Categoria()
         {
+            DetallesPedido = new HashSet<DetallesPedido>();
             Producto = new HashSet<Producto>();
         }
 
@@ -19,6 +20,7 @@ namespace ProyectoFinal2020v2.Models
         [Required(ErrorMessage = "Es obligatorio una descripcion")]
         public string Descripcion { get; set; }
 
+        public virtual ICollection<DetallesPedido> DetallesPedido { get; set; }
         public virtual ICollection<Producto> Producto { get; set; }
     }
 }

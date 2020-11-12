@@ -79,10 +79,9 @@ namespace ProyectoFinal2020v2.Models
                 entity.HasKey(e => e.IdCategoria);
 
                 entity.Property(e => e.Codigo)
-                   .IsRequired()
-                   .HasMaxLength(50)
-                   .IsUnicode(false);
-
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
@@ -306,10 +305,29 @@ namespace ProyectoFinal2020v2.Models
             {
                 entity.HasKey(e => e.IdDetalles);
 
+                entity.Property(e => e.FechaCaducidad).HasColumnType("datetime");
+
+                entity.HasOne(d => d.IdCategoriaNavigation)
+                    .WithMany(p => p.DetallesPedido)
+                    .HasForeignKey(d => d.IdCategoria)
+                    .HasConstraintName("FK_DetallesPedido_Categoria");
+
                 entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.DetallesPedido)
                     .HasForeignKey(d => d.IdPedido)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_DetallesPedido_Pedido1");
+
+                entity.HasOne(d => d.IdProductoNavigation)
+                    .WithMany(p => p.DetallesPedido)
+                    .HasForeignKey(d => d.IdProducto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_DetallesPedido_Producto1");
+
+                entity.HasOne(d => d.IdProveedorNavigation)
+                    .WithMany(p => p.DetallesPedido)
+                    .HasForeignKey(d => d.IdProveedor)
+                    .HasConstraintName("FK_DetallesPedido_Proveedor");
             });
 
             modelBuilder.Entity<Empleado>(entity =>
@@ -505,29 +523,17 @@ namespace ProyectoFinal2020v2.Models
                 entity.HasKey(e => e.IdPedido);
 
                 entity.Property(e => e.Descripcion)
-                    .HasMaxLength(50)
+                    .HasMaxLength(80)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Estado)
+                    .IsRequired()
                     .HasMaxLength(25)
                     .IsUnicode(false);
 
                 entity.Property(e => e.FechaCompra).HasColumnType("datetime");
 
-                entity.Property(e => e.Importe).HasColumnType("decimal(18, 2)");
-
-                entity.Property(e => e.PrecioUnidad).HasColumnType("decimal(18, 2)");
-
-                entity.HasOne(d => d.IdProductoNavigation)
-                    .WithMany(p => p.Pedido)
-                    .HasForeignKey(d => d.IdProducto)
-                    .HasConstraintName("FK_Pedido_Producto1");
-
-                entity.HasOne(d => d.IdProveedorNavigation)
-                    .WithMany(p => p.Pedido)
-                    .HasForeignKey(d => d.IdProveedor)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Pedido_Proveedor1");
+                entity.Property(e => e.FechaLlegada).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Producto>(entity =>
@@ -535,32 +541,21 @@ namespace ProyectoFinal2020v2.Models
                 entity.HasKey(e => e.IdProducto);
 
                 entity.Property(e => e.Codigo)
-                   .IsRequired()
-                   .HasMaxLength(50)
-                   .IsUnicode(false);
-
-                //entity.Property(e => e.IdProducto).ValueGeneratedNever();
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Existencia)
-                    .IsRequired()
-                    .HasMaxLength(25)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.FechaCadu).HasColumnType("date");
+                //entity.Property(e => e.FechaCadu).HasColumnType("date");
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(25)
                     .IsUnicode(false);
-
-                entity.Property(e => e.PrecioUnidad)
-                    .HasMaxLength(10)
-                    .IsFixedLength();
 
                 entity.HasOne(d => d.IdCategoriaNavigation)
                     .WithMany(p => p.Producto)
@@ -579,11 +574,6 @@ namespace ProyectoFinal2020v2.Models
             {
                 entity.HasKey(e => e.IdProveedor);
 
-                entity.Property(e => e.Identificacion)
-                   .IsRequired()
-                   .HasMaxLength(50)
-                   .IsUnicode(false);
-
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -597,6 +587,11 @@ namespace ProyectoFinal2020v2.Models
                 entity.Property(e => e.Estado)
                     .IsRequired()
                     .HasMaxLength(25)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Identificacion)
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.NombreProducto)

@@ -1,0 +1,227 @@
+﻿@model ProyectoFinal2020v2.Models.Pedido
+
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#217e7e"><i class="fas fa-box-open"></i>Pedidos</h1>
+
+<div class="card col-span-12">
+    <div class="card-body">
+        <div class="column">
+            <div class="col-3">
+                <div class="form-group">
+                    <label>Producto</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="IdProducto" name="IdProducto" readonly style="width:225px" />
+                        <div class="input-group-btn">
+                            <button type="button" class=" btn btn-info" style="height:34px; color:#ffffff;" data-toggle="modal" data-target="#modalPedido">Seleccionar</button>
+                        </div>
+                    </div>
+                    <div class="from-group">
+                        <label>Precio</label>
+                        <input type="number" class="form-control" id="precio" name="PrecioUnidad" readonly style="width:325px" />
+                    </div>
+                    <div class="from-group">
+                        <label>Proveedor</label>
+                        <input type="text" class="form-control" id="proveedor" name="IdProveedor" readonly style="width:325px" />
+                    </div>
+                    <div class="from-group">
+                        <label>Categoria</label>
+                        <input type="text" class="form-control" id="categoria" name="IdCategoria" readonly style="width:325px" />
+                    </div>
+                    <br />
+                    <button onclick="agregarFila()" class="btn btn-success btn-block" type="button" style="width:325px">Agregar</button>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="col-3">
+                <div class="from-group">
+                    <label>F.Compra </label>
+                    <input asp-for="FechaCompra" type="text" class="form-control" id="fechaCompra" style="width:325px" readonly value="@DateTime.Now" />
+                </div>
+                <div class="from-group">
+                    <label>F.Entrega</label>
+                    @*<input asp-for="FechaLlegada" type="datetime" class="form-control" id="fechaEntrega" style="width:325px" />*@
+                    <input asp-for="FechaLlegada" class="form-control" style="width:325px" id="fechaEntrega" />
+                </div>
+                <div class="from-group">
+                    <label>F.Caducidad</label>
+                    <input type="date" id="fechaCaducidad" name="FechaCaducidad" class="form-control" style="width:325px" />
+                </div>
+                <div class="from-group">
+                    <label>Cantidad</label>
+                    <input type="number" class="form-control" id="cantidad" name="UnidadesSolicitadas" style="width:325px" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <form action="/Pedidos/Guardar" method="post">
+            <table id="tablaPedido" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Producto</td>
+                        <td>Precio</td>
+                        <td>Proveedor</td>
+                        <td>Categoria</td>
+                        <td>F.Compra</td>
+                        <td>F.Entrega</td>
+                        <td>F.Caducidad</td>
+                        <td>Cantidad</td>
+                        <td>Subtotal</td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-center">
+                            <h3>Total:<span id="total">0.0</span> </h3>
+                            <input type="hidden" name="Total" id="Total" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button type="submit" class="btn btn-success btn-block">Guardar</button>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="modalPedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title container p-3 my-3 text-white text-center rounded-l" id="exampleModalLabel" style="background:#DF3A01"><i class="fas fa-gifts">Productos</i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              
+                <table id="tableProductos" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                #Producto
+                            </th>
+                            <th>
+                                Precio
+                            </th>
+                            <th>
+                                Proveedor
+                            </th>
+                            <th>
+                                Categoria
+                            </th>                            
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Producto item in (List<Producto>)TempData["Produc"])
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdProducto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PrecioUnidad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdProveedor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdCategoria)
+                                </td>                               
+                                <td>
+                                    <a class="btn btn-primary btn-sm" onclick="recibir(@item.IdProducto,@item.PrecioUnidad,@item.IdProveedor,@item.IdCategoria)">Seleccionar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#tableProductos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+<script>
+    function recibir(a, b, c, d) {
+        var valor = a;
+        document.getElementById("IdProducto").value = valor;
+        var valor2 = b;
+        document.getElementById("precio").value = valor2;
+        var valor3 = c;
+        document.getElementById("proveedor").value = valor3;
+        var valor4 = d;
+        document.getElementById("categoria").value = valor4;
+
+    }
+
+</script>
+<script>
+    var cont = 0;
+    function agregarFila() {
+        let _prod = $("#IdProducto");
+        let _a = $("#precio");
+        let _b = $("#proveedor");
+        let _c = $("#categoria");
+        let _d = $("#fechaCompra");
+        let _e = $("#fechaEntrega");
+        let _f = $("#fechaCaducidad");
+        let _g = $("#cantidad");
+        let total = $("#Total").val() || 0;
+        $("#tablaPedido").append(`
+         <tr>
+            <td>
+                <input type="hidden" name="detalles[${cont}].IdProducto" value="${_prod.val()}" />
+                ${_prod.val()}
+            </td>
+            <td>
+                <input type="hidden" name="detalles[${cont}].PrecioUnidad" value="${_a.val()}" />
+                ${_a.val()}
+            </td>
+            <td>
+                <input type="hidden" name="detalles[${cont}].IdProveedor" value="${_b.val()}" />
+                ${_b.val()}
+            </td>
+            <td>
+                <input type="hidden" name="detalles[${cont}].IdCategoria" value="${_c.val()}" />
+                ${_c.val()}
+            </td>
+            <td>
+                <input type="hidden" name="FechaCompra" value="${_d.val()}" />
+                ${_d.val()}
+            </td>
+            <td>
+                <input type="hidden" name="FechaLLegada" value="${_e.val()}" />
+                ${_e.val()}
+            </td>
+            <td>
+                <input type="hidden" name="detalles[${cont}].FechaCaducidad" value="${_f.val()}" />
+                ${_f.val()}
+            </td>
+            <td>
+                <input type="hidden" name="detalles[${cont}].UnidadesSolicitadas" value="${_g.val()}" />
+                ${_g.val()}
+            </td>
+            <td>
+
+                ${_g.val() * _a.val()}
+            </td>
+         </tr>
+        `);
+
+        let suma = parseInt(total) + parseInt(_g.val() * _a.val());
+        $("#total").text(suma);
+        $("#Total").val(suma);
+        cont++;
+    }
+</script>   
