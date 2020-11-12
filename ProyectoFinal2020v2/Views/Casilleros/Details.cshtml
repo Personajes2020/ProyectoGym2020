@@ -8,7 +8,7 @@
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#445e02"><i class="fas fa-th"></i>Detalles</h1>
 
 
-<div>
+<div class="container">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -18,8 +18,9 @@
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdCasillero" class="btn btn-primary"><i class="fas fa-marker"></i>Editar</a>
-    <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-undo-alt"></i>Atrás</a>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.IdCasillero" class="btn btn-primary"><i class="fas fa-marker"></i>Editar</a>
+        <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-undo-alt"></i>Atrás</a>
+    </div>
 </div>

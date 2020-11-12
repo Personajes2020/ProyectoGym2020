@@ -11,84 +11,87 @@
 @*<p>
         <a class="btn btn-success float-right " asp-action="Create">Create New <i class="fas fa-plus-square"></i></a><br />
     </p>*@
-<a class="btn btn-success" asp-action="Create">
-    Crear Nuevo
-    <i class="fas fa-plus-square"></i>
-</a>
-<br />
-<br />
-<table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Identificacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido1)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Apellido2)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Area)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoDeEmp)
-            </th>
-            <th>
-                Acciones
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Identificacion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Apellido1)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Apellido2)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Area)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TipoDeEmp)
-                </td>
 
-                <td>
-                    <div class="btn-group" style='font-size: 5px'>
-                        <a asp-action="Edit" asp-route-id="@item.IdEmpleado" class="btn btn-primary btn-sm">Editar<i class="fas fa-pen "></i></a> |
-                        <a asp-action="Details" asp-route-id="@item.IdEmpleado" class="btn btn-secondary btn-sm">Detalles<i class="fas fa-align-justify "> </i></a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdEmpleado" class="btn btn-danger btn-sm">Eliminar<i class="fas fa-trash "></i></a>
-                    </div>
-                </td>
+<div class="container">
+    <a class="btn btn-success" asp-action="Create">
+        Crear Nuevo
+        <i class="fas fa-plus-square"></i>
+    </a>
+    <br />
+    <br />
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Identificacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido1)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Apellido2)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Area)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoDeEmp)
+                </th>
+                <th>
+                    Acciones
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Identificacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido1)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Apellido2)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Area)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoDeEmp)
+                    </td>
+
+                    <td>
+                        <div class="btn-group" style='font-size: 5px'>
+                            <a asp-action="Edit" asp-route-id="@item.IdEmpleado" class="btn btn-primary btn-sm">Editar<i class="fas fa-pen "></i></a> |
+                            <a asp-action="Details" asp-route-id="@item.IdEmpleado" class="btn btn-secondary btn-sm">Detalles<i class="fas fa-align-justify "> </i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdEmpleado" class="btn btn-danger btn-sm">Eliminar<i class="fas fa-trash "></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <link href="~/css/tablas.css" rel="stylesheet" />
 @section scripts{
     <script>

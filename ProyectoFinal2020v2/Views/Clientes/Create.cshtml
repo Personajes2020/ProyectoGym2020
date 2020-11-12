@@ -6,102 +6,102 @@
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#314655"><i class="fas fa-plus-square"></i>Agregar Cliente</h1>
 
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" asp-controller="Clientes" method="post" id="formulario">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Identificacion" class="control-label"></label>
-                <input asp-for="Identificacion" class="form-control" placeholder="Identificacion" />
-                <span asp-validation-for="Identificacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" placeholder="Nombre" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Apellido1" class="control-label"></label>
-                <input asp-for="Apellido1" class="form-control" placeholder="Primer Apellido" />
-                <span asp-validation-for="Apellido1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Apellido2" class="control-label"></label>
-                <input asp-for="Apellido2" class="form-control" placeholder="Segundo Apellido" />
-                <span asp-validation-for="Apellido2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaNac" class="control-label"></label>
-                <input asp-for="FechaNac" class="form-control" placeholder="Fecha de Nacimiento" />
-                <span asp-validation-for="FechaNac" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" placeholder="Telefono" />
-                <span asp-validation-for="Telefono" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Direccion" class="control-label"></label>
-                <input asp-for="Direccion" class="form-control" placeholder="Direccion" />
-                <span asp-validation-for="Direccion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" placeholder="Email" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label><br />
-                <input asp-for="Estado" type="radio" name="Estado" value="Activo">
-                <label asp-for="Estado">Activo</label><br>
-                <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
-                <label asp-for="Estado">Inactivo</label><br>
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sexo" class="control-label"></label><br />
-                <input asp-for="Sexo" type="radio" name="Sexo" value="M">
-                <label asp-for="Sexo">M</label><br>
-                <input asp-for="Sexo" type="radio" name="Sexo" value="F">
-                <label asp-for="Sexo">F</label><br>
-                <span asp-validation-for="Sexo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaRenovacion" class="control-label"></label>
-                <input asp-for="FechaRenovacion" class="form-control" placeholder="Fecha de Renovacion" />
-                <span asp-validation-for="FechaRenovacion" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="IdCasillero" class="control-label"></label>
-                <div class="input-group">
-                    <input asp-for="IdCasillero" class="form-control" id="Casi" readonly value="@TempData["IdCasillero"]" />
-                    <div class="input-group-btn">
-                        <button type="button" class=" btn btn-info" style="height:38px; color:#ffffff;" data-toggle="modal" data-target="#modalCasillereo">Seleccionar</button>
-                    </div>
-                    <span asp-validation-for="IdCasillero" class="text-danger"></span>
+<div class="container">
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" asp-controller="Clientes" method="post" id="formulario">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Identificacion" class="control-label"></label>
+                    <input asp-for="Identificacion" class="form-control" placeholder="Identificacion" />
+                    <span asp-validation-for="Identificacion" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdTarifa" class="control-label"></label>
-                <div class="input-group">
-                    <input asp-for="IdTarifa" class="form-control" id="Tari" readonly value="@TempData["IdTarifa"]" />
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-info" style="height:38px; color:#ffffff" data-toggle="modal" data-target="#modalCliente">Seleccionar</button>
-                    </div>
-                    <span asp-validation-for="IdTarifa" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" placeholder="Nombre" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" id="saveAjax" />
-                <a asp-action="Index" class="btn btn-secondary">Atrás</a>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="Apellido1" class="control-label"></label>
+                    <input asp-for="Apellido1" class="form-control" placeholder="Primer Apellido" />
+                    <span asp-validation-for="Apellido1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Apellido2" class="control-label"></label>
+                    <input asp-for="Apellido2" class="form-control" placeholder="Segundo Apellido" />
+                    <span asp-validation-for="Apellido2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaNac" class="control-label"></label>
+                    <input asp-for="FechaNac" class="form-control" placeholder="Fecha de Nacimiento" />
+                    <span asp-validation-for="FechaNac" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefono" class="control-label"></label>
+                    <input asp-for="Telefono" class="form-control" placeholder="Telefono" />
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Direccion" class="control-label"></label>
+                    <input asp-for="Direccion" class="form-control" placeholder="Direccion" />
+                    <span asp-validation-for="Direccion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Estado" class="control-label"></label><br />
+                    <input asp-for="Estado" type="radio" name="Estado" value="Activo">
+                    <label asp-for="Estado">Activo</label><br>
+                    <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
+                    <label asp-for="Estado">Inactivo</label><br>
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sexo" class="control-label"></label><br />
+                    <input asp-for="Sexo" type="radio" name="Sexo" value="M">
+                    <label asp-for="Sexo">M</label><br>
+                    <input asp-for="Sexo" type="radio" name="Sexo" value="F">
+                    <label asp-for="Sexo">F</label><br>
+                    <span asp-validation-for="Sexo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaRenovacion" class="control-label"></label>
+                    <input asp-for="FechaRenovacion" class="form-control" placeholder="Fecha de Renovacion" />
+                    <span asp-validation-for="FechaRenovacion" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IdCasillero" class="control-label"></label>
+                    <div class="input-group">
+                        <input asp-for="IdCasillero" class="form-control" id="Casi" readonly value="@TempData["IdCasillero"]" />
+                        <div class="input-group-btn">
+                            <button type="button" class=" btn btn-info" style="height:38px; color:#ffffff;" data-toggle="modal" data-target="#modalCasillereo">Seleccionar</button>
+                        </div>
+                        <span asp-validation-for="IdCasillero" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdTarifa" class="control-label"></label>
+                    <div class="input-group">
+                        <input asp-for="IdTarifa" class="form-control" id="Tari" readonly value="@TempData["IdTarifa"]" />
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-info" style="height:38px; color:#ffffff" data-toggle="modal" data-target="#modalCliente">Seleccionar</button>
+                        </div>
+                        <span asp-validation-for="IdTarifa" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" id="saveAjax" />
+                    <a asp-action="Index" class="btn btn-secondary">Atrás</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
 <div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

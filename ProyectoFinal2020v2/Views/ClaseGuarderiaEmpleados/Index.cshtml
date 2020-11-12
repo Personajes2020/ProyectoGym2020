@@ -3,48 +3,54 @@
 @{
     ViewData["Title"] = "Index";
 }
+<header>
+    <h3 class="container p-3 my-3 text-white text-center rounded-l"
+        style="background-color: #DB7093">
+        <i class="fas fa-shapes"></i> Clases Guarderia
+    </h3>
+</header>
 
-<h1>Clase Guarderia</h1>
+<div class="container">
+    <p>
+        <a asp-action="Create">Crear nueva</a>
+    </p>
+    <br />
+    <br />
+    <table id="table" class="display" cellspacing="0" style="width:100%">
 
-<p>
-    <a asp-action="Create">Crear nueva</a>
-</p>
-<br />
-<br />
-<table id="table" class="display" cellspacing="0" style="width:100%">
-
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdClaseGuarderiaNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
-            </th>
-            <th>
-                Acciones
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdClaseGuarderiaNavigation.Estado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido1)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdClaseGuarderiaEmpleado">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdClaseGuarderiaEmpleado">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdClaseGuarderiaEmpleado">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdClaseGuarderiaNavigation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdEmpleadoNavigation)
+                </th>
+                <th>
+                    Acciones
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdClaseGuarderiaNavigation.Estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido1)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdClaseGuarderiaEmpleado">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdClaseGuarderiaEmpleado">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdClaseGuarderiaEmpleado">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 @*<link href="~/css/tablas.css" rel="stylesheet" />
 @section scripts{
     <script>

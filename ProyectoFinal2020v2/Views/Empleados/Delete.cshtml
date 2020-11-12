@@ -5,119 +5,120 @@
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 
 <h4 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i> Eliminar Empleado</h4>
+<div class="container">
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Identificacion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Apellido1)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Apellido1)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Apellido2)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Apellido2)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaNac)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FechaNac)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Direccion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Sexo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Sexo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Area)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Area)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TipoDeEmp)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TipoDeEmp)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NumeroSocial)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NumeroSocial)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NumeroBancario)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NumeroBancario)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Ccss)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Ccss)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Profesion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Profesion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaContrato)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FechaContrato)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+        </dl>
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Identificacion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Identificacion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido1)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido1)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido2)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido2)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaNac)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FechaNac)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sexo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sexo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Area)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Area)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoDeEmp)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TipoDeEmp)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroSocial)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NumeroSocial)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroBancario)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NumeroBancario)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Ccss)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Ccss)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Profesion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Profesion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaContrato)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FechaContrato)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete" asp-controller="Empleados" method="post" id="formulario">
-        <input type="hidden" asp-for="IdEmpleado" />
-        <input type="button" value="Eliminar" class="btn btn-danger" id="deleteAjax" /> |
-        <a asp-action="Index" class="btn btn-secondary">Atras</a>
-    </form>
+        <form asp-action="Delete" asp-controller="Empleados" method="post" id="formulario">
+            <input type="hidden" asp-for="IdEmpleado" />
+            <input type="button" value="Eliminar" class="btn btn-danger" id="deleteAjax" /> |
+            <a asp-action="Index" class="btn btn-secondary">Atras</a>
+        </form>
+    </div>
 </div>
 <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
 <script src="~/js/sweetalert2.all.min.js"></script>

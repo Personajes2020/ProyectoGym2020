@@ -12,5 +12,17 @@ namespace ProyectoFinal2020v2.Controllers
         {
             return View();
         }
+        public IActionResult Gym()
+        {
+            return View();
+        }
+        public IActionResult Guarderia()
+        {
+            return View();
+        }
+        public IActionResult Tienda()
+        {
+            return View();
+        }
     }
 }

@@ -9,131 +9,142 @@
         style="background-color: #DB7093">
         <i class="fas fa-shapes"></i> Clases Guarderia
     </h3>
+</header>
+<div class="container">
+    <br />
     <a class="btn btn-success" asp-action="Create">
         Crear Nueva
         <i class="fas fa-plus-square"></i>
     </a>
-</header>
 
+    <br />
 
-<table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                Id clase
-            </th>
-            <th>
-                Hora Inicio
-            </th>
-            <th>
-                Hora Fin
-            </th>
-            <th>
-                Fecha
-            </th>
-            <th>
-                Cupo
-            </th>
-            @*<th>
-                Duracion(Horas)
-            </th>*@
-            <th>
-                Estado
-            </th>
-            <th>
-                Acciones
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var clase in Model.ClaseGuarderia)
-        {
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+        <thead>
             <tr>
-                <td>
-                    @clase.IdClaseGuarderia
-                </td>
-                <td>
-                    @clase.HoraInicio
-                </td>
-                <td>
-                    @clase.HoraFin
-                </td>
-                <td>
-
-                    @clase.Fecha.ToString("dd/MM/yyyy")
-                </td>
-                <td>
-                    @clase.Cupo
-                </td>
-                @*<td>
-                    @clase.Duracion
-                </td>*@
-                <td>
-                    @clase.Estado
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-primary"> Editar <i class="fas fa-pen"></i></a>
-                    <a asp-action="Details" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-secondary"> Detalles <i class="fas fa-align-justify"> </i></a>
-                    <a asp-action="Delete" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-danger">Eliminar <i class="fas fa-trash"></i></a>
-
-                </td>
+                <th>
+                    Id clase
+                </th>
+                <th>
+                    Hora Inicio
+                </th>
+                <th>
+                    Hora Fin
+                </th>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    Cupo
+                </th>
+                @*<th>
+                        Duracion(Horas)
+                    </th>*@
+                <th>
+                    Estado
+                </th>
+                <th>
+                    Acciones
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var clase in Model.ClaseGuarderia)
+            {
+                <tr>
+                    <td>
+                        @clase.IdClaseGuarderia
+                    </td>
+                    <td>
+                        @clase.HoraInicio
+                    </td>
+                    <td>
+                        @clase.HoraFin
+                    </td>
+                    <td>
+
+                        @clase.Fecha.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @clase.Cupo
+                    </td>
+                    @*<td>
+                            @clase.Duracion
+                        </td>*@
+                    <td>
+                        @clase.Estado
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-primary"> Editar <i class="fas fa-pen"></i></a>
+                        <a asp-action="Details" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-secondary"> Detalles <i class="fas fa-align-justify"> </i></a>
+                        <a asp-action="Delete" asp-route-id="@clase.IdClaseGuarderia" class="btn btn-danger">Eliminar <i class="fas fa-trash"></i></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <br />
 <br />
+
 <h3 class="container p-3 my-3 bg-primary text-black text-left rounded-l"><i class="fas fa-baby-carriage"></i> Cuidadores</h3>
 
-<table id="table2" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                Id Clase Guarderia
-            </th>
-            <th>
-                Id Empleado
-            </th>
-            <th>
-                Empleado
-            </th>
-            <th>
-                <a class="btn btn-success" asp-controller="ClaseGuarderiaEmpleados" asp-action="Create">
-                    Crear Nueva
-                    <i class="fas fa-plus-square"></i>
-                </a>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var cuidador in Model.ClaseGuarderiaEmpleado)
-        {
+<div class="container">
+    <br />
+    <a class="btn btn-success" asp-controller="ClaseGuarderiaEmpleados" asp-action="Create">
+        Crear Nueva
+        <i class="fas fa-plus-square"></i>
+    </a>
+    <br />
 
+    <table id="table2" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+        <thead>
             <tr>
-                <td>
-                    @cuidador.IdClaseGuarderia
-                </td>
-                <td>
-                    @cuidador.IdEmpleado
-                </td>
-                <td>
-                    @foreach (Empleado emp in (List<Empleado>)ViewData["Empleados"])
-                    {
-                        if (cuidador.IdEmpleado == emp.IdEmpleado)
-                        {
-                            @emp.Nombre @emp.Apellido1
-                        }
-                    }
-                </td>
-                <td>
-                    <a asp-controller="ClaseGuarderiaEmpleados" asp-action="Edit" asp-route-id="@cuidador.IdClaseGuarderiaEmpleado" class="btn btn-primary"> Editar<i class="fas fa-pen"></i></a>
-                    @*<a asp-controller="Empleados" asp-action="Details" asp-route-id="@cuidador.IdEmpleado" class="btn btn-secondary"> Detalles<i class="fas fa-align-justify"> </i></a>*@
-                    <a asp-controller="ClaseGuarderiaEmpleados" asp-action="Delete" asp-route-id="@cuidador.IdClaseGuarderiaEmpleado" class="btn btn-danger">Eliminar<i class="fas fa-trash"></i></a>
-                </td>
+                <th>
+                    Id Clase Guarderia
+                </th>
+                <th>
+                    Id Empleado
+                </th>
+                <th>
+                    Empleado
+                </th>
+                <th>
+
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var cuidador in Model.ClaseGuarderiaEmpleado)
+            {
+
+                <tr>
+                    <td>
+                        @cuidador.IdClaseGuarderia
+                    </td>
+                    <td>
+                        @cuidador.IdEmpleado
+                    </td>
+                    <td>
+                        @foreach (Empleado emp in (List<Empleado>)ViewData["Empleados"])
+                        {
+                            if (cuidador.IdEmpleado == emp.IdEmpleado)
+                            {
+                                @emp.Nombre @emp.Apellido1
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a asp-controller="ClaseGuarderiaEmpleados" asp-action="Edit" asp-route-id="@cuidador.IdClaseGuarderiaEmpleado" class="btn btn-primary"> Editar<i class="fas fa-pen"></i></a>
+                        @*<a asp-controller="Empleados" asp-action="Details" asp-route-id="@cuidador.IdEmpleado" class="btn btn-secondary"> Detalles<i class="fas fa-align-justify"> </i></a>*@
+                        <a asp-controller="ClaseGuarderiaEmpleados" asp-action="Delete" asp-route-id="@cuidador.IdClaseGuarderiaEmpleado" class="btn btn-danger">Eliminar<i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 <link href="~/css/tablas.css" rel="stylesheet" />
 
@@ -214,6 +225,6 @@
 
 
         });
-       
+
     </script>
 }

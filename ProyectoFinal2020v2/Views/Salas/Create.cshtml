@@ -8,33 +8,36 @@
     <h4><i class="fas fa-plus-square"></i> Agregar Sala</h4>
 </header>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" asp-controller="Salas" method="post" id="formulario">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NombreSala" class="control-label"></label>
-                <input asp-for="NombreSala" class="form-control" />
-                <span asp-validation-for="NombreSala" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
-                <span asp-validation-for="Descripcion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label><br />
-                <input asp-for="Estado" type="radio" name="Estado" value="Activo">
-                <label asp-for="Estado">Activo</label><br>
-                <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
-                <label asp-for="Estado">Inactivo</label><br>
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-success" id="saveValidacion" />
-                <a class="btn btn-secondary" asp-action="Index">Atrás</a>
-            </div>
-        </form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" asp-controller="Salas" method="post" id="formulario">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="NombreSala" class="control-label"></label>
+                    <input asp-for="NombreSala" class="form-control" />
+                    <span asp-validation-for="NombreSala" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Estado" class="control-label"></label><br />
+                    <input asp-for="Estado" type="radio" name="Estado" value="Activo">
+                    <label asp-for="Estado">Activo</label><br>
+                    <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
+                    <label asp-for="Estado">Inactivo</label><br>
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-success" id="saveValidacion" />
+                    <a class="btn btn-secondary" asp-action="Index">Atrás</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>

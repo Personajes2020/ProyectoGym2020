@@ -66,49 +66,51 @@
 <br />
 <br />
 
-<table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdMonedero)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Monto)
-            </th>
-            <th>
-                Cliente
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (RecargaMonederoV item in (IEnumerable<RecargaMonederoV>)ViewData["ListaRecarga"])
-        {
+<div class="container">
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdMonederoNavigation.IdMonedero)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Monto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdMonederoNavigation.IdCliente)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha)
-                </td>
-                <td>
-                    @*<a asp-action="Edit" asp-route-id="@item.IdRecargaMv">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.IdRecargaMv">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdRecargaMv">Delete</a>*@
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdMonedero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Monto)
+                </th>
+                <th>
+                    Cliente
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (RecargaMonederoV item in (IEnumerable<RecargaMonederoV>)ViewData["ListaRecarga"])
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdMonederoNavigation.IdMonedero)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Monto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdMonederoNavigation.IdCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.IdRecargaMv">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.IdRecargaMv">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdRecargaMv">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <div class="modal fade" id="modalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

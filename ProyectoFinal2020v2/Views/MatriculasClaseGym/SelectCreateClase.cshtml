@@ -8,74 +8,78 @@
     style="background-color: rgb(107, 0, 130)">
     <i class="fas fa-chalkboard"></i> Clases Gym C
 </h3>
-<table id="table" class="display" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdActividad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cupo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdSala)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdEmpleado)
-            </th>
 
-            <th>
-                @*<a class="btn btn-success" asp-action="Create">
-                        Crear Nuevo
-                        <i class="fas fa-plus-square"></i>
-                    </a>*@
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="container">
+
+    <table id="table" class="display" style="width:100%">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdActividadNavigation.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HoraInicio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cupo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdSalaNavigation.NombreSala)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Nombre)
-                    @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido1)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdActividad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoraInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cupo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdSala)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdEmpleado)
+                </th>
 
-                <td>
-                    <a type="button" class="btn btn-info" asp-action="SelectA" asp-controller="MatriculasClaseGym" asp-route-id="@item.IdClaseGym ">Selecionar</a>
-                    @*<button class="btn btn-info" style="color:white">
-                        @Html.ActionLink("Seleccionar", "SelectA", "MatriculasClaseGym", new { id = @item.IdClaseGym })
-                    </button>*@
-
-
-                    @*<a asp-action="Details" asp-route-id="@item.IdClaseGym" class="btn btn-secondary btn-sm">Detalle <i class="fas fa-align-justify "></i></a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdClaseGym" class="btn btn-danger btn-sm">Eliminar <i class="fas fa-trash"></i></a>*@
-                </td>
+                <th>
+                    @*<a class="btn btn-success" asp-action="Create">
+                            Crear Nuevo
+                            <i class="fas fa-plus-square"></i>
+                        </a>*@
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdActividadNavigation.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoraInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cupo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdSalaNavigation.NombreSala)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Nombre)
+                        @Html.DisplayFor(modelItem => item.IdEmpleadoNavigation.Apellido1)
+                    </td>
+
+                    <td>
+                        <a type="button" class="btn btn-info" asp-action="SelectA" asp-controller="MatriculasClaseGym" asp-route-id="@item.IdClaseGym ">Selecionar</a>
+                        @*<button class="btn btn-info" style="color:white">
+                                @Html.ActionLink("Seleccionar", "SelectA", "MatriculasClaseGym", new { id = @item.IdClaseGym })
+                            </button>*@
+
+
+                        @*<a asp-action="Details" asp-route-id="@item.IdClaseGym" class="btn btn-secondary btn-sm">Detalle <i class="fas fa-align-justify "></i></a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdClaseGym" class="btn btn-danger btn-sm">Eliminar <i class="fas fa-trash"></i></a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 @section scripts{
     <script>
         $(document).ready(function () {

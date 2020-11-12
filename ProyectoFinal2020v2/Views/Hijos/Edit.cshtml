@@ -6,43 +6,44 @@
 
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#3d2149"><i class="far fa-money-bill-alt"></i>Editar</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" asp-controller="Hijos" method="post" id="formulario">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdHijo" />
-            <div class="form-group">
-                <label asp-for="Identificacion" class="control-label"></label>
-                <input asp-for="Identificacion" class="form-control" />
-                <span asp-validation-for="Identificacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Apellido1" class="control-label"></label>
-                <input asp-for="Apellido1" class="form-control" />
-                <span asp-validation-for="Apellido1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Apellido2" class="control-label"></label>
-                <input asp-for="Apellido2" class="form-control" />
-                <span asp-validation-for="Apellido2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaDeNac" class="control-label"></label>
-                <input asp-for="FechaDeNac" class="form-control" />
-                <span asp-validation-for="FechaDeNac" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" />
-                <a asp-action="Index" class="btn btn-secondary ">Atrás</a>
-            </div>
-        </form>
+<div class="container">
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" asp-controller="Hijos" method="post" id="formulario">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdHijo" />
+                <div class="form-group">
+                    <label asp-for="Identificacion" class="control-label"></label>
+                    <input asp-for="Identificacion" class="form-control" />
+                    <span asp-validation-for="Identificacion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Apellido1" class="control-label"></label>
+                    <input asp-for="Apellido1" class="form-control" />
+                    <span asp-validation-for="Apellido1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Apellido2" class="control-label"></label>
+                    <input asp-for="Apellido2" class="form-control" />
+                    <span asp-validation-for="Apellido2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaDeNac" class="control-label"></label>
+                    <input asp-for="FechaDeNac" class="form-control" />
+                    <span asp-validation-for="FechaDeNac" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" />
+                    <a asp-action="Index" class="btn btn-secondary ">Atrás</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>

@@ -7,66 +7,67 @@
 
 <title>@ViewData["Title"] - ProyectoFinal2020</title>
 <h4 class="container p-3 my-3 bg-dark text-white text-center rounded-l"><i class="fas fa-dumbbell fa-lg"></i> Actividades</h4>
+<div class="container">
+    <a asp-action="Create" class="btn btn-success">
+        Crear nueva
+        <i class="fas fa-plus-square"></i>
 
-<a asp-action="Create" class="btn btn-success">
-    Crear nueva
-    <i class="fas fa-plus-square"></i>
+    </a>
+    <br />
+    <br />
 
-</a>
-<br />
-<br />
-
-<table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duracion)
-            </th>
-
-            <th >
-                Acciones
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Duracion)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duracion)
+                </th>
 
-                <td >
-
-                    <a asp-action="Edit" asp-route-id="@item.IdActividad" class="btn btn-primary">
-                        Editar
-                        <i class="fas fa-pen"></i>
-                    </a>
-                    <a asp-action="Details" asp-route-id="@item.IdActividad" class="btn btn-secondary">
-                        Detalles
-                        <i class="fas fa-align-justify"> </i>
-                    </a>
-                    <a asp-action="Delete" asp-route-id="@item.IdActividad" class="btn btn-danger">
-                        Eliminar
-                        <i class="fas fa-trash"></i>
-                    </a>
-                </td>
+                <th>
+                    Acciones
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duracion)
+                    </td>
+
+                    <td>
+
+                        <a asp-action="Edit" asp-route-id="@item.IdActividad" class="btn btn-primary">
+                            Editar
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.IdActividad" class="btn btn-secondary">
+                            Detalles
+                            <i class="fas fa-align-justify"> </i>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.IdActividad" class="btn btn-danger">
+                            Eliminar
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <link href="~/css/tablas.css" rel="stylesheet" />
 @section scripts{
     <script>

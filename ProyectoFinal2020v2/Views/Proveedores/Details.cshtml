@@ -6,54 +6,56 @@
 
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#0489B1"><i class="fas fa-cart-plus">Detalles de Proveedor</i></h1>
 
-<div>
-    
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Identificacion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Identificacion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreProducto)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NombreProducto)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreRepresentante)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NombreRepresentante)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdProveedor" class="btn btn-primary"><i class="fas fa-marker"></i>Editar</a>
-    <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-undo-alt"></i>Atrás</a>
+<div class="container">
+    <div>
+
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Identificacion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NombreProducto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NombreProducto)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NombreRepresentante)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NombreRepresentante)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.IdProveedor" class="btn btn-primary"><i class="fas fa-marker"></i>Editar</a>
+        <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-undo-alt"></i>Atrás</a>
+    </div>
 </div>

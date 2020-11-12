@@ -6,54 +6,55 @@
 
 
 <h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#0489B1"><i class="fas fa-cart-plus">Agregar Proveedor</i></h1>
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" asp-controller="Proveedores" method="post" id="formulario">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Identificacion" class="control-label"></label>
-                <input asp-for="Identificacion" class="form-control" />
-                <span asp-validation-for="Identificacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NombreProducto" class="control-label"></label>
-                <input asp-for="NombreProducto" class="form-control" />
-                <span asp-validation-for="NombreProducto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
-                <span asp-validation-for="Descripcion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NombreRepresentante" class="control-label"></label>
-                <input asp-for="NombreRepresentante" class="form-control" />
-                <span asp-validation-for="NombreRepresentante" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" />
-                <span asp-validation-for="Telefono" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label><br />
-                <input asp-for="Estado" type="radio" name="Estado" value="Activo">
-                <label asp-for="Estado">Activo</label><br>
-                <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
-                <label asp-for="Estado">Inactivo</label><br>
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" id="Crear" />
-                <a asp-action="Index" class="btn btn-secondary">Atrás</a>
-            </div>
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" asp-controller="Proveedores" method="post" id="formulario">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Identificacion" class="control-label"></label>
+                    <input asp-for="Identificacion" class="form-control" />
+                    <span asp-validation-for="Identificacion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NombreProducto" class="control-label"></label>
+                    <input asp-for="NombreProducto" class="form-control" />
+                    <span asp-validation-for="NombreProducto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NombreRepresentante" class="control-label"></label>
+                    <input asp-for="NombreRepresentante" class="form-control" />
+                    <span asp-validation-for="NombreRepresentante" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefono" class="control-label"></label>
+                    <input asp-for="Telefono" class="form-control" />
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Estado" class="control-label"></label><br />
+                    <input asp-for="Estado" type="radio" name="Estado" value="Activo">
+                    <label asp-for="Estado">Activo</label><br>
+                    <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
+                    <label asp-for="Estado">Inactivo</label><br>
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" id="Crear" />
+                    <a asp-action="Index" class="btn btn-secondary">Atrás</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
