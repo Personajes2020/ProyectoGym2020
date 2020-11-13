@@ -34,7 +34,7 @@
                     </a>
                     <a class="btn btn-info" asp-controller="DetallesPedidos" asp-action="Index">
                         Ver detalles
-                        <i class="fas fa-plus-square"></i>
+                        <i class="fas fa-scroll"></i>
                     </a>
                 </th>
             </tr>
@@ -62,6 +62,7 @@
 
                         @{ if (item.Estado.Equals("Cancelado"))
                             {
+                                <a asp-action="Edit" asp-route-id="@item.IdPedido" class="btn btn-info"><i class="far fa-comment-alt"></i>Justificar</a>
                                 @Html.Raw("Se ha cancelado")
                             }
                             else if (item.Estado.Equals("Recibido"))

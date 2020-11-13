@@ -85,7 +85,7 @@ namespace ProyectoFinal2020v2.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPedido,Descripcion")] Pedido pedido)
+        public async Task<IActionResult> Edit(int id, [Bind("IdPedido,FechaCompra,FechaLlegada,Estado,Importe,Descripcion")] Pedido pedido)
         {
             if (id != pedido.IdPedido)
             {

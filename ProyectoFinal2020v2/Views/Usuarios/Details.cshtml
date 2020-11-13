@@ -1,4 +1,5 @@
 ﻿@model ProyectoFinal2020v2.Usuarios
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 @{
     ViewData["Title"] = "Details";
@@ -6,8 +7,8 @@
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 <h4 class="container p-3 my-3 bg-secondary text-white text-center rounded-l"><i class="fas fa-align-justify "></i> Detalle Usuario</h4>
 
-<div>
-    <h4>Usuarios</h4>
+<div class="container">
+    <h4>Detalles de Usuario</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -48,7 +49,7 @@
         </dd>
     </dl>
 </div>
-<div>
+<div class="container">
     <a asp-action="Edit" asp-route-id="@Model.IdUsuario" class="btn btn-primary">Editar</a>
     <a asp-action="Index" class="btn btn-secondary">Atrás</a>
 </div>

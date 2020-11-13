@@ -4,86 +4,90 @@
     ViewData["Title"] = "Index";
 }
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <h4 class="container p-3 my-3 bg-primary text-white text-center rounded-l"><i class="fas fa-user fa-lg"></i> Usuarios</h4>
+<div class="container">
 
-<table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreUsuario)
-            </th>
-            <th hidden>
-                @Html.DisplayNameFor(model => model.Contraseña)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaCreacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Activo)
-            </th>
-            <th hidden>
-                @Html.DisplayNameFor(model => model.ConfirmarContraseña)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdRoleNavigation)
-            </th>
 
-            <th>
-                Acciones
-                <a class="btn btn-success" asp-action="Create">
-                    Crear Nuevo
-                    <i class="fas fa-plus-square"></i>
-                </a>
-
-            </th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NombreUsuario)
-                </td>
-                <td hidden>
-                    @Html.DisplayFor(modelItem => item.Contraseña)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaCreacion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Activo)
-                </td>
-                <td hidden>
-                    @Html.DisplayFor(modelItem => item.ConfirmarContraseña)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdRoleNavigation.NombreRole)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreUsuario)
+                </th>
+                <th hidden>
+                    @Html.DisplayNameFor(model => model.Contraseña)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaCreacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Activo)
+                </th>
+                <th hidden>
+                    @Html.DisplayNameFor(model => model.ConfirmarContraseña)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdRoleNavigation)
+                </th>
 
-
-
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-primary">
-                        Editar
-                        <i class="fas fa-pen"></i>
-                    </a>
-                    <a asp-action="Details" asp-route-id="@item.IdUsuario" class="btn btn-secondary">
-                        Detalles
-                        <i class="fas fa-align-justify"> </i>
-                    </a>
-                    <a asp-action="Delete" asp-route-id="@item.IdUsuario" class="btn btn-danger">
-                        Eliminar
-                        <i class="fas fa-trash"></i>
+                <th>
+                    Acciones
+                    <a class="btn btn-success" asp-action="Create">
+                        Crear Nuevo
+                        <i class="fas fa-plus-square"></i>
                     </a>
 
-                </td>
+                </th>
+
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreUsuario)
+                    </td>
+                    <td hidden>
+                        @Html.DisplayFor(modelItem => item.Contraseña)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaCreacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activo)
+                    </td>
+                    <td hidden>
+                        @Html.DisplayFor(modelItem => item.ConfirmarContraseña)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdRoleNavigation.NombreRole)
+                    </td>
+
+
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-primary">
+                            Editar
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.IdUsuario" class="btn btn-secondary">
+                            Detalles
+                            <i class="fas fa-align-justify"> </i>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.IdUsuario" class="btn btn-danger">
+                            Eliminar
+                            <i class="fas fa-trash"></i>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <link href="~/css/tablas.css" rel="stylesheet" />
 @section scripts{
     <script>

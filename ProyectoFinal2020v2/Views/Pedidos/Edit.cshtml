@@ -1,0 +1,46 @@
+﻿@model ProyectoFinal2020v2.Models.Pedido
+
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml";}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<h1 class="container p-3 my-3 text-white text-center rounded-l" style="background:#217e7e"><i class="far fa-comment-dots"></i>Justificacion</h1>
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdPedido" />
+                <div class="form-group">
+                    <label asp-for="FechaCompra" hidden class="control-label"></label>
+                    <input asp-for="FechaCompra" hidden class="form-control" />
+                    <span asp-validation-for="FechaCompra" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaLlegada" hidden class="control-label"></label>
+                    <input asp-for="FechaLlegada" hidden class="form-control" />
+                    <span asp-validation-for="FechaLlegada" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Estado" hidden class="control-label"></label>
+                    <input asp-for="Estado" hidden class="form-control" />
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Importe" hidden class="control-label"></label>
+                    <input asp-for="Importe" hidden class="form-control" />
+                    <span asp-validation-for="Importe" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Descripcion" style="width:500px; height:225px" placeholder="Justifique" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                    <a asp-action="Index" class=" btn btn-secondary">Regresar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
