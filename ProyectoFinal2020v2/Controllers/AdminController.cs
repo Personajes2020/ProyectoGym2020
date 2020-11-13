@@ -24,5 +24,6 @@ namespace ProyectoFinal2020v2.Controllers
         {
             return View();
         }
+       
     }
 }

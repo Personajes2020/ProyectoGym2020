@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Daniel Jesús\\Desktop\\ProvectoVersiones\\v7\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {}
+    "C:\\Users\\Jose JFajardo\\OneDrive\\Escritorio\\Diseño\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daniel Jesús\\Desktop\\ProvectoVersiones\\v7\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {
+    "C:\\Users\\Jose JFajardo\\OneDrive\\Escritorio\\Diseño\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel Jesús\\Desktop\\ProvectoVersiones\\v7\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+        "projectUniqueName": "C:\\Users\\Jose JFajardo\\OneDrive\\Escritorio\\Diseño\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
         "projectName": "ProyectoFinal2020v2",
-        "projectPath": "C:\\Users\\Daniel Jesús\\Desktop\\ProvectoVersiones\\v7\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
-        "packagesPath": "C:\\Users\\Daniel Jesús\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel Jesús\\Desktop\\ProvectoVersiones\\v7\\ProyectoFinal2020v2\\obj\\",
+        "projectPath": "C:\\Users\\Jose JFajardo\\OneDrive\\Escritorio\\Diseño\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+        "packagesPath": "C:\\Users\\Jose JFajardo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jose JFajardo\\OneDrive\\Escritorio\\Diseño\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Daniel Jesús\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jose JFajardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
