@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon>dumbbell_sport_5072.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
