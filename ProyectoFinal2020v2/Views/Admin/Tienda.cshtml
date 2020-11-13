@@ -6,51 +6,51 @@
 
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
         @*<div class="container">*@
-            <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="Index"><i class="fa fa-fw fa-home"></i>Inicio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Index"><i class="fas fa-user-alt"></i>Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Categorias" asp-action="Index"><i class="far fa-address-card"></i>Categorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="DetallesPedidos" asp-action="Index"><i class="fas fa-scroll"></i> Detalles Pedido</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Facturacion" asp-action="Index"><i class="fas fa-cart-arrow-down"></i>Facturación</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Empleados" asp-action="Index"><i class="fas fa-address-book"></i>Empleados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Pedidos" asp-action="Index"><i class="fas fa-box-open"></i>Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Proveedores" asp-action="Index"><i class="fas fa-cart-plus"></i>Empleados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Productos" asp-action="Index"><i class="fas fa-gifts"></i>Empleados</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
+        <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="Index"><i class="fa fa-fw fa-home"></i>Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Index"><i class="fas fa-user-alt"></i>Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Categorias" asp-action="Index"><i class="far fa-address-card"></i>Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="DetallesPedidos" asp-action="Index"><i class="fas fa-scroll"></i> Detalles Pedido</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Facturacion" asp-action="Index"><i class="fas fa-cart-arrow-down"></i>Facturación</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Empleados" asp-action="Index"><i class="fas fa-address-book"></i>Empleados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Pedidos" asp-action="Index"><i class="fas fa-box-open"></i>Pedidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Proveedores" asp-action="Index"><i class="fas fa-cart-plus"></i>Empleados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Productos" asp-action="Index"><i class="fas fa-gifts"></i>Empleados</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
 
-                    <li class="nav-item">
-                        <a class="nav-link text-light"><i class="fas fa-user"></i>Hola @Context.Session.GetString("NombreUsuario") !</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout"><i class="fas fa-door-open"></i>Cerrar Sesión</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light"><i class="fas fa-user"></i>Hola @Context.Session.GetString("NombreUsuario") !</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout"><i class="fas fa-door-open"></i>Cerrar Sesión</a>
+                </li>
 
-                </ul>
-            </div>
+            </ul>
+        </div>
         @*</div>*@
     </nav>
 
@@ -69,26 +69,16 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active" style="height:100vh">
-                <!--active es la primera imagen por defecto -->
-                <img src="~/Imagenes/4.jpeg" alt="Imagen uno">
-                <div class="carousel-caption">
-                    <h3>First Slide</h3>
-                    <p>This is the first image slide</p>
+                <img src="~/Imagenes/Tienda-1.jpg" alt="Imagen uno">
+            </div>
+            <div class="item" style="height:100vh">
+                <div class="item active" style="height:100vh">
+                    <img src="~/Imagenes/Tienda-8.jpeg" alt="Imagen uno">
                 </div>
             </div>
             <div class="item" style="height:100vh">
-                <img src="~/Imagenes/5.jpg" alt="Imagen dos">
-                <div class="carousel-caption">
-                    <h3>Second Slide</h3>
-                    <p>This is the second image slide</p>
-                </div>
-            </div>
-
-            <div class="item" style="height:100vh">
-                <img src="~/Imagenes/6.jpg" alt="">
-                <div class="carousel-caption">
-                    <h3>Third Slide</h3>
-                    <p>This is the third image slide</p>
+                <div class="item active" style="height:100vh">
+                    <img src="~/Imagenes/Tienda-9.jpeg" alt="Imagen uno">
                 </div>
             </div>
         </div>
@@ -126,4 +116,6 @@
         });
     </script>
 </section>
+
+
 
