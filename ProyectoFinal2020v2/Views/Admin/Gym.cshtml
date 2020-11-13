@@ -1,10 +1,11 @@
 ﻿@using Microsoft.AspNetCore.Http;
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <header>
 
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-        <div class="container">
+        @*<div class="container">*@
             <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="Index"><i class="fa fa-fw fa-home"></i>Inicio</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +14,7 @@
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Actividades" asp-action="Index"><i class="fas fa-dumbbell"></i>Actividades</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Actividades" asp-action="Index"><i class="fas fa-dumbbell fa-lg"></i>Actividades</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Index"><i class="fas fa-user-alt"></i>Clientes</a>
@@ -28,10 +29,16 @@
                         <a class="nav-link text-light" asp-area="" asp-controller="ClasesGym" asp-action="Index"><i class="fas fa-chalkboard"></i>Clase Gym</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-light" asp-area="" asp-controller="Hijos" asp-action="Index"><i class="fas fa-baby"></i>Hijos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-light" asp-area="" asp-controller="MatriculaClaseGym" asp-action="Index"><i class="fas fa-laptop"></i>Hijos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Salas" asp-action="Index"><i class="fas fa-address-book"></i>Salas</a>
+                        <a class="nav-link text-light" asp-area="" asp-controller="Salas" asp-action="Index"><i class="fas fa-door-open"></i>Salas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" asp-area="" asp-controller="RecargasMV" asp-action="Index"><i class="fas fa-stream"></i>Recagar Monedero</a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +54,7 @@
 
                 </ul>
             </div>
-        </div>
+        @*</div>*@
     </nav>
 
 </header>

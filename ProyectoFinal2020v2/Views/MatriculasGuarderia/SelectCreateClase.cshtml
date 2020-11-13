@@ -8,61 +8,63 @@
     style="background-color: rgb(107, 0, 130)">
     <i class="fas fa-chalkboard"></i> Clases Guarderia
 </h3>
-<table id="table" class="display" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraFin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cupo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duracion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th>
-
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="container">
+    <table id="table" class="display" style="width:100%">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HoraInicio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HoraFin)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cupo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Duracion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado)
-                </td>
-                <td>
-                    <a type="button" class="btn btn-info" asp-action="SelectA" asp-controller="MatriculasGuarderia" asp-route-id="@item.IdClaseGuarderia ">Selecionar</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoraInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoraFin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cupo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duracion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th>
+
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoraInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoraFin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cupo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duracion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-info" asp-action="SelectA" asp-controller="MatriculasGuarderia" asp-route-id="@item.IdClaseGuarderia ">Selecionar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 @section scripts{
     <script>
         $(document).ready(function () {

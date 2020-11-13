@@ -4,43 +4,49 @@
 @{
     ViewData["Title"] = "Create";
 }
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
 <header>
     <h3 class="container p-3 my-3 bg-success text-white text-center rounded-l "><i class="fas fa-plus-square"></i> Matricular Guarderia</h3>
 </header>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" asp-controller="MatriculasGuarderia" method="post" id="formularioMatricula">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdClaseGuarderia" class="control-label"></label>
-                <div class="input-group">
-                    <input asp-for="IdClaseGuarderia" class="form-control" readonly value="@TempData["IdClaseGuarderia"]" />
-                    <div class="input-group-btn">
-                        <a type="button" class="btn btn-secondary" asp-action="IndexClase1" asp-controller="MatriculasGuarderia">Selecionar</a>
+
+<div class="container">
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" asp-controller="MatriculasGuarderia" method="post" id="formularioMatricula">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="IdClaseGuarderia" class="control-label"></label>
+                    <div class="input-group">
+                        <input asp-for="IdClaseGuarderia" class="form-control" readonly value="@TempData["IdClaseGuarderia"]" />
+                        <div class="input-group-btn">
+                            <a type="button" class="btn btn-secondary" asp-action="IndexClase1" asp-controller="MatriculasGuarderia">Selecionar</a>
+                        </div>
                     </div>
+                    <span asp-validation-for="IdClaseGuarderia" class="text-danger"></span>
                 </div>
-                <span asp-validation-for="IdClaseGuarderia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdHijo" class="control-label"></label>
-                <select asp-for="IdHijo" class="form-control" asp-items="ViewBag.IdHijo"></select>
-                <span asp-validation-for="IdHijo" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                    <label asp-for="Fecha" class="control-label"></label>
-                    <input asp-for="Fecha" class="form-control" />
-                    <span asp-validation-for="Fecha" class="text-danger"></span>
-                </div>*@
-            <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-success" onclick="createVali()" />
-                <a class="btn btn-secondary" asp-action="Index">Atrás</a>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="IdHijo" class="control-label"></label>
+                    <select asp-for="IdHijo" class="form-control" asp-items="ViewBag.IdHijo"></select>
+                    <span asp-validation-for="IdHijo" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                        <label asp-for="Fecha" class="control-label"></label>
+                        <input asp-for="Fecha" class="form-control" />
+                        <span asp-validation-for="Fecha" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-success" onclick="createVali()" />
+                    <a class="btn btn-secondary" asp-action="Index">Atrás</a>
+                </div>
+            </form>
+        </div>
     </div>
+
 </div>
-
-
 
 
 @section Scripts {

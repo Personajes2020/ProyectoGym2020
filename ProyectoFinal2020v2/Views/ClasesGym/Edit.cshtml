@@ -4,64 +4,72 @@
     ViewData["Title"] = "Edit";
 }
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
 <header class="container p-3 my-3 bg-primary text-white text-center rounded-l">
     <h4> <i class="fas fa-pen"></i> Editar Clase</h4>
 </header>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" asp-controller="ClasesGym" method="post" id="formulario">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdClaseGym" />
-            <div class="form-group">
-                <label asp-for="IdSala" class="control-label"></label>
-                <select asp-for="IdSala" class="form-control" asp-items="ViewBag.IdSala"></select>
-                <span asp-validation-for="IdSala" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoraInicio" class="control-label"></label>
-                <input asp-for="HoraInicio" type="time" class="form-control" />
-                <span asp-validation-for="HoraInicio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HoraFinal" class="control-label"></label>
-                <input asp-for="HoraFinal" type="time" class="form-control" />
-                <span asp-validation-for="HoraFinal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cupo" class="control-label"></label>
-                <input asp-for="Cupo" class="form-control" />
-                <span asp-validation-for="Cupo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdActividad" class="control-label"></label>
-                <select asp-for="IdActividad" class="form-control" asp-items="ViewBag.IdActividad"></select>
-                <span asp-validation-for="IdActividad" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdEmpleado" class="control-label"></label>
-                <select asp-for="IdEmpleado" class="form-control" asp-items="ViewBag.IdEmpleado"></select>
-                <span asp-validation-for="IdEmpleado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label><br />
-                <input asp-for="Estado" type="radio" name="Estado" value="Activo">
-                <label asp-for="Estado">Activo</label><br>
-                <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
-                <label asp-for="Estado">Inactivo</label><br>
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" /> |
-                <a asp-action="Index" class="btn btn-secondary">Atrás</a>
-            </div>
-        </form>
+<div class="container">
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" asp-controller="ClasesGym" method="post" id="formulario">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdClaseGym" />
+                <div class="form-group">
+                    <label asp-for="IdSala" class="control-label"></label>
+                    <select asp-for="IdSala" class="form-control" asp-items="ViewBag.IdSala"></select>
+                    <span asp-validation-for="IdSala" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoraInicio" class="control-label"></label>
+                    <input asp-for="HoraInicio" type="time" class="form-control" />
+                    <span asp-validation-for="HoraInicio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoraFinal" class="control-label"></label>
+                    <input asp-for="HoraFinal" type="time" class="form-control" />
+                    <span asp-validation-for="HoraFinal" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Fecha" class="control-label"></label>
+                    <input asp-for="Fecha" class="form-control" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cupo" class="control-label"></label>
+                    <input asp-for="Cupo" class="form-control" />
+                    <span asp-validation-for="Cupo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdActividad" class="control-label"></label>
+                    <select asp-for="IdActividad" class="form-control" asp-items="ViewBag.IdActividad"></select>
+                    <span asp-validation-for="IdActividad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdEmpleado" class="control-label"></label>
+                    <select asp-for="IdEmpleado" class="form-control" asp-items="ViewBag.IdEmpleado"></select>
+                    <span asp-validation-for="IdEmpleado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Estado" class="control-label"></label><br />
+                    <input asp-for="Estado" type="radio" name="Estado" value="Activo">
+                    <label asp-for="Estado">Activo</label><br>
+                    <input asp-for="Estado" type="radio" name="Estado" value="Inactivo">
+                    <label asp-for="Estado">Inactivo</label><br>
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" id="editAjax" /> |
+                    <a asp-action="Index" class="btn btn-secondary">Atrás</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>

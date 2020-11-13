@@ -4,10 +4,15 @@
     ViewData["Title"] = "Details";
 }
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
 <h4 class="container p-3 my-3 bg-secondary text-white text-center rounded-l"><i class="fas fa-align-justify "></i> Detalle Clase Gym</h4>
 
 
-<div>
+<div class="container">
 
     <hr />
     <dl class="row">
@@ -61,8 +66,9 @@
             @Html.DisplayFor(model => model.Estado)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdClaseGym" class="btn btn-primary">Editar</a> |
-    <a asp-action="Index" class="btn btn-secondary">Atras</a>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.IdClaseGym" class="btn btn-primary">Editar</a> |
+        <a asp-action="Index" class="btn btn-secondary">Atras</a>
+    </div>
 </div>

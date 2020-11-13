@@ -3,52 +3,51 @@
 
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 <header>
-
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="Index"><i class="fa fa-fw fa-home"></i>Inicio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Index"><i class="fas fa-user-alt"></i>Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Casilleros" asp-action="Index"><i class="fas fa-baby-carriage"></i> Casilleros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Empleados" asp-action="Index"><i class="fas fa-address-book"></i>Empleados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="ClasesGym" asp-action="Index"><i class="fas fa-address-book"></i>Clase Gym</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Hijos" asp-action="Index"><i class="fas fa-address-book"></i>Hijos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="MatriculaClaseGym" asp-action="Index"><i class="fas fa-address-book"></i>Hijos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Salas" asp-action="Index"><i class="fas fa-address-book"></i>Hijos</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <ul class="navbar-nav flex-grow-1">
-
-                    <li class="nav-item">
-                        <a class="nav-link text-light"><i class="fas fa-user"></i>Hola @Context.Session.GetString("NombreUsuario") !</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout"><i class="fas fa-door-open"></i>Cerrar Sesión</a>
-                    </li>
-
-                </ul>
-            </div>
+        @*<div class="container">*@
+        <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="Index"><i class="fa fa-fw fa-home"></i>Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Actividades" asp-action="Index"><i class="fas fa-dumbbell fa-lg"></i>Actividades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Index"><i class="fas fa-user-alt"></i>Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Salas" asp-action="Index"><i class="fas fa-door-open"></i>Salas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Empleados" asp-action="Index"><i class="fas fa-address-book"></i>Empleados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="ClasesGuarderia" asp-action="Index"><i class="fas fa-shapes"></i>Clases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Hijos" asp-action="Index"><i class="fas fa-address-book"></i>Hijos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Tarifas" asp-action="Index"><i class="fas fa-coins"></i>Tarifas</a>
+                </li>
+            </ul>
         </div>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1">
+
+                <li class="nav-item">
+                    <a class="nav-link text-light"><i class="fas fa-user"></i>Hola @Context.Session.GetString("NombreUsuario") !</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout"><i class="fas fa-door-open"></i>Cerrar Sesión</a>
+                </li>
+
+            </ul>
+        </div>
+        @*</div>*@
     </nav>
 
 </header>

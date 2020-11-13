@@ -4,37 +4,40 @@
     ViewData["Title"] = "Delete";
 }
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<div>
-    <h3 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i> Eliminar Matricula</h3>
-    <hr />
-    <dl class="row">
+<div class="container">
+    <div>
+        <h3 class="container p-3 my-3 bg-danger text-white text-center rounded-l"><i class="fas fa-trash"></i> Eliminar Matricula</h3>
+        <hr />
+        <dl class="row">
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdClaseGym)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdClaseGymNavigation.IdActividadNavigation)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCliente)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdClienteNavigation.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Fecha)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
-    </dl>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdClaseGym)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IdClaseGymNavigation.IdActividadNavigation)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.IdClienteNavigation.Nombre)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
+        </dl>
 
-    <form asp-action="Delete" asp-controller="MatriculasClaseGym" method="delete" id="formularioDelete">
-        <input type="hidden" asp-for="IdMatriculaGym" />
-        <input type="button" value="Eliminar" class="btn btn-danger" onclick="deleteVali()" /> |
-        <a class="btn btn-secondary" asp-action="Index">Atrás</a>
-    </form>
+        <form asp-action="Delete" asp-controller="MatriculasClaseGym" method="delete" id="formularioDelete">
+            <input type="hidden" asp-for="IdMatriculaGym" />
+            <input type="button" value="Eliminar" class="btn btn-danger" onclick="deleteVali()" /> |
+            <a class="btn btn-secondary" asp-action="Index">Atrás</a>
+        </form>
+    </div>
 </div>
 <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
 

@@ -5,6 +5,9 @@
     ViewData["Title"] = "Index";
 }
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
 <h3 class="container p-3 my-3 text-white text-center rounded-l"
     style="background-color: #0080FF">
     <i class="fas fa-laptop"></i>  Matricula Guarderia
@@ -58,47 +61,47 @@
         </tbody>
     </table>
 </div>>
-    <link href="~/css/tablas.css" rel="stylesheet" />
-    @section scripts{
-        <script>
-            $(document).ready(function () {
-                $('#table').DataTable({
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+<link href="~/css/tablas.css" rel="stylesheet" />
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+                responsive: "true",
+                dom: 'Bfrtilp',
+
+                buttons: [
+
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fas fa-file-excel"></i> ',
+                        titleAttr: 'Exportar a Excel',
+                        className: 'btn btn-success',
+
                     },
-                    responsive: "true",
-                    dom: 'Bfrtilp',
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fas fa-file-pdf"></i> ',
+                        titleAttr: 'Exportar a PDF',
+                        className: 'btn btn-danger'
+                    },
+                    {
+                        onclick: 'columna',
+                        extend: 'print',
+                        text: '<i class="fa fa-print"></i> ',
+                        titleAttr: 'Imprimir',
+                        className: 'btn btn-info'
 
-                    buttons: [
+                    },
 
-                        {
-                            extend: 'excelHtml5',
-                            text: '<i class="fas fa-file-excel"></i> ',
-                            titleAttr: 'Exportar a Excel',
-                            className: 'btn btn-success',
-
-                        },
-                        {
-                            extend: 'pdfHtml5',
-                            text: '<i class="fas fa-file-pdf"></i> ',
-                            titleAttr: 'Exportar a PDF',
-                            className: 'btn btn-danger'
-                        },
-                        {
-                            onclick: 'columna',
-                            extend: 'print',
-                            text: '<i class="fa fa-print"></i> ',
-                            titleAttr: 'Imprimir',
-                            className: 'btn btn-info'
-
-                        },
-
-                    ]
+                ]
 
 
 
-                });
             });
-        </script>
+        });
+    </script>
 
-    }
+}
