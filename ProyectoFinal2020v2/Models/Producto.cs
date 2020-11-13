@@ -23,7 +23,7 @@ namespace ProyectoFinal2020v2.Models
         [DisplayName("Descripcion")]
         [Required(ErrorMessage = "Es obligatorio la descripcion.")]
         public string Descripcion { get; set; }
-        [DisplayName("Id Proveedor")]
+        [DisplayName("Proveedor")]
         [Required(ErrorMessage = "Es obligatorio el id de Proveedor")]
         public int IdProveedor { get; set; }
         [DisplayName("Existencia")]
@@ -34,10 +34,10 @@ namespace ProyectoFinal2020v2.Models
         [DataType(DataType.Date)]
         public DateTime FechaCadu { get; set; }
 
-        [DisplayName("Id Categoria")]
+        [DisplayName("Categoria")]
         [Required(ErrorMessage = "Es necesario el id de categoria")]
         public int IdCategoria { get; set; }
-        [DisplayName("Precio unidad")]
+        [DisplayName("Precio Unidad")]
         [Required(ErrorMessage = "Es necesario el precio del producto")]
         public double PrecioUnidad { get; set; }
 

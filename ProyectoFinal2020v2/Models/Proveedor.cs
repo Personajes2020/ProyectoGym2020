@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 namespace ProyectoFinal2020v2.Models
 {
@@ -10,17 +11,17 @@ namespace ProyectoFinal2020v2.Models
             DetallesPedido = new HashSet<DetallesPedido>();
             Producto = new HashSet<Producto>();
         }
-       // [Required(ErrorMessage = "Es obligatorio la identificacion.")]
+        // [Required(ErrorMessage = "Es obligatorio la identificacion.")]
         public int IdProveedor { get; set; }
         [Required(ErrorMessage = "Es obligatorio una identificacion.")]
         public string Identificacion { get; set; }
-
+        [DisplayName("Nombre Producto")]
         [Required(ErrorMessage = "Es obligatorio un nombre.")]
         public string NombreProducto { get; set; }
-        
+
         [Required(ErrorMessage = "La descripcion es obligatorio.")]
         public string Descripcion { get; set; }
-      
+        [DisplayName("Nombre Representante")]
         [Required(ErrorMessage = "El nombre del representate es  obligatorio.")]
         public string NombreRepresentante { get; set; }
         
