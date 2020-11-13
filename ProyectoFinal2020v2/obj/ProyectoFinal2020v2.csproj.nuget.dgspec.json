@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\reymo\\Downloads\\Version Jose\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {}
+    "C:\\Users\\Daniel Jesús\\Source\\Repos\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\reymo\\Downloads\\Version Jose\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {
+    "C:\\Users\\Daniel Jesús\\Source\\Repos\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\reymo\\Downloads\\Version Jose\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+        "projectUniqueName": "C:\\Users\\Daniel Jesús\\Source\\Repos\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
         "projectName": "ProyectoFinal2020v2",
-        "projectPath": "C:\\Users\\reymo\\Downloads\\Version Jose\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
-        "packagesPath": "C:\\Users\\reymo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\reymo\\Downloads\\Version Jose\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
+        "projectPath": "C:\\Users\\Daniel Jesús\\Source\\Repos\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+        "packagesPath": "C:\\Users\\Daniel Jesús\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Daniel Jesús\\Source\\Repos\\ProyectoGym2020\\ProyectoFinal2020v2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\reymo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Daniel Jesús\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -83,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

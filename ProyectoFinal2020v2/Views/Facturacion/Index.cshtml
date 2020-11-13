@@ -59,11 +59,8 @@
 
 
                     <td>
-                        <div class="btn-group" style='font-size: 5px'>
-
-                            <a asp-action="Details" asp-route-id="@item.IdCompra" class="btn btn-secondary btn-sm">Detalles <i class="fas fa-align-justify "> </i></a> |
-
-                        </div>
+                        <a asp-controller="Facturacion" asp-action="Edit" asp-route-id="@item.IdCompra" class="btn btn-primary btn-sm">Editar<i class="fas fa-pen "></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.IdCompra" class="btn btn-secondary btn-sm">Detalles <i class="fas fa-align-justify "> </i></a>
                     </td>
                 </tr>
             }
