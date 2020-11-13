@@ -1,0 +1,71 @@
+﻿@model ProyectoFinal2020v2.Models.Monedero
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<div class="container">
+    <header class="container p-3 my-3 bg-success text-white text-center rounded-l">
+        <h4><i class="fas fa-plus-square"></i> Agregar monedero virtual</h4>
+    </header>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" method="post" id ="formuario">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="IdCliente" class="control-label"></label>
+                    <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente"></select>
+                    <span asp-validation-for="IdCliente" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Saldo" class="control-label"></label>
+                    <input asp-for="Saldo" class="form-control" />
+                    <span asp-validation-for="Saldo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-primary" onclick="mensaje()" />
+                    <a asp-action="Index" class="btn btn-secondary">Atrás</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+<script>
+    function mensaje() {
+        var form = $("#formulario"); $.ajax({
+            url: "/monederos/CreateConAjax",
+            data: form.serialize(),
+            method: "POST",
+            success: function (resultado) {
+                if (resultado.result == true) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Se creó el monedero correctamente.',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No se pudo crear el monedero',
+                        text: '¡Verifique que los datos de los campos sean correctos!',
+                    })
+
+                }
+            }
+        });
+    }
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
