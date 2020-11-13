@@ -1,180 +1,185 @@
 ﻿@model ProyectoFinal2020v2.Models.ClaseGuarderiaCalendarViewModel
 @{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
-<h2 class="container p-3 my-3 text-white text-center rounded-l"
-    style="background-color: #006666">
-    <i class="fas fa-calendar-alt"></i> Guarderia
-</h2>
-<div class="container-fluid">
-    <div>
+
+
+    <h2 class="container p-3 my-3 text-white text-center rounded-l"
+        style="background-color: #006666">
+        <i class="fas fa-calendar-alt"></i> Guarderia
+    </h2>
+
+
+    <div class="container-fluid">
         <div>
-            <div id='loading'>loading...</div>
-            <div id="calendar"></div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalClaseGuarderia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Clase</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="formularioClasesGuarderia">
-                    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="form-group">
-                                <label>Fecha</label>
-                                <input class="form-control" readonly type="date" asp-for="ClaseGuarderia.Fecha" id="Fecha" />
-                            </div>
-                        </div>
-                        <div class="col-7 row">
-                            <div class="form-group col-6">
-                                <label>Hora Inicio</label>
-                                <input class="form-control" type="time" asp-for="ClaseGuarderia.HoraInicio" />@*"*@
-                            </div>
-                            <div class="form-group col-6">
-                                <label>Hora Final</label>
-                                <input class="form-control" type="time" asp-for="ClaseGuarderia.HoraFin" />@**@
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="form-group">
-                                <label>Empleado</label>
-                                <select  class="form-control" asp-for="ClaseGuarderiaEmpleado[0].IdEmpleado">
-                                    <option>Seleccionar</option>
-                                    @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
-                                    {
-                                        <option  value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>
-                                    }
-                                </select>
-                                
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" asp-for="ClaseGuarderiaEmpleado[1].IdEmpleado" >
-                                    <option>Seleccionar</option>
-                                    @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
-                                    {
-                                        <option value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>
-                                    }
-                                </select>
-                                <span asp-validation-for="ClaseGuarderiaEmpleado[1].IdEmpleado" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-7 row">
-                            <div class="form-group col-6">
-                                <label asp-for="ClaseGuarderia.Estado" class="control-label"></label><br />
-                                <select  class="form-control" asp-for="ClaseGuarderia.Estado">
-                                    <option>Seleccionar</option>
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-5">
-                                <label>Cupo</label>
-                                <input class="form-control" asp-for="ClaseGuarderia.Cupo" />
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="guardar()" data-dismiss="modal">Guardar</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-
+            <div>
+                <div id='loading'>loading...</div>
+                <div id="calendar"></div>
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="modalClaseGuarderiaDetalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Clase guarderia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="formularioClasesGuarderiaDetalle" method="post">
-                    @*asp-action="Edit" asp-controller="ClasesGym" method="post*@
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="ClaseGuarderia.IdClaseGuarderia" id="IdClaseGuarderia1" /> 
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="form-group">
-                                <label>Fecha</label>
-                                <input class="form-control" type="date" asp-for="ClaseGuarderia.Fecha" id="Fecha1" />
-                            </div>
-                        </div>
-                        <div class="col-7 row">
-                            <div class="form-group col-6">
-                                <label>Hora Inicio</label>
-                                <input class="form-control" type="time" asp-for="ClaseGuarderia.HoraInicio" id="HoraInicio1" />"
-                                <span asp-validation-for="ClaseGuarderia.HoraInicio" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-6">
-                                <label>Hora Final</label>
-                                <input class="form-control" type="time" asp-for="ClaseGuarderia.HoraFin" id="HoraFin1" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="form-group">
-                                <label>Empleado</label>
-                                <select class="form-control" asp-for="ClaseGuarderiaEmpleado[0].IdEmpleado" id="IdEmpleado1">
-                                    <option>Seleccionar</option>
-                                    @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
-                                    {
-                                        <option value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>
-                                    }
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control" asp-for="ClaseGuarderiaEmpleado[1].IdEmpleado"id="IdEmpleado2">
-                                    <option>Seleccionar</option>
-                                    @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
-                                    {
-                                        <option value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>
-                                    }
-                                </select>
-                                <span asp-validation-for="ClaseGuarderiaEmpleado[1].IdEmpleado" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-7 row">
-                            <div class="form-group col-6">
-                                <label asp-for="ClaseGuarderia.Estado" class="control-label"></label><br />
-                                <select class="form-control" asp-for="ClaseGuarderia.Estado" id="Estado1">
-                                    <option>Seleccionar</option>
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-5">
-                                <label>Cupo</label>
-                                <input class="form-control" asp-for="ClaseGuarderia.Cupo" id="Cupo1"/>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="editar()">Editar</button>
-                <button type="button" class="btn btn-danger" onclick="borrar()">Borrar</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
+    <div class="modal fade" id="modalClaseGuarderia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Clase</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formularioClasesGuarderia">
+                        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <input class="form-control" readonly type="date" asp-for="ClaseGuarderia.Fecha" id="Fecha" />
+                                </div>
+                            </div>
+                            <div class="col-7 row">
+                                <div class="form-group col-6">
+                                    <label>Hora Inicio</label>
+                                    <input class="form-control" type="time" asp-for="ClaseGuarderia.HoraInicio" />@*"*@
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Hora Final</label>
+                                    <input class="form-control" type="time" asp-for="ClaseGuarderia.HoraFin" />@**@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label>Empleado</label>
+                                    <select class="form-control" asp-for="ClaseGuarderiaEmpleado[0].IdEmpleado">
+                                        <option>Seleccionar</option>
+                                        @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
+                                        {
+                                            <option value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>
+                                        }
+                                    </select>
+
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" asp-for="ClaseGuarderiaEmpleado[1].IdEmpleado">
+                                        <option>Seleccionar</option>
+                                        @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
+                                        {
+                                            <option value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="ClaseGuarderiaEmpleado[1].IdEmpleado" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-7 row">
+                                <div class="form-group col-6">
+                                    <label asp-for="ClaseGuarderia.Estado" class="control-label"></label><br />
+                                    <select class="form-control" asp-for="ClaseGuarderia.Estado">
+                                        <option>Seleccionar</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-5">
+                                    <label>Cupo</label>
+                                    <input class="form-control" asp-for="ClaseGuarderia.Cupo" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="guardar()" data-dismiss="modal">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="modal fade" id="modalClaseGuarderiaDetalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Clase guarderia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formularioClasesGuarderiaDetalle" method="post">
+                        @*asp-action="Edit" asp-controller="ClasesGym" method="post*@
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ClaseGuarderia.IdClaseGuarderia" id="IdClaseGuarderia1" />
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <input class="form-control" type="date" asp-for="ClaseGuarderia.Fecha" id="Fecha1" />
+                                </div>
+                            </div>
+                            <div class="col-7 row">
+                                <div class="form-group col-6">
+                                    <label>Hora Inicio</label>
+                                    <input class="form-control" type="time" asp-for="ClaseGuarderia.HoraInicio" id="HoraInicio1" />"
+                                    <span asp-validation-for="ClaseGuarderia.HoraInicio" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Hora Final</label>
+                                    <input class="form-control" type="time" asp-for="ClaseGuarderia.HoraFin" id="HoraFin1" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label>Empleado</label>
+                                    <select class="form-control" asp-for="ClaseGuarderiaEmpleado[0].IdEmpleado" id="IdEmpleado1">
+                                        <option>Seleccionar</option>
+                                        @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
+                                        {
+                                            <option value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" asp-for="ClaseGuarderiaEmpleado[1].IdEmpleado" id="IdEmpleado2">
+                                        <option>Seleccionar</option>
+                                        @foreach (Empleado item in (List<Empleado>)ViewData["Empleado"])
+                                        {
+                                            <option value="@item.IdEmpleado">@item.Nombre  @item.Apellido1</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="ClaseGuarderiaEmpleado[1].IdEmpleado" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-7 row">
+                                <div class="form-group col-6">
+                                    <label asp-for="ClaseGuarderia.Estado" class="control-label"></label><br />
+                                    <select class="form-control" asp-for="ClaseGuarderia.Estado" id="Estado1">
+                                        <option>Seleccionar</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-5">
+                                    <label>Cupo</label>
+                                    <input class="form-control" asp-for="ClaseGuarderia.Cupo" id="Cupo1" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="editar()">Editar</button>
+                    <button type="button" class="btn btn-danger" onclick="borrar()">Borrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 @section Style{
     @*<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />*@
