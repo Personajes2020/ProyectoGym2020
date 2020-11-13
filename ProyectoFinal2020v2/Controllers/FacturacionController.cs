@@ -330,9 +330,14 @@ namespace ProyectoFinal2020v2.Controllers
                             .FirstOrDefault();
                         producto.Existencia += (int)DetalleproductoEliminar.Cantidad;
                         monedero.Saldo += (int)DetalleproductoEliminar.Cantidad * (int)DetalleproductoEliminar.PrecioUnidad;
+
+                        var compra = _context.Compra.Where(c => c.IdCompra == facturacion.Compra.IdCompra).FirstOrDefault();
+                        compra.Importe += (int)DetalleproductoEliminar.Cantidad * (int)DetalleproductoEliminar.PrecioUnidad;
+                        _context.Update(compra);
                         _context.Update(producto);
                         _context.Update(monedero);
                         _context.Remove(DetalleproductoEliminar);
+                        
                     }
                     _context.SaveChanges();
                     dbContextTransaction.Commit();

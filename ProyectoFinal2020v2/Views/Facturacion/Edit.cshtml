@@ -98,7 +98,7 @@
                                     <button type="button" class="btn btn-primary btn-sm" onclick="agregar()" id="botonAgregar">Agregar</button>
                                 </th>
                                 <th>
-                                    <button type="button" class="btn btn-warning btn-sm" onclick="editar()" id="botonEditar">Editar</button>
+                                    <button type="button" class="btn btn-warning btn-sm" onclick="editarAjax()" id="botonEditar">Editar</button>
 
                                 </th>
                                 <th>
@@ -342,55 +342,55 @@
         });
 
     }
-    function editar() {
-        $.ajax({
-            cache: false,
-            url: '/facturacion/ValidarExistencia',
-            data: {
-                idProducto: $("#idProducto").val(),
-                cantidad: $("#cantidadSolicitada").val(),
-                idcliente: $("#idCliente").val(),
-                total: $("#Total").val()
-            },
-            success: function (result) {
-                switch (result.code) {
-                    case "0": //No hay errores
-                        editarAjax();
-                        break;
-                    case "1"://Cantidad insuficiente
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'No se agregó el producto',
-                            text: '¡La cantidad en existencia no es suficiente!',
-                        })
-                        break;
-                    case "2"://Cantidad negativa
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'No se agregó el producto',
-                            text: '¡La cantidad no es valida!',
-                        })
-                        break;
-                    case "3"://Cantidad negativa
-                        Swal.fire({
-                            icon: 'info',
-                            title: 'Saldo insuficiente',
-                            text: '¡El cliente no cuenta con suficiente saldo, por favor recargar!',
-                        })
-                        break;
-                }
-            },
-            error: function (result) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error en el servidor',
+    //function editar() {
+    //    $.ajax({
+    //        cache: false,
+    //        url: '/facturacion/ValidarExistencia',
+    //        data: {
+    //            idProducto: $("#idProducto").val(),
+    //            cantidad: $("#cantidadSolicitada").val(),
+    //            idcliente: $("#idCliente").val(),
+    //            total: $("#Total").val()
+    //        },
+    //        success: function (result) {
+    //            switch (result.code) {
+    //                case "0": //No hay errores
+    //                    editarAjax();
+    //                    break;
+    //                case "1"://Cantidad insuficiente
+    //                    Swal.fire({
+    //                        icon: 'error',
+    //                        title: 'No se agregó el producto',
+    //                        text: '¡La cantidad en existencia no es suficiente!',
+    //                    })
+    //                    break;
+    //                case "2"://Cantidad negativa
+    //                    Swal.fire({
+    //                        icon: 'error',
+    //                        title: 'No se agregó el producto',
+    //                        text: '¡La cantidad no es valida!',
+    //                    })
+    //                    break;
+    //                case "3"://Cantidad negativa
+    //                    Swal.fire({
+    //                        icon: 'info',
+    //                        title: 'Saldo insuficiente',
+    //                        text: '¡El cliente no cuenta con suficiente saldo, por favor recargar!',
+    //                    })
+    //                    break;
+    //            }
+    //        },
+    //        error: function (result) {
+    //            Swal.fire({
+    //                icon: 'error',
+    //                title: 'Error en el servidor',
 
-                })
+    //            })
 
-            }
-        });
+    //        }
+    //    });
 
-    }
+    //}
 
     function agregarAjax() {
         var form = $("#formulario");

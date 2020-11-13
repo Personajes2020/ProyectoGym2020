@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IAbMUTiVm4zHXid9CN/nu8eQ3AXJFzD9Ki3q5MQnFRsKTiK24PA8BcwJSNaZeutCSOdMAG0Av43vYPnzadGA3A==",
+  "dgSpecHash": "WhiQ5uHb5CnpYbVQvZey8LJMVj2y3Gs4cACT55iNPefUekcfbmXEWUO9q5dGroyrX+Es6Sk8CMh3m17Pohw/lg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jose JFajardo\\OneDrive\\Escritorio\\Diseño\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
+  "projectFilePath": "C:\\Users\\Jose JFajardo\\OneDrive\\Escritorio\\Version Final\\ProyectoGym2020\\ProyectoFinal2020v2\\ProyectoFinal2020v2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jose JFajardo\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Jose JFajardo\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
