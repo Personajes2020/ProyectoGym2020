@@ -115,6 +115,23 @@ namespace ProyectoFinal2020v2.Controllers
             ViewData["Producto"] = productos;
             return View();
         }
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var compra = _context.Compra.Where(c => c.IdCompra == id).FirstOrDefault();
+            List<Producto> productos = _context.Producto.Where(p => p.Existencia > 0).Include(p => p.IdCategoriaNavigation).ToList();
+            ViewData["Producto"] = productos;
+
+            List<DetalleCompra> detallecompra = _context.DetalleCompra.Where(d => d.IdCompra == id).Include(d => d.IdProductoNavigation).ToList();
+            ViewData["DetalleCompra"] = detallecompra;
+            FacturacionViewModel facturacion = new FacturacionViewModel();
+            facturacion.Compra = compra;
+            //facturacion.DetalleCompra = detallecompra;
+            return View(facturacion);
+        }
         [HttpGet]
         public ActionResult ValidarExistencia(int idProducto, int cantidad, int idcliente, int total)
         {
@@ -152,13 +169,186 @@ namespace ProyectoFinal2020v2.Controllers
         public IActionResult Details(int id)
         {
             var clase = _context.Compra.Include(c => c.IdClienteNavigation).Include(c => c.IdEmpleadoNavigation).FirstOrDefault(c => c.IdCompra == id);
-            List<DetalleCompra> detalles = _context.DetalleCompra.Include(d =>d.IdProductoNavigation).Where(d => d.IdCompra == id).ToList();
+            List<DetalleCompra> detalles = _context.DetalleCompra.Include(d => d.IdProductoNavigation).Where(d => d.IdCompra == id).ToList();
             ViewData["Detalles"] = detalles;
-            
+
             return View(clase);
         }
+        public ActionResult EditarAjax(FacturacionViewModel facturacion)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var dbContextTransaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DetalleCompra item in facturacion.DetalleCompra)
+                        {
+                            var existeCompra = _context.DetalleCompra
+                                .Where(dc => (dc.IdCompra == facturacion.Compra.IdCompra && dc.IdProducto == item.IdProducto)).FirstOrDefault();
+                            var producto = _context.Producto.Where(p => p.IdProducto == item.IdProducto).FirstOrDefault();
+                            var monedero = _context.Monedero.Where(m => m.IdCliente == facturacion.Compra.IdCliente).FirstOrDefault();
+
+                            var diferencia = ((int)existeCompra.Cantidad - (int)item.Cantidad);
+                            facturacion.Compra.Importe -= (diferencia * (int)existeCompra.PrecioUnidad);
+
+                            if (existeCompra != null && producto != null)
+                            {
+                                existeCompra.Cantidad -= (int)diferencia;
+                                producto.Existencia -= (int)diferencia;
+                                _context.Update(existeCompra);
+                                _context.Update(producto);
+                            }
+                            else
+                            {
+                                DetalleCompra detalle = new DetalleCompra();
+                                detalle.IdCompra = facturacion.Compra.IdCompra;
+                                detalle.IdProducto = item.IdProducto;
+                                detalle.PrecioUnidad = item.PrecioUnidad;
+                                detalle.Cantidad = item.Cantidad;
+                                detalle.Descuento = 0;
+                                _context.Add(detalle);
+                            }
+                            monedero.Saldo += (int)diferencia * (int)existeCompra.PrecioUnidad;
+
+                            var compraImporte = _context.Compra.Where(c => c.IdCompra == facturacion.Compra.IdCompra).FirstOrDefault();
+                            compraImporte.Importe = facturacion.Compra.Importe;
+                            _context.Update(compraImporte);
+                            _context.Update(monedero);
+                            _context.SaveChanges();
+                            dbContextTransaction.Commit();
+                        }
+                        return Json(new { result = true });
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+
+            }
+            return Json(new { result = false });
+        }
+        public ActionResult AgregarAjax(FacturacionViewModel facturacion)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var dbContextTransaction = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DetalleCompra item in facturacion.DetalleCompra)
+                        {
+                            var existeCompra = _context.DetalleCompra
+                                .Where(dc => (dc.IdCompra == facturacion.Compra.IdCompra && dc.IdProducto == item.IdProducto)).FirstOrDefault();
+                            var producto = _context.Producto.Where(p => p.IdProducto == item.IdProducto).FirstOrDefault();
+                            var monedero = _context.Monedero.Where(m => m.IdCliente == facturacion.Compra.IdCliente).FirstOrDefault();
+
+                            var diferencia = ((int)existeCompra.Cantidad + (int)item.Cantidad);
+                            facturacion.Compra.Importe += ((int)item.Cantidad * (int)item.PrecioUnidad);
+
+                            if (existeCompra != null && producto != null)
+                            {
+                                existeCompra.Cantidad = (int)diferencia;
+                                producto.Existencia -= (int)item.Cantidad;
+                                _context.Update(existeCompra);
+                                _context.Update(producto);
+                            }
+                            else
+                            {
+                                DetalleCompra detalle = new DetalleCompra();
+                                detalle.IdCompra = facturacion.Compra.IdCompra;
+                                detalle.IdProducto = item.IdProducto;
+                                detalle.PrecioUnidad = item.PrecioUnidad;
+                                detalle.Cantidad = item.Cantidad;
+                                detalle.Descuento = 0;
+                                _context.Add(detalle);
+                            }
+                            monedero.Saldo -= ((int)item.Cantidad * (int)item.PrecioUnidad);
+
+                            var compraImporte = _context.Compra.Where(c => c.IdCompra == facturacion.Compra.IdCompra).FirstOrDefault();
+                            compraImporte.Importe = facturacion.Compra.Importe;
+                            _context.Update(compraImporte);
+                            _context.Update(monedero);
+                            _context.SaveChanges();
+                            dbContextTransaction.Commit();
+                        }
+                        return Json(new { result = true });
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
+
+            }
+            return Json(new { result = false });
+        }
+
+        [HttpGet]
+        public ActionResult ValidarEliminar(int idProducto, int cantidad, int idcompra)
+        {
+            string codeError = null;
+            var detalleExis = _context.DetalleCompra.Where(dc => dc.IdCompra == idcompra && dc.IdProducto == idProducto).FirstOrDefault();
+            Producto productoFind = _context.Producto.FirstOrDefault(p => p.IdProducto == idProducto);
+
+            if (cantidad <= detalleExis.Cantidad && cantidad > 0)
+            {
+                codeError = "0";//No hay errores
+            }
+            else if (cantidad <= 0)
+            {
+                codeError = "2";//cantidada no validad
+            }
+            else
+            {
+                codeError = "1";//Cantidad insuficiente
+            }
+            return Json(new
+            {
+                code = codeError
+            });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EliminarAjax(FacturacionViewModel facturacion)
+        {
+            using (var dbContextTransaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    foreach (DetalleCompra item in facturacion.DetalleCompra)
+                    {
+                        var DetalleproductoEliminar = _context.DetalleCompra
+                        .Where(dc => dc.IdCompra == facturacion.Compra.IdCompra && dc.IdProducto == item.IdProducto)
+                        .FirstOrDefault();
+                        var producto = _context.Producto
+                            .Where(p => p.IdProducto == DetalleproductoEliminar.IdProducto)
+                            .FirstOrDefault();
+                        var monedero = _context.Monedero
+                            .Where(m => m.IdCliente == facturacion.Compra.IdCliente)
+                            .FirstOrDefault();
+                        producto.Existencia += (int)DetalleproductoEliminar.Cantidad;
+                        monedero.Saldo += (int)DetalleproductoEliminar.Cantidad * (int)DetalleproductoEliminar.PrecioUnidad;
+                        _context.Update(producto);
+                        _context.Update(monedero);
+                        _context.Remove(DetalleproductoEliminar);
+                    }
+                    _context.SaveChanges();
+                    dbContextTransaction.Commit();
+
+                }
+                catch
+                {
+                    dbContextTransaction.Rollback();
+                }
+                return Json(new { result = true, });
+            }
+
+
+        }
     }
-   
+
     //public IActionResult Create()
     //{ }
 

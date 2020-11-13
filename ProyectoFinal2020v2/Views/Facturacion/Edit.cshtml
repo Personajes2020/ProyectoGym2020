@@ -1,0 +1,509 @@
+﻿@model ProyectoFinal2020v2.Models.FacturacionViewModel
+@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<h3 class="container p-3 my-3 text-white text-center rounded-l" style="background-color: #0000FF"><i class="fas fa-cart-plus"></i> Facturacion</h3>
+
+<hr />
+
+<div class="container">
+
+    <form asp-controller="Facturacion" method="post" id="formulario">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container" style="border:groove">
+            <div class="row">
+                <div class="column">
+
+                </div>
+                <div class="column">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2">
+                        <label asp-for="Compra.IdCompra" class="control-label"></label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input asp-for="Compra.IdCompra" class="form-control" readonly id="idCompra" />@*value="@Html.Raw(ViewBag.IdCompra)"*@
+                        <span asp-validation-for="Compra.IdCompra" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Compra.Fecha" class="control-label"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" asp-for="Compra.Fecha" readonly />@*value="@TempData["Fecha"]"*@
+                        <span asp-validation-for="Compra.Fecha" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Compra.IdCliente" class="control-label"></label>
+                        <input asp-for="Compra.IdCliente" readonly class="form-control" placeholder="Ingrese Cliente" id="idCliente" />
+                        <span asp-validation-for="Compra.IdCliente" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Compra.IdEmpleado" class="control-label"></label>
+                        <input asp-for="Compra.IdEmpleado" readonly class="form-control" placeholder="Ingrese Empleado" id="idEmpleado" />
+                        <span asp-validation-for="Compra.IdEmpleado" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            @* Tabla normal de producto *@
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id Pruducto
+                                </th>
+                                <th>
+                                    Stock
+                                </th>
+                                <th>
+                                    Cantidad
+                                </th>
+                                <th>
+
+                                </th>
+                                <th>
+
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <div class="input-group">
+                                        <input readonly type="number" asp-for="DetalleCompra[0].IdProducto" class="form-control" placeholder="Ingrese producto" id="idProducto" />
+                                        <div class="input-group-btn">
+                                            <button type="button" class=" btn btn-info" style="height:34px; color:#ffffff;" data-toggle="modal" data-target="#modalProducto">Seleccionar</button>
+                                        </div>
+                                    </div>
+                                    @*<span asp-validation-for="DetalleCompra[0].IdProducto" class="text-danger"></span>*@
+                                </th>
+                                <th>
+                                    <input type="number" class="form-control" placeholder="Existente" readonly id="idProductoExi" />
+                                </th>
+                                <th>
+                                    <input type="number" asp-for="DetalleCompra[0].Cantidad" class="form-control" placeholder="Ingrese Cantidad" id="cantidadSolicitada" />
+                                    @*<span asp-validation-for="DetalleCompra[0].Cantidad" class="text-danger"></span>*@
+                                    <input type="hidden" asp-for="DetalleCompra[0].PrecioUnidad" class="form-control" placeholder="Ingrese Cantidad" id="precio" />
+                                </th>
+                                <th>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="agregar()" id="botonAgregar">Agregar</button>
+                                </th>
+                                <th>
+                                    <button type="button" class="btn btn-warning btn-sm" onclick="editar()" id="botonEditar">Editar</button>
+
+                                </th>
+                                <th>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="eliminarAjax()" id="botonBorrar">Eliminar</button>
+                                </th>
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr /><br />
+
+        @*  *@
+        @*<div class="row">
+            <div class="col-md-7">*@
+        <table class="table" id="tableDetalle">
+            <thead>
+                <tr>
+                    <th>
+                        Id Producto
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Precio Unidad
+                    </th>
+                    <th>
+                        SubTotal
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                @foreach (DetalleCompra item in (List<DetalleCompra>)ViewData["DetalleCompra"])
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdProducto)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdProductoNavigation.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrecioUnidad)
+
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="enviarViejo(@item.IdProducto, @item.Cantidad, @item.PrecioUnidad)">Enviar</button>
+
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <h3>Total: <span id="total"></span></h3>
+                        <input asp-for="Compra.Importe" type="hidden" id="Total" />
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <br />
+        <a asp-action="Index" class="btn btn-secondary">Regresar </a>
+    </form>
+</div>
+
+<div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title container p-3 my-3 text-white text-center rounded-l" id="exampleModalLabel" style="background:#DF3A01"><i class="fas fa-gifts"></i> Producto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tableProducto" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id Producto
+                                </th>
+                                <th>
+                                    Codigo
+                                </th>
+                                <th>
+                                    Producto
+                                </th>
+                                <th>
+                                    Precio
+                                </th>
+                                <th>
+                                    Categoria
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Producto item in (List<Producto>)ViewData["Producto"])
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdProducto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Codigo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PrecioUnidad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.Nombre)
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm" onclick="enviarProducto(@item.IdProducto, @item.Existencia, @item.PrecioUnidad)" data-dismiss="modal">Enviar</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/js/sweetalert2.all.min.js"></script>
+
+<script>
+
+
+    function enviarProducto(n, c, pr) {
+        var valor = n;
+        var cantidad = c;
+        var precio = pr;
+        document.getElementById("idProducto").value = valor;
+        document.getElementById("idProductoExi").value = cantidad;
+        document.getElementById("precio").value = precio;
+        document.getElementById("botonAgregar").style.display = 'block';
+        document.getElementById("botonEditar").style.display = 'none';
+        document.getElementById("botonBorrar").style.display = 'none';
+    }
+    function enviarViejo(n, c, pr) {
+        var valor = n;
+        var cantidad = c;
+        var precio = pr;
+        document.getElementById("idProducto").value = valor;
+        document.getElementById("cantidadSolicitada").value = cantidad;
+        document.getElementById("precio").value = precio;
+        document.getElementById("botonAgregar").style.display = 'none';
+        document.getElementById("botonEditar").style.display = 'block';
+        document.getElementById("botonBorrar").style.display = 'block';
+    }
+    $(function () {
+        var filas = document.querySelectorAll("#tableDetalle tbody tr");
+
+        filas.forEach(function (e) {
+            var columnas = e.querySelectorAll("td");
+            var cantidad = parseFloat(columnas[2].textContent);
+            var precio = parseFloat(columnas[3].textContent);
+
+            // mostramos el total por fila
+            columnas[4].textContent = (cantidad * precio).toFixed(2);
+
+        });
+        $('#total').text(parseInt($('#Total').val()));
+        //$('#Total').val(parseInt($('#Total').val()));
+    })
+    function agregar() {
+        $.ajax({
+            cache: false,
+            url: '/facturacion/ValidarExistencia',
+            data: {
+                idProducto: $("#idProducto").val(),
+                cantidad: $("#cantidadSolicitada").val(),
+                idcliente: $("#idCliente").val(),
+                total: $("#Total").val()
+            },
+            success: function (result) {
+                switch (result.code) {
+                    case "0": //No hay errores
+                        agregarAjax();
+                        break;
+                    case "1"://Cantidad insuficiente
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se agregó el producto',
+                            text: '¡La cantidad en existencia no es suficiente!',
+                        })
+                        break;
+                    case "2"://Cantidad negativa
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se agregó el producto',
+                            text: '¡La cantidad no es valida!',
+                        })
+                        break;
+                    case "3"://Cantidad negativa
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Saldo insuficiente',
+                            text: '¡El cliente no cuenta con suficiente saldo, por favor recargar!',
+                        })
+                        break;
+                }
+            },
+            error: function (result) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en el servidor',
+
+                })
+
+            }
+        });
+
+    }
+    function editar() {
+        $.ajax({
+            cache: false,
+            url: '/facturacion/ValidarExistencia',
+            data: {
+                idProducto: $("#idProducto").val(),
+                cantidad: $("#cantidadSolicitada").val(),
+                idcliente: $("#idCliente").val(),
+                total: $("#Total").val()
+            },
+            success: function (result) {
+                switch (result.code) {
+                    case "0": //No hay errores
+                        editarAjax();
+                        break;
+                    case "1"://Cantidad insuficiente
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se agregó el producto',
+                            text: '¡La cantidad en existencia no es suficiente!',
+                        })
+                        break;
+                    case "2"://Cantidad negativa
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'No se agregó el producto',
+                            text: '¡La cantidad no es valida!',
+                        })
+                        break;
+                    case "3"://Cantidad negativa
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Saldo insuficiente',
+                            text: '¡El cliente no cuenta con suficiente saldo, por favor recargar!',
+                        })
+                        break;
+                }
+            },
+            error: function (result) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en el servidor',
+
+                })
+
+            }
+        });
+
+    }
+
+    function agregarAjax() {
+        var form = $("#formulario");
+        $.ajax({
+            url: "/Facturacion/AgregarAjax",
+            data: form.serialize(),
+            method: "POST",
+            success: function (resultado) {
+                if (resultado.result == true) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Se creó el empleado correctamente.',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                } else {//Si result = false, osea no creó porque el modelo no es valido, mande sweetAlert
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No se pudo crear el empleado',
+                        text: '¡Verifique que los datos de los campos sean correctos!',
+                    })
+                }
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Edit", "Facturacion")'
+                }, 2000);
+            }
+        });
+    }
+    function editarAjax() {
+        var form = $("#formulario");
+        $.ajax({
+            url: "/Facturacion/EditarAjax",
+            data: form.serialize(),
+            method: "POST",
+            success: function (resultado) {
+                if (resultado.result == true) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Se editó la compra correctamente.',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No se pudo hacer la compra',
+                        text: '¡Verifique que los datos de los campos sean correctos!',
+                    })
+
+                }
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Edit", "Facturacion")'
+                }, 2000);
+            }
+        });
+    }
+    function eliminarAjax() {
+
+        var form = $("#formulario").serialize();
+        Swal.fire({   //Al hacer click en el btn mande la alerta
+            title: '¿Está seguro(a) de eliminar?',
+            text: "¡No podrá recuperar este producto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!'
+        }).then((result) => {
+            if (result.isConfirmed) {//Si confirmo eliminarla, que llame a traves de ajax el metodo eliminar
+
+                $.ajax({//Llama al metodo eliminar con ajax
+                    url: "/Facturacion/EliminarAjax",
+                    data: form,
+                    method: "POST",
+                });
+                Swal.fire({    //Mande una alerta de que se eliminó
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Producto eliminado correctamente.',
+                    showConfirmButton: false,
+                    timer: 3000,
+                })
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Edit", "Facturacion")'
+                }, 2000);
+            }
+        })
+    }
+    $(document).ready(function () {
+        $('#tableCliente').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+        $('#tableEmpleado').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+        $('#tableProducto').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
